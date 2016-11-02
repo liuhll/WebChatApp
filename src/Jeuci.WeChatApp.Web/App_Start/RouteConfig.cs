@@ -11,10 +11,16 @@ namespace Jeuci.WeChatApp.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             //ASP.NET Web API Route Config
+            //routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //    );
+
             routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "ActionApi",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional, action = RouteParameter.Optional }
                 );
 
             routes.MapRoute(

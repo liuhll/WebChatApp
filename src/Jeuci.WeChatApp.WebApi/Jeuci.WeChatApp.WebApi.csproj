@@ -125,6 +125,7 @@
     <Compile Include="Api\Controllers\WechatSignatureController.cs" />
     <Compile Include="Api\Models\SignParams.cs" />
     <Compile Include="Api\Models\SingleSendMailParams.cs" />
+    <Compile Include="Filter\TestFilter.cs" />
     <Compile Include="WeChatAppWebApiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
