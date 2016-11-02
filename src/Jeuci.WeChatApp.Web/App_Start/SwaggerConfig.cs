@@ -253,7 +253,7 @@ namespace Jeuci.WeChatApp.Web
         {
 #if DEBUG
            // var path = Directory.GetParent(System.AppDomain.CurrentDomain.BaseDirectory).Parent;
-            return System.String.Format(@"{0}\bin\Debug\Jeuci.WeChatApp.WebApi.XML", System.AppDomain.CurrentDomain.BaseDirectory);
+            return System.String.Format(@"{0}\bin\Jeuci.WeChatApp.WebApi.XML", System.AppDomain.CurrentDomain.BaseDirectory);
 #else
            var path = Directory.GetParent(System.AppDomain.CurrentDomain.BaseDirectory);            
              return System.String.Format(@"{0}\bin\SwaggerWebApi.XML", path.FullName);
@@ -264,7 +264,7 @@ namespace Jeuci.WeChatApp.Web
         {
 #if DEBUG
           //  var path = System.AppDomain.CurrentDomain.BaseDirectory;
-            return System.String.Format(@"{0}\bin\Debug\Jeuci.WeChatApp.Core.XML", System.AppDomain.CurrentDomain.BaseDirectory);
+            return System.String.Format(@"{0}\bin\Jeuci.WeChatApp.Core.XML", System.AppDomain.CurrentDomain.BaseDirectory);
 #else
             var path = Directory.GetParent(System.AppDomain.CurrentDomain.BaseDirectory);            
             return System.String.Format(@"{0}\bin\SwaggerModelApi.XML", path.FullName);

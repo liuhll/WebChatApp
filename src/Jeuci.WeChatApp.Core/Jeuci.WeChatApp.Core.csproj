@@ -38,6 +38,12 @@
       <HintPath>..\packages\Abp.1.0.0.0\lib\net452\Abp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="aliyun-net-sdk-core">
+      <HintPath>..\ThirdParty.Lib\aliyun-net-sdk-core.dll</HintPath>
+    </Reference>
+    <Reference Include="aliyun-net-sdk-dm">
+      <HintPath>..\ThirdParty.Lib\aliyun-net-sdk-dm.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
@@ -84,6 +90,7 @@
     </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -91,6 +98,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums\EmailBodyType.cs" />
+    <Compile Include="Common\Enums\EmailTemplet.cs" />
+    <Compile Include="Common\Exceptions\ReadEmailTempletException.cs" />
+    <Compile Include="Common\MessageTips.cs" />
+    <Compile Include="Common\Tools\CacheHelper.cs" />
+    <Compile Include="Common\Tools\ConfigHelper.cs" />
+    <Compile Include="Common\Tools\ConvertHelper.cs" />
+    <Compile Include="InfrastructureServices\DirectEmail\DirectEmailService.cs" />
+    <Compile Include="InfrastructureServices\DirectEmail\IDirectEmailService.cs" />
+    <Compile Include="InfrastructureServices\DirectEmail\Models\SingleSendMailModel.cs" />
+    <Compile Include="InfrastructureServices\DirectEmail\EmailTempletManager.cs" />
     <Compile Include="WeChatAppConsts.cs" />
     <Compile Include="WeChatAppCoreModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,7 +117,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="InfrastructureServices\SendSMS\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jueci.WeChatApp.RestfulRequestTool\Jueci.WeChatApp.RestfulRequestTool.csproj">
       <Project>{73863568-f264-4b7c-9bd5-e36a3d3deb28}</Project>
