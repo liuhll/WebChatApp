@@ -106,6 +106,8 @@
     <Compile Include="Common\Tools\CacheHelper.cs" />
     <Compile Include="Common\Tools\ConfigHelper.cs" />
     <Compile Include="Common\Tools\ConvertHelper.cs" />
+    <Compile Include="Common\Tools\DateTimeHelper.cs" />
+    <Compile Include="Common\Tools\EncryptionHelper.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\DirectEmailService.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\IDirectEmailService.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\Models\SingleSendMailModel.cs" />

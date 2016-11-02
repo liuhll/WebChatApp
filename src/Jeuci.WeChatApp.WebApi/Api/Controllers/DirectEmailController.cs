@@ -17,6 +17,7 @@ using Jeuci.WeChatApp.InfrastructureServices.DirectEmail.Models;
 namespace Jeuci.WeChatApp.Api.Controllers
 {
     [RoutePrefix("api/directemail")]
+    [JueciApiAuthorization]   
     public class DirectEmailController : AbpApiController
     {
         private readonly DirectEmailAppService _directEmailAppService;
@@ -28,12 +29,10 @@ namespace Jeuci.WeChatApp.Api.Controllers
 
         [HttpGet]
         [Route("singlesendmail")]
-        [TestFilter] 
         public bool SingleSendMail([FromUri]SingleSendMailParams mailParams)
         {
           
             var singleSendMailModel = new SingleSendMailModel(mailParams.ToAddress,mailParams.TmailBodyType, mailParams.EmailTempletService);
-
             return _directEmailAppService.SingleSendMail(singleSendMailModel);
         }
 

@@ -3,7 +3,7 @@ using Jeuci.WeChatApp.Common.Tools;
 
 namespace Jeuci.WeChatApp.Api.Models
 {
-    public class SingleSendMailParams
+    public class SingleSendMailParams : ValidationParams
     {
 
         public string ToAddress { get; set; }
