@@ -101,6 +101,7 @@
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
     <Compile Include="Common\Exceptions\ReadEmailTempletException.cs" />
+    <Compile Include="Common\Exceptions\SendEmailException.cs" />
     <Compile Include="Common\MessageTips.cs" />
     <Compile Include="Common\Tools\CacheHelper.cs" />
     <Compile Include="Common\Tools\ConfigHelper.cs" />

@@ -3,7 +3,9 @@ using Aliyun.Acs.Core;
 using Aliyun.Acs.Core.Exceptions;
 using Aliyun.Acs.Core.Profile;
 using Aliyun.Acs.Dm.Model.V20151123;
+using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
+using Jeuci.WeChatApp.Common.Exceptions;
 using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.InfrastructureServices.DirectEmail.Models;
 
@@ -41,13 +43,13 @@ namespace Jeuci.WeChatApp.InfrastructureServices.DirectEmail
             }
             catch (ServerException e)
             {
-                LogHelper.Logger.Error("发送邮件失败，服务器原因，失败原因："+e.Message,e);
-                return false;
+                LogHelper.Logger.Error(string.Format(MessageTips.SendEmailFail, "服务端原因", e.Message), e);
+                throw new SendEmailException(string.Format(MessageTips.SendEmailFail,"服务端原因",e.Message),e); 
             }
             catch (ClientException e)
             {
-                LogHelper.Logger.Error("发送邮件失败，客服端原因，失败原因：" + e.Message, e);
-                return false;
+                LogHelper.Logger.Error(string.Format(MessageTips.SendEmailFail, "客服端原因", e.Message), e);
+                throw new SendEmailException(string.Format(MessageTips.SendEmailFail, "客服端原因", e.Message), e);
             }
         }
     
