@@ -51,7 +51,9 @@ namespace Jeuci.WeChatApp.Policy
             {
                 sb.Append(string.Format("{0}:{1}",parm.Key, parm.Value));
             }
-            var isLegalSign = EncryptionHelper.EncryptSHA256(sb.ToString()).Equals(_sign);
+
+            var encryptedStr = sb.ToString() + saltKey;
+            var isLegalSign = EncryptionHelper.EncryptSHA256(encryptedStr).Equals(_sign);
             if (!isLegalSign)
             {
                 LogHelper.Logger.Error("非法签名");
