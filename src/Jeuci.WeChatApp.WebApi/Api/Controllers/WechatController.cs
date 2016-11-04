@@ -29,13 +29,6 @@ namespace Jeuci.WeChatApp.Api.Controllers
         [HttpGet]
         public HttpResponseMessage Index([FromUri] WechatSignInput signParams)
         {   
-            Logger.Info("请求的头：" + JsonConvert.SerializeObject(Request.Headers));
-            Logger.Info("请求的Content：" + JsonConvert.SerializeObject(Request.Content));
-            Logger.Info("请求的URL" + JsonConvert.SerializeObject(Request.RequestUri));
-           
-            var ip = ((HttpContextBase)Request.Properties["MS_HttpContext"]).Request.UserHostAddress;
-
-            Logger.Info("请求的Ip:" + ip);
             if (_wechatAuthAppService.CheckSignature(signParams))
             {
                 var res = Request.CreateResponse(HttpStatusCode.OK, signParams.Echostr);
