@@ -86,6 +86,14 @@
       <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Senparc.Weixin, Version=4.9.0.832, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.4.9.0\lib\net45\Senparc.Weixin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP, Version=14.3.104.859, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.MP.14.3.104\lib\net45\Senparc.Weixin.MP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -122,8 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Controllers\DirectEmailController.cs" />
-    <Compile Include="Api\Controllers\WechatSignatureController.cs" />
-    <Compile Include="Api\Models\SignParams.cs" />
+    <Compile Include="Api\Controllers\WechatController.cs" />
     <Compile Include="Api\Models\SingleSendMailParams.cs" />
     <Compile Include="Api\Models\ValidationParams.cs" />
     <Compile Include="Filter\JueciApiAuthorization.cs" />

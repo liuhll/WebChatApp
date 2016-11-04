@@ -1175,6 +1175,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Wechat\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jeuci.WeChatApp.Application\Jeuci.WeChatApp.Application.csproj">

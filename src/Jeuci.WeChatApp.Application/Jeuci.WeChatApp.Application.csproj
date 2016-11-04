@@ -99,6 +99,9 @@
     <Compile Include="WeChatAppApplicationModule.cs" />
     <Compile Include="WeChatAppAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeChatAuth\Dtos\WechatSignInput.cs" />
+    <Compile Include="WeChatAuth\IWechatAuthAppService.cs" />
+    <Compile Include="WeChatAuth\WechatAuthAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

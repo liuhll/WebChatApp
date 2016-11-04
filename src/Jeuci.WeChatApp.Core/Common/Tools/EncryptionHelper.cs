@@ -75,7 +75,7 @@ namespace Jeuci.WeChatApp.Common.Tools
             try
             {
                 byte[] toByte = EncryptSHAToBytes(instr, bytesEncoding);
-                string result = BitConverter.ToString(toByte).ToUpper().Replace("-", "");
+                string result = BitConverter.ToString(toByte).ToLower().Replace("-", "");
                 return result;
             }
             catch
