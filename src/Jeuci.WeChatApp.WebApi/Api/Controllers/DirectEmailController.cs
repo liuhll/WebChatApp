@@ -27,23 +27,23 @@ namespace Jeuci.WeChatApp.Api.Controllers
             _directEmailAppService = directEmailAppService;
         }
 
-        [HttpGet]
-        [Route("singlesendmail")]
-        public bool SingleSendMail([FromUri]SingleSendMailParams mailParams)
-        {
+        //[HttpGet]
+        //[Route("singlesendmail")]
+        //public bool SingleSendMail([FromUri]SingleSendMailParams mailParams)
+        //{
           
-            var singleSendMailModel = new SingleSendMailModel(mailParams.ToAddress,mailParams.TmailBodyType, mailParams.EmailTempletService);
-            return _directEmailAppService.SingleSendMail(singleSendMailModel);
-        }
+        //    var singleSendMailModel = new SingleSendMailModel(mailParams.ToAddress,mailParams.TmailBodyType, mailParams.EmailTempletService);
+        //    return _directEmailAppService.SingleSendMail(singleSendMailModel);
+        //}
 
-        [HttpGet]
-        [Route("batchsendmail")]
-        public bool BatchSendMail()
-        {
+        //[HttpGet]
+        //[Route("batchsendmail")]
+        //public bool BatchSendMail()
+        //{
 
-           // var singleSendMailModel = new SingleSendMailModel(mailParams.ToAddress, mailParams.TmailBodyType, mailParams.EmailTempletService);
+        //   // var singleSendMailModel = new SingleSendMailModel(mailParams.ToAddress, mailParams.TmailBodyType, mailParams.EmailTempletService);
 
-            return false;
-        }
+        //    return false;
+        //}
     }
 }

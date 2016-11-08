@@ -10,6 +10,6 @@ namespace Jeuci.WeChatApp.DirectEmail
 {
     public interface IDirectEmailAppService : ITransientDependency
     {
-        bool SingleSendMail(SingleSendMailModel model);
+        //bool SingleSendMail(SingleSendMailModel model);
     }
 }
