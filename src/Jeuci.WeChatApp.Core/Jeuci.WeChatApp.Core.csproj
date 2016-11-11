@@ -108,10 +108,12 @@
   <ItemGroup>
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
+    <Compile Include="Common\Enums\ResultCode.cs" />
     <Compile Include="Common\Exceptions\ApiAuthorizeException.cs" />
     <Compile Include="Common\Exceptions\ReadEmailTempletException.cs" />
     <Compile Include="Common\Exceptions\SendEmailException.cs" />
     <Compile Include="Common\MessageTips.cs" />
+    <Compile Include="Common\ResultMessage.cs" />
     <Compile Include="Common\Tools\CacheHelper.cs" />
     <Compile Include="Common\Tools\ConfigHelper.cs" />
     <Compile Include="Common\Tools\ConvertHelper.cs" />
@@ -130,6 +132,11 @@
     <Compile Include="Wechat\Authentication\AuthenticationProvider.cs" />
     <Compile Include="Wechat\Authentication\WechatAuthentManager.cs" />
     <Compile Include="Wechat\Authentication\WXBizMsgCrypt.cs" />
+    <Compile Include="Wechat\Menu\IWechatMenuManager.cs" />
+    <Compile Include="Wechat\Menu\IWechatMenuProvider.cs" />
+    <Compile Include="Wechat\Menu\WechatMenuManager.cs" />
+    <Compile Include="Wechat\Menu\WechatMenuProvider.cs" />
+    <Compile Include="Wechat\Models\WechatAccessToken.cs" />
     <Compile Include="Wechat\Models\WechatSign.cs" />
   </ItemGroup>
   <ItemGroup>

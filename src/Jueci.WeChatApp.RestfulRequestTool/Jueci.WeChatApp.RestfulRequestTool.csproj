@@ -92,6 +92,7 @@
     <Compile Include="Authenticators\IPrivateTokenAuthenticator.cs" />
     <Compile Include="Common\Enums\Method.cs" />
     <Compile Include="Common\PaginatedResult.cs" />
+    <Compile Include="Common\RequestException.cs" />
     <Compile Include="Common\RequestResult.cs" />
     <Compile Include="RequestAbstractions\IClientFactory.cs" />
     <Compile Include="RequestAbstractions\Impl\ClientFactory.cs" />

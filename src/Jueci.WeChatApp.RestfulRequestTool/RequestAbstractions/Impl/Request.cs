@@ -42,6 +42,7 @@ namespace Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions.Impl
                     break;
             }
         }
+
         public void AddParameter(string name, object value)
         {
             _request.AddParameter(name, value);

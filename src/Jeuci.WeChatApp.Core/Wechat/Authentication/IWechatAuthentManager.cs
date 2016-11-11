@@ -7,5 +7,7 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
     {
         bool CheckSignature(WechatSign wechatSign);
 
+        string GetAccessToken();
+
     }
 }

@@ -4,6 +4,7 @@ using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Models;
 using Newtonsoft.Json;
+using Senparc.Weixin.MP.Containers;
 using WeixinSdk=Senparc.Weixin.MP;
 
 namespace Jeuci.WeChatApp.Wechat.Authentication
@@ -12,9 +13,18 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
     {
         private readonly IAuthenticationProvider _permissionProvider;
 
+        private readonly string _appid;
+
+        private readonly string _appsecret;
+
         public WechatAuthentManager(IAuthenticationProvider permissionProvider)
         {
             _permissionProvider = permissionProvider;
+
+            _appid = ConfigHelper.GetValuesByKey("WechatAppid");
+            _appsecret = ConfigHelper.GetValuesByKey("WechatAppSecret");
+
+
         }
 
         public bool CheckSignature(WechatSign wechatSign)
@@ -37,16 +47,10 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
             return false;
         }
 
-        //protected virtual bool CheckSignature(WechatSign wechatSign, string token)
-        //{
-        //    string tempStr = _permissionProvider.GetWechatSignStrByParams(token,wechatSign.Timestamp.ToString(),wechatSign.Nonce.ToString());
-        //    LogHelper.Logger.Info("得到的签名串为:"+tempStr);
-        //    tempStr = EncryptionHelper.EncryptSHA(tempStr);
-        //    LogHelper.Logger.Info("加密后的串为:"+tempStr);
-        //    return tempStr.Equals(wechatSign.Signature);
-
-        //}
-
-
+        public string GetAccessToken()
+        {
+            var accessToken = AccessTokenContainer.TryGetAccessToken(_appid, _appsecret);
+            return accessToken;
+        }
     }
 }

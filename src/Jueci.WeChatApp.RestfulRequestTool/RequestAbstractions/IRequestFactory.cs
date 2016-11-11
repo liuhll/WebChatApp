@@ -11,6 +11,8 @@ namespace Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions
         /// <param name="authenticate"> Whether or not to use authentication for this request. </param>
         /// <returns> A new instance of <see cref="IRequest" />. </returns>
         IRequest Create(string resource, Method method, bool authenticate = true);
+   
+        IRequest Create(string resource, Method method, string accessToken, string accessTokenName = "access_token");
 
     }
 }

@@ -102,6 +102,8 @@
     <Compile Include="WeChatAuth\Dtos\WechatSignInput.cs" />
     <Compile Include="WeChatAuth\IWechatAuthAppService.cs" />
     <Compile Include="WeChatAuth\WechatAuthAppService.cs" />
+    <Compile Include="WechatMenu\IWechatMenuAppService.cs" />
+    <Compile Include="WechatMenu\WechatMenuAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -17,8 +17,17 @@ namespace Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions.Impl
             _authenticator = authenticator;
         }
 
+        public ClientFactory(string baseUri)
+        {
+            _baseUri = new Uri(baseUri);
+        }
+
         public IRestClient Create(bool authenticate = true)
         {
+            if (_authenticator == null)
+            {
+                authenticate = false;
+            }
             var client = new RestClient(_baseUri);
             if (authenticate)
             {
