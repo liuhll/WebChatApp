@@ -26,8 +26,15 @@ namespace Jeuci.WeChatApp.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }             
             );
+
+          //  routes.MapRoute(
+          //    "Wechat",
+          //    "Wechat/{controller}/{action}",
+          //    new { controller = "Home", action = "Index",id = UrlParameter.Optional },
+          //    new string[] { "Jeuci.WeChatApp.Web.Areas.Wechat.Controllers" }
+          //);
         }
     }
 }

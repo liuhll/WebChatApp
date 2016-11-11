@@ -33,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Jeuci.WeChatApp.Web.XML</DocumentationFile>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,6 +42,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Abp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -233,6 +235,7 @@
     <Content Include="App\Main\views\layout\layout.js" />
     <Content Include="App\Main\views\home\home.js" />
     <Content Include="App\Main\views\about\about.js" />
+    <Content Include="App\Wechat\app.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -361,6 +364,13 @@
     <Content Include="Abp\Framework\styles\abp.mixings.css.map" />
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
+    <Content Include="App\Wechat\images\.keep" />
+    <Content Include="App\Wechat\web.config" />
+    <Content Include="Areas\Wechat\Views\web.config" />
+    <Content Include="App\Wechat\views\account\index.cshtml" />
+    <Content Include="App\Wechat\views\layout\layout.cshtml" />
+    <Content Include="App\Wechat\views\account\modifypwd.cshtml" />
+    <Content Include="App\Wechat\views\account\bindemail.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1147,6 +1157,8 @@
     <Compile Include="App_Start\WeChatAppNavigationProvider.cs" />
     <Compile Include="App_Start\WeChatAppWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Wechat\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Wechat\WechatAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WeChatAppControllerBase.cs" />
     <Compile Include="Global.asax.cs">
@@ -1172,7 +1184,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Wechat\views\home\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Wechat\Models\" />
+    <Folder Include="Areas\Wechat\Views\Account\" />
+    <Folder Include="Areas\Wechat\Views\Home\" />
+    <Folder Include="Areas\Wechat\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Wechat\" />
   </ItemGroup>

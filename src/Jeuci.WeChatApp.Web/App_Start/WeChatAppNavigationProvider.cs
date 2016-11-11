@@ -28,7 +28,13 @@ namespace Jeuci.WeChatApp.Web
                         url: "#/about",
                         icon: "fa fa-info"
                         )
-                );
+                ).AddItem(new MenuItemDefinition(
+                    "Account",
+                    new LocalizableString("About", WeChatAppConsts.LocalizationSourceName),
+                    url:"Wechat/Account/#/"
+                ))
+                
+                ;
         }
     }
 }

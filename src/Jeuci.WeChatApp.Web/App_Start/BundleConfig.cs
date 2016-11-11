@@ -29,7 +29,7 @@ namespace Jeuci.WeChatApp.Web
                         "~/Scripts/json2.min.js",
 
                         "~/Scripts/modernizr-2.8.3.js",
-                        
+
                         "~/Scripts/jquery-2.1.4.min.js",
                         "~/Scripts/jquery-ui-1.11.4.min.js",
 
@@ -73,6 +73,11 @@ namespace Jeuci.WeChatApp.Web
             bundles.Add(
                 new ScriptBundle("~/Bundles/App/Main/js")
                     .IncludeDirectory("~/App/Main", "*.js", true)
+                );
+
+            bundles.Add(
+                new ScriptBundle("~/Bundles/App/Wechat/js")
+                    .IncludeDirectory("~/App/Wechat", "*.js", true)
                 );
         }
     }
