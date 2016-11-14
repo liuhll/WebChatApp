@@ -27,13 +27,19 @@ namespace Jeuci.WeChatApp.Wechat.Menu
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "账号绑定",
-                url = string.Format("{0}/account/bindemail", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/bind-wechat", _webchatServiceAddress)
+            });
+
+            accountBtn.sub_button.Add(new SingleViewButton()
+            {
+                name = "邮箱绑定",
+                url = string.Format("{0}/wechat/account/#/bind-email", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "修改密码",
-                url = string.Format("{0}/account/modifypwd", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/modifypwd", _webchatServiceAddress)
             });
 
             bg.button.Add(accountBtn);

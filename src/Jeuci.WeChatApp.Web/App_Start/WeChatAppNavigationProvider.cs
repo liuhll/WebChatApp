@@ -30,7 +30,7 @@ namespace Jeuci.WeChatApp.Web
                         )
                 ).AddItem(new MenuItemDefinition(
                     "Account",
-                    new LocalizableString("About", WeChatAppConsts.LocalizationSourceName),
+                    new LocalizableString("Account", WeChatAppConsts.LocalizationSourceName),
                     url:"Wechat/Account/#/"
                 ))
                 

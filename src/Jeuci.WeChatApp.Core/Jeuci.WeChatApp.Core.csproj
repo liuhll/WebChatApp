@@ -136,8 +136,8 @@
     <Compile Include="Wechat\Authentication\WXBizMsgCrypt.cs" />
     <Compile Include="Wechat\Menu\IWechatMenuManager.cs" />
     <Compile Include="Wechat\Menu\IWechatMenuProvider.cs" />
-    <Compile Include="Wechat\Menu\WechatMenuManager.cs" />
-    <Compile Include="Wechat\Menu\WechatMenuProvider.cs" />
+    <Compile Include="Wechat\Menu\Impl\WechatMenuManager.cs" />
+    <Compile Include="Wechat\Menu\Impl\WechatMenuProvider.cs" />
     <Compile Include="Wechat\Models\WechatAccessToken.cs" />
     <Compile Include="Wechat\Models\WechatSign.cs" />
   </ItemGroup>

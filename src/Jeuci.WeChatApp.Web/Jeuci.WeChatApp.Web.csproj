@@ -236,6 +236,7 @@
     <Content Include="App\Main\views\home\home.js" />
     <Content Include="App\Main\views\about\about.js" />
     <Content Include="App\Wechat\app.js" />
+    <Content Include="App\Wechat\views\layout\layout.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -367,10 +368,10 @@
     <Content Include="App\Wechat\images\.keep" />
     <Content Include="App\Wechat\web.config" />
     <Content Include="Areas\Wechat\Views\web.config" />
-    <Content Include="App\Wechat\views\account\index.cshtml" />
+    <Content Include="App\Wechat\views\account\bind-wechat.cshtml" />
     <Content Include="App\Wechat\views\layout\layout.cshtml" />
     <Content Include="App\Wechat\views\account\modifypwd.cshtml" />
-    <Content Include="App\Wechat\views\account\bindemail.cshtml" />
+    <Content Include="App\Wechat\views\account\bind-email.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
