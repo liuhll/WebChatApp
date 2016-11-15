@@ -1,0 +1,18 @@
+{
+	"name": "WechatApp",
+  "private": true,
+  "authors": [
+    "Liuhongliang <1029765111@qq.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Abp/Lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "weui": "0.4.x"
+  }
+}

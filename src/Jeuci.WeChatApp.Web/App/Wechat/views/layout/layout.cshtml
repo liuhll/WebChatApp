@@ -7,17 +7,16 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="zh-cmn-Hans" ng-app="wechatApp" ng-controller="wechatApp.views.main as mctrl">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <meta name="description" content="">
     <meta name="author" content="hongliang.liu">
-    <title> @Html.Raw(ViewBag.Title ?? "WeChatApp")</title>
+    <title ng-bind="Page.title()"></title>
 
-    @Styles.Render("~/Bundles/App/vendor/css")
-    @Styles.Render("~/Bundles/App/Main/css")
+    @Styles.Render("~/Bundles/App/Wechat/css")
 
     <script type="text/javascript">
         //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
@@ -41,12 +40,13 @@
     <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
     <script src="~/api/AbpServiceProxies/GetAll?type=angular&v=@(Clock.Now.Ticks)"></script>
     <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
-
+    @*@Scripts.Render("~/Bundles/App/Wechat/basejs")
+    *@
     @Scripts.Render("~/Bundles/App/Wechat/js")
 
 </head>
-<body>
-<div ng-app="wechatApp">
+<body ontouchstart>
+<div class="page">
     <div ng-controller="wechatApp.views.layout as vm">
         <div class="container">
             <div class="angular-animation-container row">
