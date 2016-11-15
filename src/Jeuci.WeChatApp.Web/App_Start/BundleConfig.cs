@@ -21,6 +21,13 @@ namespace Jeuci.WeChatApp.Web
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
                 );
 
+
+
+            //~/Bundles/App/Wechat/css
+            bundles.Add(new StyleBundle("~/Bundles/App/Wechat/css")
+                .Include("~/Abp/lib/weui/dist/style/weui.min.css", new CssRewriteUrlTransform())
+                );
+
             //~/Bundles/App/vendor/js
             bundles.Add(
                 new ScriptBundle("~/Bundles/App/vendor/js")
@@ -60,6 +67,9 @@ namespace Jeuci.WeChatApp.Web
                         "~/Abp/Framework/scripts/libs/angularjs/abp.ng.js"
                     )
                 );
+
+            //bundles.Add(new ScriptBundle("~/Bundles/App/Wechat/basejs")
+            //    .Include("~/Abp/Lib/jquery.mobile/jquery.mobile-1.4.5.min.js"));
 
             //APPLICATION RESOURCES
 
