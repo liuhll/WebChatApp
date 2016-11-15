@@ -27,13 +27,13 @@ namespace Jeuci.WeChatApp.Wechat.Menu
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "账号绑定",
-                url = string.Format("{0}/wechat/account/#/bind-wechat", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/bindwechat", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "邮箱绑定",
-                url = string.Format("{0}/wechat/account/#/bind-email", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/bindemail", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()
@@ -49,7 +49,7 @@ namespace Jeuci.WeChatApp.Wechat.Menu
                 name = "玩法推荐",
                 url = string.Format("{0}/play/recommend", _webchatServiceAddress)
             });
-
+            var menuJsonStr = JsonConvert.SerializeObject(bg);
             return bg;
         }
     }

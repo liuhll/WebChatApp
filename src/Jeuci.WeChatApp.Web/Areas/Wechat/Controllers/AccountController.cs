@@ -9,7 +9,7 @@ namespace Jeuci.WeChatApp.Web.Areas.Wechat.Controllers
 {
     public class AccountController : WeChatAppControllerBase
     {
-        // GET: Wechat/Home
+    
         public ActionResult Index()
         {
             return View("~/App/Wechat/views/layout/layout.cshtml");

@@ -28,11 +28,11 @@ namespace Jeuci.WeChatApp.Web
                         url: "#/about",
                         icon: "fa fa-info"
                         )
-                ).AddItem(new MenuItemDefinition(
+                )/*.AddItem(new MenuItemDefinition(
                     "Account",
                     new LocalizableString("Account", WeChatAppConsts.LocalizationSourceName),
                     url:"Wechat/Account/#/"
-                ))
+                ))*/
                 
                 ;
         }

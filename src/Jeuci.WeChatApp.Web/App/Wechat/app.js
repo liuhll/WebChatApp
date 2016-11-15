@@ -14,25 +14,22 @@
 
     wechatApp.config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/bind-wechat');
+            $urlRouterProvider.otherwise('/bindwechat');
 
-            $stateProvider.state('account',
+            $stateProvider.state('bindwechat',
             {
-                url: '/bind-wechat',
-                templateUrl: '/App/Wechat/views/account/bind-wechat.cshtml',
-                menu: 'Account'
+                url: '/bindwechat',
+                templateUrl: '/App/Wechat/views/account/bindwechat.cshtml'
             })
-            .state('bind-email',
+            .state('bindemail',
                     {
-                        url: '/bind-email',
-                        templateUrl: '/App/Wechat/views/account/bind-email.cshtml',
-                        menu: 'Account'
+                        url: '/bindemail',
+                        templateUrl: '/App/Wechat/views/account/bindemail.cshtml'                  
                     })
-            .state('modify-pwd',
+            .state('modifypwd',
                     {
-                        url: '/modify-pwd',
-                        templateUrl: '/App/Wechat/views/account/modifypwd.cshtml',
-                        menu: 'Account'
+                        url: '/modifypwd',
+                        templateUrl: '/App/Wechat/views/account/modifypwd.cshtml'
                     })
             ;
         }]);
