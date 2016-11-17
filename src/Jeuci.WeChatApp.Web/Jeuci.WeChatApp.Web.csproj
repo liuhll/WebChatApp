@@ -279,8 +279,10 @@
     <Content Include="App\Main\views\about\about.js" />
     <Content Include="App\Wechat\app.js" />
     <Content Include="App\Wechat\services\pageTitle.js" />
+    <Content Include="App\Wechat\services\validMsg.js" />
     <Content Include="App\Wechat\views\account\bindwechat.js" />
     <Content Include="App\Wechat\views\layout\layout.js" />
+    <Content Include="App\Wechat\views\layout\main.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -1165,6 +1167,7 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\jeuci\array-extend.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -1232,6 +1235,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Wechat\custom-directives\" />
     <Folder Include="App\Wechat\views\home\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Wechat\Models\" />

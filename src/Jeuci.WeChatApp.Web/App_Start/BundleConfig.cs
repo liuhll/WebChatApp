@@ -25,7 +25,7 @@ namespace Jeuci.WeChatApp.Web
 
             //~/Bundles/App/Wechat/css
             bundles.Add(new StyleBundle("~/Bundles/App/Wechat/css")
-                .Include("~/Abp/lib/weui/dist/style/weui.min.css", new CssRewriteUrlTransform())
+                .Include("~/Abp/lib/weui/dist/style/weui.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/App/vendor/js
@@ -64,7 +64,9 @@ namespace Jeuci.WeChatApp.Web
                         "~/Abp/Framework/scripts/libs/abp.spin.js",
                         "~/Abp/Framework/scripts/libs/abp.sweet-alert.js",
                         "~/Abp/Framework/scripts/libs/abp.moment.js",
-                        "~/Abp/Framework/scripts/libs/angularjs/abp.ng.js"
+                        "~/Abp/Framework/scripts/libs/angularjs/abp.ng.js",
+
+                        "~/Scripts/jeuci/array-extend.js"
                     )
                 );
 

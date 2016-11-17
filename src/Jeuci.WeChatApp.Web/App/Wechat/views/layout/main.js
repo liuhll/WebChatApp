@@ -1,6 +1,7 @@
 ﻿(function () {
     angular.module('wechatApp').controller('wechatApp.views.main',
-        ['$scope', 'Page', function ($scope, page) {
+        ['$scope', 'Page', "Valid",function ($scope, page,valid) {
             $scope.Page = page;
+            $scope.valid = valid;
         }]);
 })();

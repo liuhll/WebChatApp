@@ -46,13 +46,13 @@
 
 </head>
 <body ontouchstart>
+    <div class="weui-toptips weui-toptips_warn js_tooltips" ng-if="valid.errors.length>0">
+        <span ng-bind="valid.errors">        
+        </span>
+    </div>
 <div class="page">
     <div ng-controller="wechatApp.views.layout as vm">
-        <div class="container">
-            <div class="angular-animation-container row">
-                <div ui-view class="shuffle-animation col-xs-12"></div>
-            </div>
-        </div>
+        <div ui-view class="page__bd"></div>
     </div>
 </div>
 </body>

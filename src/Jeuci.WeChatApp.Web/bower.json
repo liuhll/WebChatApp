@@ -13,6 +13,6 @@
     "tests"
   ],
   "dependencies": {
-    "weui": "0.4.x"
+    "weui": "master"
   }
 }
