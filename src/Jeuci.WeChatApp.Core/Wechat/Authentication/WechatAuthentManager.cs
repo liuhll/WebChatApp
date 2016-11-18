@@ -1,8 +1,14 @@
-﻿using System.Security.Authentication;
+﻿using System.Collections.Generic;
+using System.Security.Authentication;
+using System.Threading.Tasks;
 using Abp.Logging;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Models;
+using Jeuci.WeChatApp.Wechat.Models.Account;
+using Jueci.WeChatApp.RestfulRequestTool.Common.Enums;
+using Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions;
+using Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions.Impl;
 using Newtonsoft.Json;
 using Senparc.Weixin.MP.Containers;
 using WeixinSdk=Senparc.Weixin.MP;
@@ -17,12 +23,18 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
 
         private readonly string _appsecret;
 
+        private readonly string _wxOpenServerUri;
+
+
         public WechatAuthentManager(IAuthenticationProvider permissionProvider)
         {
             _permissionProvider = permissionProvider;
+          
 
             _appid = ConfigHelper.GetValuesByKey("WechatAppid");
             _appsecret = ConfigHelper.GetValuesByKey("WechatAppSecret");
+
+            _wxOpenServerUri = ConfigHelper.GetValuesByKey("WechatOpenUri");
 
 
         }
@@ -52,5 +64,9 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
             var accessToken = AccessTokenContainer.TryGetAccessToken(_appid, _appsecret);
             return accessToken;
         }
+ 
+       
     }
+
+
 }

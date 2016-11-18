@@ -66,7 +66,8 @@ namespace Jeuci.WeChatApp.Web
                         "~/Abp/Framework/scripts/libs/abp.moment.js",
                         "~/Abp/Framework/scripts/libs/angularjs/abp.ng.js",
 
-                        "~/Scripts/jeuci/array-extend.js"
+                        "~/Scripts/jeuci/array-extend.js",
+                        "~/Scripts/jeuci/sha256.js"
                     )
                 );
 

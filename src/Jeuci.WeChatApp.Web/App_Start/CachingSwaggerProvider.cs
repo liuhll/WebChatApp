@@ -21,21 +21,21 @@ namespace Jeuci.WeChatApp.Web
 
             var rmPaths = new List<string>();
 
-            foreach (var path in sd.paths)
-            {
-                if (path.Key.Contains("Abp") || path.Key.Contains("Proxies") || path.Key.Contains("services"))
-                {
-                    rmPaths.Add(path.Key);
-                }
-            }
-            foreach (var rmpath in rmPaths)
-            {
-                if (sd.paths.ContainsKey(rmpath))
-                {
-                    sd.paths.Remove(rmpath);
-                }
+            //foreach (var path in sd.paths)
+            //{
+            //    if (path.Key.Contains("Abp") || path.Key.Contains("Proxies") || path.Key.Contains("services"))
+            //    {
+            //        rmPaths.Add(path.Key);
+            //    }
+            //}
+            //foreach (var rmpath in rmPaths)
+            //{
+            //    if (sd.paths.ContainsKey(rmpath))
+            //    {
+            //        sd.paths.Remove(rmpath);
+            //    }
 
-            }
+            //}
 
             return sd;
         }

@@ -111,6 +111,7 @@
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
     <Compile Include="Common\Enums\ResultCode.cs" />
+    <Compile Include="Common\Enums\Sex.cs" />
     <Compile Include="Common\Exceptions\ApiAuthorizeException.cs" />
     <Compile Include="Common\Exceptions\ReadEmailTempletException.cs" />
     <Compile Include="Common\Exceptions\SendEmailException.cs" />
@@ -129,15 +130,22 @@
     <Compile Include="WeChatAppConsts.cs" />
     <Compile Include="WeChatAppCoreModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wechat\Accounts\IBindAccount.cs" />
+    <Compile Include="Wechat\Accounts\Impl\BindAccount.cs" />
     <Compile Include="Wechat\Authentication\IAuthenticationProvider.cs" />
+    <Compile Include="Wechat\Authentication\IWechatOAuth2Processor.cs" />
     <Compile Include="Wechat\Authentication\IWechatAuthentManager.cs" />
     <Compile Include="Wechat\Authentication\AuthenticationProvider.cs" />
     <Compile Include="Wechat\Authentication\WechatAuthentManager.cs" />
+    <Compile Include="Wechat\Authentication\WechatOAuth2Processor.cs" />
     <Compile Include="Wechat\Authentication\WXBizMsgCrypt.cs" />
     <Compile Include="Wechat\Menu\IWechatMenuManager.cs" />
     <Compile Include="Wechat\Menu\IWechatMenuProvider.cs" />
     <Compile Include="Wechat\Menu\Impl\WechatMenuManager.cs" />
     <Compile Include="Wechat\Menu\Impl\WechatMenuProvider.cs" />
+    <Compile Include="Wechat\Models\Account\JeuciAccount.cs" />
+    <Compile Include="Wechat\Models\Account\WechatAccount.cs" />
+    <Compile Include="Wechat\Models\RequestParam.cs" />
     <Compile Include="Wechat\Models\WechatAccessToken.cs" />
     <Compile Include="Wechat\Models\WechatSign.cs" />
   </ItemGroup>
