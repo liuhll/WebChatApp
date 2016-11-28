@@ -7,24 +7,18 @@
 
             if ($scope.userForm.$valid) {
 
-                var user = {};
-                $scope.valid.errors = null;
+                //var user = {};
+                //$scope.valid.errors = null;
+                //var oAuthScope = "1",
+                //    state = "Jeuci-" + new Date().getTime();//随机数，用于识别请求可靠性
+                //var redirectUrl = window.location.origin + "/wechat/account/userInfocallback?returnurl=" + window.location.origin + "/wechat/account/#/wechatforjeuci";
+                //console.log(redirectUrl);
+                //wechatAuth.getWechatAuthorizeUrl(redirectUrl, state, oAuthScope).success(function (result) {
+                //    location.href = result;
 
-                var redirectUrl = window.location.origin + "/api/services/app/wechatAuth/GetWechatUserInfo",
-                    oauth2Uri = "",
-                    oAuthScope = "0",
-                    state = "Jeuci-" + new Date().getTime();//随机数，用于识别请求可靠性
-                debugger;
-                wechatAuth.getWechatAuthorizeUrl(redirectUrl, state, oAuthScope).success(function (result) {
-
-                    alert(result);
-
-                  /*  user["password"] = encryptPassword($scope.user.account, $scope.user.password);
-                    user["account"] = $scope.user.account;
-                    alert(JSON.stringify(user));*/
-                }).error(function(e) {
-                    alert(JSON.stringify(e));
-                });
+                //}).error(function(e) {
+                //    console.log(JSON.stringify(e));
+                //});
 
              
 

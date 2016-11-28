@@ -2,12 +2,31 @@
 {
     public class JeuciAccount
     {
-        public string Account { get; set; }
 
-        public string Password { get; set; }
+        public JeuciAccount(WechatAccount wechatAccount)
+        {
+            UserWechatInfo = wechatAccount;
 
-        public string OpenId { get; set; }
+        }
 
-        public WechatAccount UserWechatInfo { get; set; }
+        public bool IsBindWechat { get; }
+
+        public bool IsBindEmail { get; }
+
+        public string OpenId {
+            get { return UserWechatInfo.OpenId; }
+        }
+
+        public string BindWechatAddress
+        {
+            get
+            {
+                return "/wechat/account/#/bindwechat";
+            }
+        }
+
+        public UserInfo UserInfo { get; set; }
+
+        public WechatAccount UserWechatInfo { get; }
     }
 }

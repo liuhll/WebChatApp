@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -23,6 +24,7 @@
     <RestorePackages>true</RestorePackages>
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,6 +123,14 @@
     </Reference>
     <Reference Include="Nito.AsyncEx.Enlightenment, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin, Version=4.9.0.832, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.4.9.0\lib\net45\Senparc.Weixin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP, Version=14.3.104.859, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.MP.14.3.104\lib\net45\Senparc.Weixin.MP.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
@@ -244,11 +254,8 @@
     <Content Include="Abp\lib\weui\dist\example\images\icon_nav_tab.png" />
     <Content Include="Abp\lib\weui\dist\example\images\icon_nav_toast.png" />
     <Content Include="Abp\lib\weui\dist\example\images\pic_article.png" />
-    <Content Include="Abp\lib\weui\dist\example\images\pic_article_1.jpg" />
-    <Content Include="Abp\lib\weui\dist\example\images\pic_article_2.jpg" />
     <Content Include="Abp\lib\weui\dist\example\images\vcode.jpg" />
     <Content Include="Abp\lib\weui\dist\example\index.html" />
-    <Content Include="Abp\lib\weui\dist\example\router.min.js" />
     <Content Include="Abp\lib\weui\dist\example\snapshot\actionSheet.png" />
     <Content Include="Abp\lib\weui\dist\example\snapshot\button.png" />
     <Content Include="Abp\lib\weui\dist\example\snapshot\cell.png" />
@@ -281,6 +288,7 @@
     <Content Include="App\Wechat\services\pageTitle.js" />
     <Content Include="App\Wechat\services\validMsg.js" />
     <Content Include="App\Wechat\views\account\bindwechat.js" />
+    <Content Include="App\Wechat\views\account\wechatForjeuci.js" />
     <Content Include="App\Wechat\views\layout\layout.js" />
     <Content Include="App\Wechat\views\layout\main.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
@@ -421,6 +429,7 @@
     <Content Include="Abp\lib\jquery.mobile\jquery.mobile-1.4.5.min.map" />
     <None Include="App\Wechat\views\account\bindemail.cshtml" />
     <Content Include="bower.json" />
+    <Content Include="App\Wechat\views\account\wechatForjeuci.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1244,6 +1253,7 @@
     <Folder Include="Areas\Wechat\Views\Home\" />
     <Folder Include="Areas\Wechat\Views\Shared\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AccountBind\" />
     <Folder Include="Views\Wechat\" />
   </ItemGroup>
   <ItemGroup>
@@ -1264,11 +1274,18 @@
       <Name>Jeuci.WeChatApp.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jeuci\bool-helper.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

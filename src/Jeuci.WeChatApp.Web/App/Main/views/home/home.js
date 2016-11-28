@@ -13,8 +13,8 @@
                         if (iscomfired) {
                             abp.ui.setBusy();
                             wechatMenuService.createWechatMenu().success(function (result) {
-                                // alert(result.msg);
-                                if (result.code === 200) {
+                                
+                                if (result["code"] === 200 && result["data"]) {
                                     abp.message.success(result.msg + "微信公共号菜单创建/更新成功", "success");
                                 } else {
                                     abp.message.error(result.msg, "fail");

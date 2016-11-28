@@ -1,7 +1,7 @@
 ﻿(function() {
     angular.module('wechatApp').controller('wechatApp.views.layout',
-        ['$scope', 'abp.services.app.wechatAuth', function ($scope, wechatAuthApp) {
+        ['$scope', '$http', 'abp.services.app.wechatAuth', function ($scope, $http, wechatAuth) {
 
-           
+            
         }]);
 })();

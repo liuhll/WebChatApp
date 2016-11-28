@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.AutoMapper;
 using Jeuci.WeChatApp.Common.Enums;
+using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
+using Senparc.Weixin.MP.Entities;
 
 namespace Jeuci.WeChatApp.Wechat.Models.Account
 {
+    [AutoMap(typeof(WeixinUserInfoResult), typeof(OAuthUserInfo))]
     public class WechatAccount
     {
         public string Subscribe { get; set; }

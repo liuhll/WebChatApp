@@ -14,6 +14,7 @@ using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.WeChatAuth.Dtos;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
+using Senparc.Weixin.MP.Entities;
 
 namespace Jeuci.WeChatApp.WeChatAuth
 {
@@ -35,26 +36,30 @@ namespace Jeuci.WeChatApp.WeChatAuth
             return _wechatAuthentManager.CheckSignature(input.MapTo<WechatSign>());
         }
 
-        public ResultMessage<OAuthUserInfo> GetWechatUserInfo(string code, string state)
+        public ResultMessage<JeuciAccount> GetWechatUserInfo(string code, string state)
         {
             return _wechatOAuth2Processor.GetWechatUserInfo(code,state);
         }
 
- 
+       
         public string GetWechatAuthorizeUrl(string redirectUrl, string state, int oAuthScope)
         {
             OAuthScope oAuthScopeEnum;
-            try
+            if (oAuthScope == 0 || oAuthScope == 1)
             {
-                oAuthScopeEnum = (OAuthScope) Enum.ToObject(typeof(OAuthScope), oAuthScope);
+                oAuthScopeEnum = (OAuthScope)Enum.ToObject(typeof(OAuthScope), oAuthScope);
             }
-            catch (Exception ex)
+            else
             {
-                LogHelper.Logger.Error(@"转化微信授权类型失败，类型取值仅能为0||1",ex);
-                throw new AbpException(@"转化微信授权类型失败，类型取值仅能为0||1",ex);
+                LogHelper.Logger.Error(@"转化微信授权类型失败，类型取值仅能为0||1");
+                throw new Exception("转化微信授权类型失败，类型取值仅能为0 || 1");
             }
-
             return _wechatOAuth2Processor.GetWechatAuthorizeUrl(redirectUrl,state, oAuthScopeEnum);
+        }
+
+        public ResultMessage<string> GetWechatUserOpenId(string code, string state)
+        {
+            return _wechatOAuth2Processor.GetWechatUserOpenId(code, state);
         }
     }
 }

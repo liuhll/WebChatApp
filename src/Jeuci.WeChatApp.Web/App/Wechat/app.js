@@ -12,8 +12,8 @@
         'abp'
     ]);
 
-    wechatApp.config(['$stateProvider', '$urlRouterProvider',
-        function ($stateProvider, $urlRouterProvider) {
+    wechatApp.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider) {
             $urlRouterProvider.otherwise('/bindwechat');
 
             $stateProvider.state('bindwechat',
@@ -21,6 +21,15 @@
                 url: '/bindwechat',
                 templateUrl: '/App/Wechat/views/account/bindwechat.cshtml'
             })
+            .state('wechatForjeuci',
+                    {
+                        url: '/wechatforjeuci',
+                        templateUrl: '/App/Wechat/views/account/wechatForjeuci.cshtml',
+                        params: {
+                            isNeedCallBack: "true",
+                            openId:""
+                        }
+                    })
             .state('bindemail',
                     {
                         url: '/bindemail',
@@ -32,5 +41,10 @@
                         templateUrl: '/App/Wechat/views/account/modifypwd.cshtml'
                     })
             ;
+           
+            //$locationProvider.html5Mode({
+            //    enabled: true,
+            //    requireBase: false
+            //});
         }]);
 })()

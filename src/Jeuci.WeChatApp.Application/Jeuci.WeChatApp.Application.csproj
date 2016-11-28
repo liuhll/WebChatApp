@@ -75,6 +75,10 @@
       <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Senparc.Weixin, Version=4.9.0.832, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Senparc.Weixin.4.9.0\lib\net45\Senparc.Weixin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Senparc.Weixin.MP, Version=14.3.104.859, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Jeuci.WeChatApp.Web\Bin\Senparc.Weixin.MP.dll</HintPath>
@@ -112,6 +116,8 @@
     <Compile Include="DirectEmail\IDirectEmailAppService.cs" />
     <Compile Include="DirectEmail\Impl\DirectEmailAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />
+    <Compile Include="WechatAccount\IWechatAccountAppService.cs" />
+    <Compile Include="WechatAccount\WechatAccountAppService.cs" />
     <Compile Include="WeChatAppApplicationModule.cs" />
     <Compile Include="WeChatAppAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
