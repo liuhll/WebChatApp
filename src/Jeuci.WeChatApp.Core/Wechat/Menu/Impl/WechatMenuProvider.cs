@@ -26,14 +26,14 @@ namespace Jeuci.WeChatApp.Wechat.Menu
 
             accountBtn.sub_button.Add(new SingleViewButton()
             {
-                name = "账号绑定",
+                name = "我的账号",
                 url = string.Format("{0}/wechat/account/#/wechatforjeuci?isNeedCallBack", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()
             {
-                name = "邮箱绑定",
-                url = string.Format("{0}/wechat/account/#/bindemail", _webchatServiceAddress)
+                name = "找回密码",
+                url = string.Format("{0}/wechat/account/#/retrievepwd", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()
