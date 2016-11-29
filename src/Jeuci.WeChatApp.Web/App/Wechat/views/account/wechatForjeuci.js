@@ -24,7 +24,7 @@
                         vm.jeuciAccount = result["data"];
                     } else {
                         vm.showUserInfo = false;
-                        location.href = window.location.origin + result["data"]["bindWechatAddress"];
+                        location.href = window.location.origin + result["data"]["bindWechatAddress"] + "?openId=" + result["data"]["openId"];
                     }
                 });
             }
