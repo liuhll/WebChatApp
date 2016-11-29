@@ -1,6 +1,6 @@
 ﻿(function() {
     angular.module('wechatApp').controller("wechatApp.views.bindwechat",
-        ["$scope", "$location", "Page","Error", "abp.services.app.wechatAuth", function ($scope, $location, page,error, wechatAuth) {
+        ["$scope", "$location", "Page", "Error", "abp.services.app.wechatAccount", function ($scope, $location, page, error, wechatAccount) {
         var vm = this;
         page.setTitle("绑定微信账号");
         var openId = $location.search().openId;
@@ -12,9 +12,17 @@
         }
         vm.openId = openId;
         vm.confirm = function () {
-            debugger;
-            if ($scope.userForm.$valid) {             
-
+            if ($scope.userForm.$valid) {
+                var userInfo = {};
+                userInfo["account"] = $scope.user.account;
+                userInfo["password"] = $scope.user.password;
+                userInfo["openId"] = vm.openId;
+                userInfo.password = encryptPassword(userInfo.account,userInfo.password);
+                wechatAccount.bindWechatAccount(userInfo)
+                    .success(function (result) {
+                        debugger;
+                        console.log(result);
+                    });
             } else {           
                 var $tooltips = $('.js_tooltips');
                 if ($tooltips.css('display') !== 'none') return;

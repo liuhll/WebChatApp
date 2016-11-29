@@ -13,7 +13,7 @@ namespace Jeuci.WeChatApp.WeChatAuth
         bool CheckSignature(WechatSignInput input);
 
         [HttpGet]
-        ResultMessage<JeuciAccount> GetWechatUserInfo(string code, string state);
+        ResultMessage<Wechat.Models.Account.WechatAccount> GetWechatUserInfo(string code, string state);
 
         [HttpGet]
         string GetWechatAuthorizeUrl(string redirectUrl, string state, int oAuthScope);

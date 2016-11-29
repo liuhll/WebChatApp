@@ -1,5 +1,4 @@
 ﻿
-
 <div ng-controller="wechatApp.views.bindwechat as vm">
     <div ng-show="vm.showBindForm">
         <div class="weui-cells__title">微信账号绑定</div>
@@ -34,7 +33,7 @@
                        &&!userForm.userAccount.$error.pattern" ng-model="valid.errors" value="{{valid.errors='密码不能为空'}}"/>
                 </div>
             </div>
-
+          @*  <input type="hidden" ng-model="user.openId" value="{{user.openId = vm.openId}}"/>*@
             <div class="weui-btn-area">
                 <a class="weui-btn weui-btn_primary" ng-disabled="!userForm.$valid" id="showTooltips" ng-click="vm.confirm()">绑定</a>
             </div>

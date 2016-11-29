@@ -4,7 +4,7 @@ using Jeuci.WeChatApp.Wechat.Models.Account;
 
 namespace Jeuci.WeChatApp.WechatAccount.Dtos
 {
-    [AutoMap(typeof(JeuciAccount))]
+ //   [AutoMap(typeof(JeuciAccount))]
     public class BindAccountInput 
     {
         [Required]

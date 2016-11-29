@@ -8,6 +8,7 @@ using Abp.Application.Services;
 using Jeuci.WeChatApp.Common;
 using Senparc.Weixin.MP.Entities;
 using Jeuci.WeChatApp.Wechat.Models.Account;
+using Jeuci.WeChatApp.WechatAccount.Dtos;
 
 namespace Jeuci.WeChatApp.WechatAccount
 {
@@ -15,5 +16,8 @@ namespace Jeuci.WeChatApp.WechatAccount
     {
         [HttpGet]
         ResultMessage<JeuciAccount> GetWechatUserInfo(string openId);
+
+        [HttpPost]
+        ResultMessage<string> BindWechatAccount(BindAccountInput input);
     }
 }

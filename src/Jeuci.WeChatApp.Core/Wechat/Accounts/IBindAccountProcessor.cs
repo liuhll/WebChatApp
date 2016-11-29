@@ -5,8 +5,8 @@ using Jeuci.WeChatApp.Wechat.Models.Account;
 
 namespace Jeuci.WeChatApp.Wechat.Accounts
 {
-    public interface IBindAccount : ITransientDependency
+    public interface IBindAccountProcessor : ITransientDependency
     {
-        Task<ResultMessage<bool>> BindWechatAccount(JeuciAccount input);
+        ResultMessage<string> BindWechatAccount(JeuciAccount input);
     }
 }

@@ -36,7 +36,7 @@ namespace Jeuci.WeChatApp.WeChatAuth
             return _wechatAuthentManager.CheckSignature(input.MapTo<WechatSign>());
         }
 
-        public ResultMessage<JeuciAccount> GetWechatUserInfo(string code, string state)
+        public ResultMessage<Wechat.Models.Account.WechatAccount> GetWechatUserInfo(string code, string state)
         {
             return _wechatOAuth2Processor.GetWechatUserInfo(code,state);
         }
