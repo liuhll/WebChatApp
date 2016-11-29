@@ -1,6 +1,10 @@
 ﻿<div ng-controller="wechatApp.views.wechatforjeuci as vm">
     <div ng-show="vm.isNeedCallBack">
-        请稍等...正在获取用户信息
+        <p>请稍等...正在获取用户信息</p>
+    </div>
+
+    <div ng-show="!vm.isNeedCallBack && !vm.isNeedCallBack">
+        <p> 您还没有绑定掌盟专家账号，请先绑定掌盟专家账号...</p>
     </div>
 
     <div ng-show="vm.showUserInfo">
