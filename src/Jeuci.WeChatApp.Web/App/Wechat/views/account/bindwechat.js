@@ -3,7 +3,6 @@
         ["$scope", "$location", "Page","Error", "abp.services.app.wechatAuth", function ($scope, $location, page,error, wechatAuth) {
         var vm = this;
         page.setTitle("绑定微信账号");
-            debugger;
         var openId = $location.search().openId;
             vm.showBindForm = true;
         if (openId === null || openId === undefined || openId === "" ) {
@@ -13,7 +12,7 @@
         }
         vm.openId = openId;
         vm.confirm = function () {
-
+            debugger;
             if ($scope.userForm.$valid) {             
 
             } else {           
