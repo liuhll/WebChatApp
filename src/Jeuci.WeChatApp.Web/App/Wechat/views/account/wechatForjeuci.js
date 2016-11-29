@@ -1,13 +1,12 @@
 ﻿(function() {
     var app = angular.module("wechatApp");
-    app.controller("wechatApp.views.wechatforjeuci", ["$stateParams", "$location", "$http",
+    app.controller("wechatApp.views.wechatforjeuci", ["$location", "$http",
         "Page", "abp.services.app.wechatAuth","abp.services.app.wechatAccount",
-        function ($stateParams, $location,$http, page, wechatAuthService, wechatAccount) {
-            var vm = this;
+        function ($location, $http, page, wechatAuthService, wechatAccount) {
             debugger;
+            var vm = this;
             page.setTitle("账号信息");
-            vm.isNeedCallBack = BoolHelper.parseBool($location.search().isNeedCallBack)
-                || BoolHelper.parseBool($stateParams.isNeedCallBack);
+            vm.isNeedCallBack = BoolHelper.parseBool($location.search().isNeedCallBack);
             vm.openId = $location.search().openId;
             console.log(vm.isNeedCallBack);
             if (vm.isNeedCallBack) {
@@ -19,9 +18,7 @@
                     location.href = result;
                 });
             } else {
-                vm.isNeedCallBack = false;
                 wechatAccount.getWechatUserInfo(vm.openId).success(function (result) {
-                    debugger;
                     if (result["data"]["isBindWechat"]) {
                         vm.showUserInfo = true;
                         vm.jeuciAccount = result["data"];

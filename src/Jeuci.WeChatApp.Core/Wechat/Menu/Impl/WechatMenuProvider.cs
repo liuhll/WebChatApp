@@ -27,7 +27,7 @@ namespace Jeuci.WeChatApp.Wechat.Menu
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "账号绑定",
-                url = string.Format("{0}/wechat/account/#/wechatforjeuci", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/wechatforjeuci?isNeedCallBack", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()

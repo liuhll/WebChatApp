@@ -23,10 +23,10 @@
             })
             .state('wechatForjeuci',
                     {
-                        url: '/wechatforjeuci',
+                        url: '/wechatforjeuci?isNeedCallBack&openId',
                         templateUrl: '/App/Wechat/views/account/wechatForjeuci.cshtml',
                         params: {
-                            isNeedCallBack: "true",
+                            isNeedCallBack: true,
                             openId:""
                         }
                     })
