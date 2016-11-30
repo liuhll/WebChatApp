@@ -106,18 +106,23 @@ namespace Jeuci.WeChatApp.Web.Areas.Wechat.Controllers
 
         private string GetCallBackUrl(string url,string openId)
         {
-            string returnUrl;
             if (url.Contains("?"))
             {
-                returnUrl = url.ToLower().Contains("isneedcallback") ?
-                    Regex.Replace(url, "isNeedCallBack", "isNeedCallBack=false", RegexOptions.IgnoreCase) : "&isNeedCallBack=false";
+                if (url.ToLower().Contains("isneedcallback"))
+                {
+                    url = Regex.Replace(url, "isNeedCallBack", "isNeedCallBack=false", RegexOptions.IgnoreCase);
+                }
+                else
+                {
+                    url += "&isNeedCallBack=false";
+                }
             }
             else
             {
-                returnUrl = "?isNeedCallBack=false";
+                url += "?isNeedCallBack=false";
             }
-            returnUrl += "&openId=" + openId;
-            return returnUrl;
+            url += "&openId=" + openId;
+            return url;
         }
     }
 }
