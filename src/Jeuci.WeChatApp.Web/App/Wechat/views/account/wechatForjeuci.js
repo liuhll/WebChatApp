@@ -13,17 +13,19 @@
                 var oAuthScope = "0",
                      state = "Jeuci-" + new Date().getTime();
                 var redirectUrl = window.location.origin + "/wechat/account/userBaseCallback?returnurl=" + encodeURIComponent(location.href);
-
-                wechatAuthService.getWechatAuthorizeUrl(redirectUrl, state, oAuthScope).success(function (result) { 
+                vm.tipMessage = "请稍等...正在获取用户信息";
+                wechatAuthService.getWechatAuthorizeUrl(redirectUrl, state, oAuthScope).success(function (result) {
                     location.href = result;
                 });
             } else {
                 wechatAccount.getWechatUserInfo(vm.openId).success(function (result) {
                     if (result["data"]["isBindWechat"]) {
-                        vm.showUserInfo = true;
+                        vm.showUserInfo = true;                        
                         vm.jeuciAccount = result["data"];
+
                     } else {
                         vm.showUserInfo = false;
+                        vm.tipMessage = "您还没有绑定掌盟专家账号，请先绑定掌盟专家账号...";
                         location.href = window.location.origin + result["data"]["bindWechatAddress"] + "?openId=" + result["data"]["openId"];
                     }
                 });

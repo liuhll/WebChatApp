@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.EntityFramework;
+using Jeuci.WeChatApp.Mappings;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 
 namespace Jeuci.WeChatApp.EntityFramework
@@ -32,6 +34,14 @@ namespace Jeuci.WeChatApp.EntityFramework
             : base(nameOrConnectionString)
         {
 
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.Add(new UserInfoMap());
         }
     }
 }

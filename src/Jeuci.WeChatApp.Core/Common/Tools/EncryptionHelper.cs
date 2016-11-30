@@ -6,7 +6,7 @@ namespace Jeuci.WeChatApp.Common.Tools
 {
     public static class EncryptionHelper
     {
-        //public static string GetUserSignByHash256(string userName,string passwordStrSha256)
+        //public static string GetUserSignByHash256(string userName, string passwordStrSha256)
         //{
         //    var privateSha256 = EncryptSHA256(userName + passwordStrSha256);
         //    return privateSha256;

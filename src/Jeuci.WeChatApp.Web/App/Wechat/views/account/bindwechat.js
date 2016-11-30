@@ -1,6 +1,7 @@
 ﻿(function() {
     angular.module('wechatApp').controller("wechatApp.views.bindwechat",
-        ["$scope", "$location", "Page", "Error", "abp.services.app.wechatAccount", function ($scope, $location, page, error, wechatAccount) {
+        ["$scope", "$location", "Page", "Error", "Valid", "abp.services.app.wechatAccount",
+            function ($scope, $location, page, error, valid, wechatAccount) {
         var vm = this;
         page.setTitle("绑定微信账号");
         var openId = $location.search().openId;
@@ -20,22 +21,31 @@
                 userInfo.password = encryptPassword(userInfo.account,userInfo.password);
                 wechatAccount.bindWechatAccount(userInfo)
                     .success(function (result) {
-                        debugger;
-                        console.log(result);
+                        if (result["code"] !== 200) {
+                            valid.errors = result["msg"];
+                            showError();
+                        } else {
+                            alert("绑定成功!");
+                            window.location.href = window.location.origin + result["data"];
+                        }
+                       
                     });
-            } else {           
-                var $tooltips = $('.js_tooltips');
-                if ($tooltips.css('display') !== 'none') return;
-                $('.page.cell').removeClass('slideIn');
-                $tooltips.css('display', 'block');
-                setTimeout(function () {
-                    $tooltips.css('display', 'none');
-                }, 2000);
+            } else {
+                showError();
             }
         }
            
         }]);
 
+    function showError() {
+        var $tooltips = $('.js_tooltips');
+        if ($tooltips.css('display') !== 'none') return;
+        $('.page.cell').removeClass('slideIn');
+        $tooltips.css('display', 'block');
+        setTimeout(function () {
+            $tooltips.css('display', 'none');
+        }, 2000);
+    }
 
     function encryptPassword(nameStr, passwordStr) {
         var passwordStrSha256 = Encrypt.SHA256Encrypt(passwordStr);

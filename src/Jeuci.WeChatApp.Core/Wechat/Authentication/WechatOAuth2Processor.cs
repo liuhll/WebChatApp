@@ -2,6 +2,7 @@
 using System.Web.Caching;
 using System.Web.UI.WebControls;
 using Abp.AutoMapper;
+using Abp.Domain.Repositories;
 using Abp.Logging;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
@@ -24,10 +25,13 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
         private readonly string _appsecret;
 
         private readonly IWechatAuthentManager _wechatAuthentManager;
+        private readonly IRepository<UserInfo> _userRepository;
 
-        public WechatOAuth2Processor(IWechatAuthentManager wechatAuthentManager)
+        public WechatOAuth2Processor(IWechatAuthentManager wechatAuthentManager,
+            IRepository<UserInfo> userRepository)
         {
             _wechatAuthentManager = wechatAuthentManager;
+            _userRepository = userRepository;
             _appid = ConfigHelper.GetValuesByKey("WechatAppid");
             _appsecret = ConfigHelper.GetValuesByKey("WechatAppSecret");
         }
@@ -51,6 +55,7 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
         {
             var jeuciAccount = new JeuciAccount(openId);
             jeuciAccount.SynchronWechatUserInfo(_wechatAuthentManager);
+            jeuciAccount.SynchronUserInfo(_userRepository);
             return jeuciAccount;
  
             //var userInfoResult = CommonApi.GetUserInfo(_wechatAuthentManager.GetAccessToken(), openId);

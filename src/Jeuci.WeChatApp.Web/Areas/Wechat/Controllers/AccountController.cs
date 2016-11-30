@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -96,10 +97,27 @@ namespace Jeuci.WeChatApp.Web.Areas.Wechat.Controllers
             {
                 returnUrl = string.Format(base_returnUrl, Request.Url.Host, "/wechat/account/#/bindwechat");
             }
-           
-            returnUrl = string.Format(returnUrl.Contains("?") ? "{0}&isNeedCallBack={1}&openId={2}" : "{0}?isNeedCallBack={1}&openId={2}", returnUrl, false, userInfoResult.Data);
+
+            // returnUrl = string.Format(returnUrl.Contains("?") ? "{0}&isNeedCallBack={1}&openId={2}" : "{0}?isNeedCallBack={1}&openId={2}", returnUrl, false, userInfoResult.Data);
+            returnUrl = GetCallBackUrl(returnUrl, userInfoResult.Data);
             Logger.Info("回调的url:" + returnUrl);
             return Redirect(returnUrl);
+        }
+
+        private string GetCallBackUrl(string url,string openId)
+        {
+            string returnUrl;
+            if (url.Contains("?"))
+            {
+                returnUrl = url.ToLower().Contains("isneedcallback") ?
+                    Regex.Replace(url, "isNeedCallBack", "isNeedCallBack=false", RegexOptions.IgnoreCase) : "&isNeedCallBack=false";
+            }
+            else
+            {
+                returnUrl = "?isNeedCallBack=false";
+            }
+            returnUrl += "&openId=" + openId;
+            return returnUrl;
         }
     }
 }

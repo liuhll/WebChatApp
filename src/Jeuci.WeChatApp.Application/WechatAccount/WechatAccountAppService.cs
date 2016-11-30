@@ -45,7 +45,13 @@ namespace Jeuci.WeChatApp.WechatAccount
         {
             try
             {
-                return _bindAccountProcessor.BindWechatAccount(new JeuciAccount(input.OpenId,input.Account,input.Password));
+                string urlOrMsg;
+                var flag  = _bindAccountProcessor.BindWechatAccount(new JeuciAccount(input.OpenId, input.Account, input.Password), out urlOrMsg);
+                if (flag)
+                {
+                    return new ResultMessage<string>(urlOrMsg);
+                }
+                return new ResultMessage<string>(ResultCode.Fail,urlOrMsg);
             }
             catch (Exception e)
             {

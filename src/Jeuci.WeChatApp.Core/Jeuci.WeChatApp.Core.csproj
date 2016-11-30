@@ -158,6 +158,7 @@
     <Compile Include="Wechat\Models\RequestParam.cs" />
     <Compile Include="Wechat\Models\WechatAccessToken.cs" />
     <Compile Include="Wechat\Models\WechatSign.cs" />
+    <Compile Include="Wechat\Policy\JeuciAccountPolicy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

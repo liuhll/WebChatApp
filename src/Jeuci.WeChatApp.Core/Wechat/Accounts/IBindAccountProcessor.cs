@@ -7,6 +7,6 @@ namespace Jeuci.WeChatApp.Wechat.Accounts
 {
     public interface IBindAccountProcessor : ITransientDependency
     {
-        ResultMessage<string> BindWechatAccount(JeuciAccount input);
+        bool BindWechatAccount(JeuciAccount input, out string urlOrMsg);
     }
 }
