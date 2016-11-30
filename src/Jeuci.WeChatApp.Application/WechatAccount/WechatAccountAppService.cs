@@ -11,7 +11,7 @@ using Jeuci.WeChatApp.Wechat.Accounts;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.WechatAccount.Dtos;
-using Senparc.Weixin.MP.Entities;
+using Newtonsoft.Json;
 
 namespace Jeuci.WeChatApp.WechatAccount
 {
@@ -27,9 +27,18 @@ namespace Jeuci.WeChatApp.WechatAccount
             _bindAccountProcessor = bindAccountProcessor;
         }
 
-        public ResultMessage<JeuciAccount> GetWechatUserInfo(string openId)
+        public ResultMessage<JeuciAccountOutput> GetWechatUserInfo(string openId)
         {
-            return _wechatOAuth2Processor.GetWechatUserInfo(openId);
+            try
+            {
+                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId);
+                LogHelper.Logger.Info(JsonConvert.SerializeObject(jeuciAccount.MapTo<JeuciAccountOutput>()));
+                return new ResultMessage<JeuciAccountOutput>(jeuciAccount.MapTo<JeuciAccountOutput>());
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<JeuciAccountOutput>(ResultCode.Fail,e.Message);
+            }
         }
 
         public ResultMessage<string> BindWechatAccount(BindAccountInput input)

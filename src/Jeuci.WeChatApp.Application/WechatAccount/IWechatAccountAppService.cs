@@ -15,7 +15,7 @@ namespace Jeuci.WeChatApp.WechatAccount
     public interface IWechatAccountAppService : IApplicationService
     {
         [HttpGet]
-        ResultMessage<JeuciAccount> GetWechatUserInfo(string openId);
+        ResultMessage<JeuciAccountOutput> GetWechatUserInfo(string openId);
 
         [HttpPost]
         ResultMessage<string> BindWechatAccount(BindAccountInput input);

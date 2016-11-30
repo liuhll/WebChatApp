@@ -11,6 +11,7 @@ using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models;
 using Jeuci.WeChatApp.Wechat.Models.Account;
+using Jeuci.WeChatApp.WechatAccount.Dtos;
 using Jeuci.WeChatApp.WeChatAuth.Dtos;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
@@ -36,9 +37,23 @@ namespace Jeuci.WeChatApp.WeChatAuth
             return _wechatAuthentManager.CheckSignature(input.MapTo<WechatSign>());
         }
 
-        public ResultMessage<Wechat.Models.Account.WechatAccount> GetWechatUserInfo(string code, string state)
+        public ResultMessage<WechatAccountOutput> GetWechatUserInfo(string code, string state)
         {
-            return _wechatOAuth2Processor.GetWechatUserInfo(code,state);
+            string msg = string.Empty;
+            try
+            {
+                var wechatAccount = _wechatOAuth2Processor.GetWechatUserInfo(code,state,out msg);
+                if (wechatAccount == null)
+                {
+                    return new ResultMessage<WechatAccountOutput>(ResultCode.Fail, msg);
+                }
+                return new ResultMessage<WechatAccountOutput>(wechatAccount.MapTo<WechatAccountOutput>(), msg);
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<WechatAccountOutput>(ResultCode.Fail, e.Message);
+            }
+            
         }
 
        
@@ -59,7 +74,12 @@ namespace Jeuci.WeChatApp.WeChatAuth
 
         public ResultMessage<string> GetWechatUserOpenId(string code, string state)
         {
-            return _wechatOAuth2Processor.GetWechatUserOpenId(code, state);
+            var openId = _wechatOAuth2Processor.GetWechatUserOpenId(code, state);
+            if (!string.IsNullOrEmpty(openId))
+            {
+                return new ResultMessage<string>(openId);
+            }
+            return new ResultMessage<string>(ResultCode.Fail,"获取OpenId失败，请确保您已经关注了我们！");
         }
     }
 }

@@ -116,6 +116,9 @@
     <Compile Include="DirectEmail\IDirectEmailAppService.cs" />
     <Compile Include="DirectEmail\Impl\DirectEmailAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />
+    <Compile Include="WechatAccount\Dtos\JeuciAccountOutput.cs" />
+    <Compile Include="WechatAccount\Dtos\UserInfoOutput.cs" />
+    <Compile Include="WechatAccount\Dtos\WechatAccountOutput.cs" />
     <Compile Include="WechatAccount\IWechatAccountAppService.cs" />
     <Compile Include="WechatAccount\WechatAccountAppService.cs" />
     <Compile Include="WeChatAppApplicationModule.cs" />

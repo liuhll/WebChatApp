@@ -1,6 +1,7 @@
 ﻿using System;
 using Abp.AutoMapper;
 using Abp.Dependency;
+using Abp.Domain.Repositories;
 using Abp.Logging;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Senparc.Weixin;
@@ -26,14 +27,24 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
 
         public JeuciAccount(string openId, string account, string userPassword) : this(openId)
         {
-         //   m_openId = openId;
             m_account = account;
             m_password = userPassword;         
         }
 
-        public bool IsBindWechat { get; }
+        public bool IsBindWechat {
+            get
+            {
+                return !string.IsNullOrEmpty(UserInfo?.WeChat);
+            }
+        }
 
-        public bool IsBindEmail { get; }
+        public bool IsBindEmail
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(UserInfo?.Email);
+            }
+        }
 
         public string OpenId
         {
@@ -66,6 +77,26 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
                 throw new Exception("请求用户的基本信息失败，原因:" + userInfoResult.errcode);
             }
             UserWechatInfo = userInfoResult.MapTo<WechatAccount>();
+        }
+
+        public void SynchronUserInfo(IRepository<UserInfo> userRepository)
+        {
+            if (string.IsNullOrEmpty(m_openId))
+            {
+                LogHelper.Logger.Error("OpenId为空，用户可能不是从合法的途径进入到该站点!");
+                throw new Exception("OpenId不能为空，请从合法的途径进入该站点");
+            }
+
+            UserInfo userInfo = userRepository.FirstOrDefault(p => p.WeChat == m_openId);
+            if (userInfo == null)
+            {
+                if (!string.IsNullOrEmpty(m_account) && !string.IsNullOrEmpty(m_password))
+                {
+                    userInfo = userRepository.FirstOrDefault(p => (p.UserName == m_account || p.Mobile == m_account) && p.Password == m_password);
+                }
+            }
+
+            UserInfo = userInfo;
         }
     }
 }

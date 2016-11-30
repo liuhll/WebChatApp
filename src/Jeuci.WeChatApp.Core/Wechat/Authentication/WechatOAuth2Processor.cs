@@ -32,31 +32,26 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
             _appsecret = ConfigHelper.GetValuesByKey("WechatAppSecret");
         }
 
-        public ResultMessage<WechatAccount> GetWechatUserInfo(string code, string state)
+        public WechatAccount GetWechatUserInfo(string code, string state,out string resultMsg)
         {
             string resultMessage;
             OAuthAccessTokenResult accessTokenResult;
             var result = GetWechatOAuthAccessTokenResult(code, state, out resultMessage,out accessTokenResult);
-                   
-            try
-            {
-                if (!result) return new ResultMessage<WechatAccount>(ResultCode.Fail, "错误:" + resultMessage);
-                var userInfo = OAuthApi.GetUserInfo(accessTokenResult.access_token, accessTokenResult.openid);
-                LogHelper.Logger.Info("获取用户信息成功：获取微信用户个人信息成功" + accessTokenResult.errmsg);
-                return new ResultMessage<WechatAccount>(userInfo.MapTo<WechatAccount>(), "OK");
-            }
-            catch (Exception e)
-            {
-                LogHelper.Logger.Error("获取用户信息失败：" + e.Message);
-                return new ResultMessage<WechatAccount>(ResultCode.Fail, "错误:" + e.Message);
-            }
+
+            resultMsg = resultMessage;
+            if (!result) return null;
+            var userInfo = OAuthApi.GetUserInfo(accessTokenResult.access_token, accessTokenResult.openid);
+            LogHelper.Logger.Info("获取用户信息成功：获取微信用户个人信息成功" + accessTokenResult.errmsg);
+            resultMsg = "OK;" + accessTokenResult.errmsg;
+
+            return userInfo.MapTo<WechatAccount>();
         }
 
-        public ResultMessage<JeuciAccount> GetWechatUserInfo(string openId)
+        public JeuciAccount GetWechatUserInfo(string openId)
         {
             var jeuciAccount = new JeuciAccount(openId);
             jeuciAccount.SynchronWechatUserInfo(_wechatAuthentManager);
-            return new ResultMessage<JeuciAccount>(jeuciAccount);
+            return jeuciAccount;
  
             //var userInfoResult = CommonApi.GetUserInfo(_wechatAuthentManager.GetAccessToken(), openId);
             //if (userInfoResult.errcode != ReturnCode.请求成功)
@@ -66,16 +61,16 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
             //return new ResultMessage<JeuciAccount>(new JeuciAccount(userInfoResult.MapTo<WechatAccount>()));
         }
 
-        public ResultMessage<string> GetWechatUserOpenId(string code, string state)
+        public string GetWechatUserOpenId(string code, string state)
         {
             string resultMessage;
             OAuthAccessTokenResult accessTokenResult;
             var result = GetWechatOAuthAccessTokenResult(code, state, out resultMessage, out accessTokenResult);
             if (result)
             {
-                return new ResultMessage<string>(accessTokenResult.openid);
+                return accessTokenResult.openid;
             }
-            return new ResultMessage<string>(ResultCode.Fail,"获取用户OpenId失败");
+            return string.Empty;
         }
        
         public string GetWechatAuthorizeUrl(string redirectUrl, string state, OAuthScope oAuthScope)

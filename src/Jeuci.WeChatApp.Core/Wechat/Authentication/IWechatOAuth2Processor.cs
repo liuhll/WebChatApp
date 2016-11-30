@@ -9,12 +9,12 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
 {
     public interface IWechatOAuth2Processor : ITransientDependency
     {
-        ResultMessage<WechatAccount> GetWechatUserInfo(string code,string state);
+        WechatAccount GetWechatUserInfo(string code, string state, out string resultMsg);
 
-        ResultMessage<JeuciAccount> GetWechatUserInfo(string openId);
+        JeuciAccount GetWechatUserInfo(string openId);
 
         string GetWechatAuthorizeUrl(string redirectUrl, string state, OAuthScope oAuthScope);
 
-        ResultMessage<string> GetWechatUserOpenId(string code, string state);
+        string GetWechatUserOpenId(string code, string state);
     }
 }

@@ -1,10 +1,14 @@
-﻿using Abp.EntityFramework;
+﻿using System.Data.Entity;
+using Abp.EntityFramework;
+using Jeuci.WeChatApp.Wechat.Models.Account;
 
 namespace Jeuci.WeChatApp.EntityFramework
 {
     public class WeChatAppDbContext : AbpDbContext
     {
         //TODO: Define an IDbSet for each Entity...
+
+        public virtual IDbSet<UserInfo> UserInfos { get; set; }
 
         //Example:
         //public virtual IDbSet<User> Users { get; set; }
