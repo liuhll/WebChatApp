@@ -1,0 +1,82 @@
+﻿@*<p>用户账号信息界面</p>
+    <input type="hidden" ng-model="vm.isNeedCallBack" />
+    <p>{{vm.isNeedCallBack}}</p>
+
+    <input type="hidden" ng-model="vm.openId" />
+
+    <p>{{vm.openId}}</p>*@
+
+<div class="weui-cells__title">我的信息</div>
+<div class="weui_cells">
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                用户名:
+            </div>
+        </div>
+        <div class="weui-cell__bd  weui-cell_primary">
+            {{vm.jeuciAccount.userInfo.userName}}
+        </div>
+        <div class="weui-cell__ft">
+            <img ng-src="{{vm.jeuciAccount.userWechatInfo.headImgUrl}}" style="height: 30px;width: 30px" alt="我的头像"/>
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                手&nbsp;&nbsp;&nbsp;机:
+            </div>
+        </div>
+        <div class="weui-cell__bd  weui-cell_primary">
+            {{vm.jeuciAccount.userInfo.mobile}}
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                昵 称:
+            </div>
+        </div>
+        <div class="weui-cell__bd  weui-cell_primary">
+            {{vm.jeuciAccount.userWechatInfo.nickName}}
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                电子邮件:
+            </div>
+        </div>
+        <div class="weui-cell__bd  weui-cell_primary">
+            <div ng-show="vm.jeuciAccount.userInfo.email">
+                {{vm.jeuciAccount.userInfo.email}}
+            </div>
+            <div ng-hide="vm.jeuciAccount.userInfo.email">
+                <a href="#" class="weui-cell_link">绑定邮箱</a>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                操&nbsp;&nbsp;&nbsp;作:
+            </div>
+        </div>
+        <div class="weui-cell__bd  weui-cell_primary">
+            <div ng-hide="vm.jeuciAccount.userInfo.email">
+                <a href="#" class="weui-cell_link">解&nbsp;绑&nbsp;账&nbsp;号</a>
+            </div>
+        </div>
+    </div>
+
+  
+
+
+
+</div>

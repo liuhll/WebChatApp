@@ -28,13 +28,11 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
         {
             get
             {
-                //return 
-                //    m_password.Equals(EncryptionHelper.EncryptSHA256(
-                //        !string.IsNullOrEmpty(_userInfo.UserName)
-                //    ? _userInfo.UserName
-                //    : _userInfo.Mobile + _userInfo.Password));
+                var acccountName = !string.IsNullOrEmpty(_userInfo.UserName)
+                    ? _userInfo.UserName
+                    : _userInfo.Mobile;
 
-                return true;
+                return m_password.Equals(EncryptionHelper.EncryptSHA256(acccountName + _userInfo.Password));
             }
         }
 

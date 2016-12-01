@@ -8,13 +8,7 @@
     </div>
 
     <div ng-show="vm.showUserInfo">
-        <p>用户账号信息界面</p>
-        <input type="hidden" ng-model="vm.isNeedCallBack" />
-        <p>{{vm.isNeedCallBack}}</p>
-
-        <input type="hidden" ng-model="vm.openId" />
-
-        <p>{{vm.openId}}</p>
+        <div ng-include="'/App/Wechat/views/account/parts/userInfo.cshtml'"></div>
     </div>
 
 
