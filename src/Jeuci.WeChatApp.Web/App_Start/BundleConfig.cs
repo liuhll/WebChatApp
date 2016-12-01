@@ -26,6 +26,7 @@ namespace Jeuci.WeChatApp.Web
             //~/Bundles/App/Wechat/css
             bundles.Add(new StyleBundle("~/Bundles/App/Wechat/css")
                 .Include("~/Abp/lib/weui/dist/style/weui.css", new CssRewriteUrlTransform())
+                .Include("~/Content/jeuci/weui-extend.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/App/vendor/js
@@ -68,7 +69,8 @@ namespace Jeuci.WeChatApp.Web
 
                         "~/Scripts/jeuci/array-extend.js",
                         "~/Scripts/jeuci/sha256.js",
-                        "~/Scripts/jeuci/bool-helper.js"
+                        "~/Scripts/jeuci/bool-helper.js",
+                        "~/Scripts/jeuci/tips.js"
                     )
                 );
 

@@ -287,7 +287,7 @@
     <Content Include="App\Wechat\app.js" />
     <Content Include="App\Wechat\services\errorMsg.js" />
     <Content Include="App\Wechat\services\pageTitle.js" />
-    <Content Include="App\Wechat\services\validMsg.js" />
+    <Content Include="App\Wechat\services\tipsMsg.js" />
     <Content Include="App\Wechat\views\account\bindwechat.js" />
     <Content Include="App\Wechat\views\account\wechatForjeuci.js" />
     <Content Include="App\Wechat\views\layout\layout.js" />
@@ -301,6 +301,7 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jeuci\weui-extend.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -1180,6 +1181,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jeuci\array-extend.js" />
     <Content Include="Scripts\jeuci\sha256.js" />
+    <Content Include="Scripts\jeuci\tips.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />

@@ -14,8 +14,8 @@
                            required
                            ng-pattern="/^[A-Za-z0-9]+$/"
                            placeholder="您要绑定的掌赢专家账号"/>
-                    <input type="hidden" ng-if="userForm.userAccount.$error.required" ng-model="valid.errors" value="{{valid.errors='掌赢专家账号不能为空'}}"/>
-                    <input type="hidden" ng-if="userForm.userAccount.$error.pattern" ng-model="valid.errors" value="{{valid.errors='输入的账号格式不正确'}}"/>
+                    <input type="hidden" ng-if="userForm.userAccount.$error.required" ng-model="Tips.msg" value="{{Tips.msg='掌赢专家账号不能为空'}}"/>
+                    <input type="hidden" ng-if="userForm.userAccount.$error.pattern" ng-model="Tips.msg" value="{{Tips.msg='输入的账号格式不正确'}}"/>
                 </div>
                 <div class="weui-cell__ft">
                     <i class="weui-icon-warn"></i>
@@ -30,7 +30,7 @@
                 <div class="weui-cell__bd weui-cell_primary">
                     <input class="weui-input" type="password" name="userPassword" ng-model="user.password" required placeholder="您要绑定的掌赢专家账号密码"/>
                     <input type="hidden" ng-if="userForm.userPassword.$error.required && !userForm.userAccount.$error.required
-                       &&!userForm.userAccount.$error.pattern" ng-model="valid.errors" value="{{valid.errors='密码不能为空'}}"/>
+                       &&!userForm.userAccount.$error.pattern" ng-model="Tips.msg" value="{{Tips.msg='密码不能为空'}}"/>
                 </div>
             </div>
           @*  <input type="hidden" ng-model="user.openId" value="{{user.openId = vm.openId}}"/>*@

@@ -48,8 +48,8 @@
  
 </head>
 <body ontouchstart>
-    <div class="weui-toptips weui-toptips_warn js_tooltips" ng-if="valid.errors.length>0">
-        <span ng-bind="valid.errors">        
+    <div class="weui-toptips js_tooltips" ng-class="Tips.isError ? 'weui-toptips_warn' : 'weui-toptips_success'" ng-if="Tips.msg.length>0">
+        <span ng-bind="Tips.msg">        
         </span>
     </div>
 <div class="page">

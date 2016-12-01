@@ -1,7 +1,7 @@
 ﻿(function() {
     angular.module('wechatApp').controller("wechatApp.views.bindwechat",
-        ["$scope", "$location", "Page", "Error", "Valid", "abp.services.app.wechatAccount",
-            function ($scope, $location, page, error, valid, wechatAccount) {
+        ["$scope", "$location","$timeout", "Page", "Error", "Tips", "abp.services.app.wechatAccount",
+            function ($scope, $location,$timeout,page, error, tips, wechatAccount) {
         var vm = this;
         page.setTitle("绑定微信账号");
         var openId = $location.search().openId;
@@ -22,30 +22,27 @@
                 wechatAccount.bindWechatAccount(userInfo)
                     .success(function (result) {
                         if (result["code"] !== 200) {
-                            valid.errors = result["msg"];
-                            showError();
+                            tips.msg = result["msg"];
+                            tips.isError = true;
+                            TipHepler.ShowMsg();
                         } else {
-                            alert("绑定成功!");
-                            window.location.href = window.location.origin + result["data"];
+                            tips.isError = false;
+                            tips.msg = result["msg"];
+                            TipHepler.ShowMsg();
+                            $timeout(function() {                                
+                                window.location.href = window.location.origin + result["data"];
+                            },1000);
+                           
                         }
                        
                     });
             } else {
-                showError();
+                tips.isError = true;
+                TipHepler.ShowMsg();
             }
         }
            
         }]);
-
-    function showError() {
-        var $tooltips = $('.js_tooltips');
-        if ($tooltips.css('display') !== 'none') return;
-        $('.page.cell').removeClass('slideIn');
-        $tooltips.css('display', 'block');
-        setTimeout(function () {
-            $tooltips.css('display', 'none');
-        }, 2000);
-    }
 
     function encryptPassword(nameStr, passwordStr) {
         var passwordStrSha256 = Encrypt.SHA256Encrypt(passwordStr);

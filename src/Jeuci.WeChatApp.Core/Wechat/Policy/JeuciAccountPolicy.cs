@@ -41,7 +41,7 @@ namespace Jeuci.WeChatApp.Wechat.Policy
                 return true;
 
             }
-            errorMsg = "";
+            errorMsg = "您已经绑定了掌盟专家账号,请不要通过其他方式浏览器打开该页面进行尝试绑定";
             return false;
         }
 

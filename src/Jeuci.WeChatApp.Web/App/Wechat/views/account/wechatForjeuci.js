@@ -3,7 +3,6 @@
     app.controller("wechatApp.views.wechatforjeuci", ["$location", "$http",
         "Page", "abp.services.app.wechatAuth","abp.services.app.wechatAccount",
         function ($location, $http, page, wechatAuthService, wechatAccount) {
-            debugger;
             var vm = this;
             page.setTitle("账号信息");
             vm.isNeedCallBack = BoolHelper.parseBool($location.search().isNeedCallBack);

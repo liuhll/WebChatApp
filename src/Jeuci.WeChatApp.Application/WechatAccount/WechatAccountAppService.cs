@@ -46,10 +46,10 @@ namespace Jeuci.WeChatApp.WechatAccount
             try
             {
                 string urlOrMsg;
-                var flag  = _bindAccountProcessor.BindWechatAccount(new JeuciAccount(input.OpenId, input.Account, input.Password), out urlOrMsg);
-                if (flag)
+                var isSuccess  = _bindAccountProcessor.BindWechatAccount(new JeuciAccount(input.OpenId, input.Account, input.Password), out urlOrMsg);
+                if (isSuccess)
                 {
-                    return new ResultMessage<string>(urlOrMsg);
+                    return new ResultMessage<string>(urlOrMsg,"绑定成功！");
                 }
                 return new ResultMessage<string>(ResultCode.Fail,urlOrMsg);
             }
