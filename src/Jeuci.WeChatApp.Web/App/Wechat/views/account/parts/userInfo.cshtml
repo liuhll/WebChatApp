@@ -1,11 +1,4 @@
-﻿@*<p>用户账号信息界面</p>
-    <input type="hidden" ng-model="vm.isNeedCallBack" />
-    <p>{{vm.isNeedCallBack}}</p>
-
-    <input type="hidden" ng-model="vm.openId" />
-
-    <p>{{vm.openId}}</p>*@
-
+﻿
 <div class="weui-cells__title">我的信息</div>
 <div class="weui_cells">
     <div class="weui-cell">
@@ -36,7 +29,7 @@
     <div class="weui-cell">
         <div class="weui_cell_hd">
             <div class="weui-label">
-                昵 称:
+                昵&nbsp;&nbsp;&nbsp;称:
             </div>
         </div>
         <div class="weui-cell__bd  weui-cell_primary">
@@ -60,8 +53,6 @@
         </div>
     </div>
 
-   
-
     <div class="weui-cell">
         <div class="weui_cell_hd">
             <div class="weui-label">
@@ -70,7 +61,7 @@
         </div>
         <div class="weui-cell__bd  weui-cell_primary">
             <div ng-hide="vm.jeuciAccount.userInfo.email">
-                <a href="#" class="weui-cell_link">解&nbsp;绑&nbsp;账&nbsp;号</a>
+                <a href="javascript:void(0)" class="weui-cell_link" ng-click="vm.unbindAccount()">解绑账号</a>
             </div>
         </div>
     </div>

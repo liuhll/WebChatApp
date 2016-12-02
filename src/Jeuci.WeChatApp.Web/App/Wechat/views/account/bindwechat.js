@@ -4,6 +4,7 @@
             function ($scope, $location,$timeout,page, error, tips, wechatAccount) {
         var vm = this;
         page.setTitle("绑定微信账号");
+
         var openId = $location.search().openId;
             vm.showBindForm = true;
         if (openId === null || openId === undefined || openId === "" ) {
@@ -31,17 +32,14 @@
                             TipHepler.ShowMsg();
                             $timeout(function() {                                
                                 window.location.href = window.location.origin + result["data"];
-                            },1000);
-                           
-                        }
-                       
+                            },1000);                           
+                        }                      
                     });
             } else {
                 tips.isError = true;
                 TipHepler.ShowMsg();
             }
-        }
-           
+        }           
         }]);
 
     function encryptPassword(nameStr, passwordStr) {

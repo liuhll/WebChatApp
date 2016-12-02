@@ -289,6 +289,7 @@
     <Content Include="App\Wechat\services\pageTitle.js" />
     <Content Include="App\Wechat\services\tipsMsg.js" />
     <Content Include="App\Wechat\views\account\bindwechat.js" />
+    <Content Include="App\Wechat\views\account\parts\unbindAccount.js" />
     <Content Include="App\Wechat\views\account\wechatForjeuci.js" />
     <Content Include="App\Wechat\views\layout\layout.js" />
     <Content Include="App\Wechat\views\layout\main.js" />
@@ -434,6 +435,7 @@
     <Content Include="App\Wechat\views\account\wechatForjeuci.cshtml" />
     <Content Include="App\Wechat\views\error\errorPage.cshtml" />
     <Content Include="App\Wechat\views\account\parts\userInfo.cshtml" />
+    <Content Include="App\Wechat\views\account\parts\unbindAccountDialog.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />

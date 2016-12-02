@@ -37,5 +37,18 @@ namespace Jeuci.WeChatApp.Wechat.Accounts.Impl
 
             return accountPolicy.BindWechatAccount(_userRepository, out urlOrMsg);
         }
+
+        public bool UnbindWechatAccount(JeuciAccount jeuciAccount, out string urlOrMsg)
+        {
+            jeuciAccount.SynchronWechatUserInfo(_wechatAuthentManager);
+            jeuciAccount.SynchronUserInfo(_userRepository);
+            var accountPolicy = new JeuciAccountPolicy(jeuciAccount);
+            if (!accountPolicy.ValidCanUnbindAccount(out urlOrMsg))
+            {
+                return false;
+            }
+
+            return accountPolicy.UnBindWechatAccount(_userRepository, out urlOrMsg);
+        }
     }
 }

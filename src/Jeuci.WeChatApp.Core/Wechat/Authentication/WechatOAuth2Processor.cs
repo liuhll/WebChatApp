@@ -53,7 +53,7 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
 
         public JeuciAccount GetWechatUserInfo(string openId)
         {
-            var jeuciAccount = new JeuciAccount(openId);
+            var jeuciAccount = new JeuciAccount(openId,AccountOperateType.ObtainAccount);
             jeuciAccount.SynchronWechatUserInfo(_wechatAuthentManager);
             jeuciAccount.SynchronUserInfo(_userRepository);
             return jeuciAccount;

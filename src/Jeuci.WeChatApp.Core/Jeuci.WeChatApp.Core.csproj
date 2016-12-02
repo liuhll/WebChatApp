@@ -116,6 +116,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums\ActionType.cs" />
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
     <Compile Include="Common\Enums\ResultCode.cs" />

@@ -46,7 +46,7 @@ namespace Jeuci.WeChatApp.WechatAccount
             try
             {
                 string urlOrMsg;
-                var isSuccess  = _bindAccountProcessor.BindWechatAccount(new JeuciAccount(input.OpenId, input.Account, input.Password), out urlOrMsg);
+                var isSuccess  = _bindAccountProcessor.BindWechatAccount(new JeuciAccount(input.OpenId, input.Account, input.Password, AccountOperateType.BindAccount), out urlOrMsg);
                 if (isSuccess)
                 {
                     return new ResultMessage<string>(urlOrMsg,"绑定成功！");
@@ -57,6 +57,24 @@ namespace Jeuci.WeChatApp.WechatAccount
             {
                 LogHelper.Logger.Error(e.Message);
                 return new ResultMessage<string>(ResultCode.Fail,e.Message);
+            }
+        }
+
+        public ResultMessage<string> UnbindWechatAccount(UnBindAccountInput input)
+        {
+            string urlOrMsg;
+            try
+            {
+                var isSuccess = _bindAccountProcessor.UnbindWechatAccount(new JeuciAccount(input.OpenId, input.Account, input.Password,AccountOperateType.UnBindAccount),out urlOrMsg);
+                if (isSuccess)
+                {
+                    return new ResultMessage<string>(urlOrMsg,"账号解绑成功，您可以绑定其他掌赢专家账号！");
+                }
+                return new ResultMessage<string>(ResultCode.Fail, urlOrMsg);
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<string>(ResultCode.Fail, e.Message);
             }
         }
     }

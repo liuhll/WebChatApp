@@ -3,6 +3,7 @@ using Abp.AutoMapper;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Logging;
+using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Senparc.Weixin;
@@ -22,7 +23,10 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
             get { return _userInfo != null; }
         }
 
-        internal bool IsBindAction { get; private set; }
+       // internal bool IsBindAction { get; private set; }
+
+         internal AccountOperateType AccountOperateType { get; }
+
 
         internal bool IsValidPassword
         {
@@ -36,13 +40,13 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
             }
         }
 
-        public JeuciAccount(string openId)
+        public JeuciAccount(string openId, AccountOperateType accountOperateType)
         {
             m_openId = openId;
-            IsBindAction = false;
+            AccountOperateType = accountOperateType;
         }
 
-        public JeuciAccount(string openId, string account, string userPassword) : this(openId)
+        public JeuciAccount(string openId, string account, string userPassword, AccountOperateType accountOperateType) : this(openId, accountOperateType)
         {
             m_account = account;
             m_password = userPassword;         
@@ -85,7 +89,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
             get
             {
                 if (_userInfo == null) return null;
-                if (IsBindAction && !IsValidPassword)
+                if (AccountOperateType !=AccountOperateType.ObtainAccount && !IsValidPassword)
                 {
                     throw new Exception("您输入密码错误，无法获取用户信息");
                 }
@@ -133,7 +137,6 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
                 //如果用户名和密码不为空的情况下就任务是绑定行为
                 if (!string.IsNullOrEmpty(m_account) && !string.IsNullOrEmpty(m_password))
                 {
-                    IsBindAction = true;
                     _userInfo = userRepository.FirstOrDefault(p => p.UserName == m_account || p.Mobile == m_account);
                 }
                 

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.Application.Services;
 using Jeuci.WeChatApp.Common;
-using Senparc.Weixin.MP.Entities;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.WechatAccount.Dtos;
 
@@ -19,5 +18,9 @@ namespace Jeuci.WeChatApp.WechatAccount
 
         [HttpPost]
         ResultMessage<string> BindWechatAccount(BindAccountInput input);
+
+        [HttpPost]
+        ResultMessage<string> UnbindWechatAccount(UnBindAccountInput input);
+
     }
 }

@@ -1,13 +1,13 @@
 ﻿(function() {
     var app = angular.module("wechatApp");
-    app.controller("wechatApp.views.wechatforjeuci", ["$location", "$http",
-        "Page", "abp.services.app.wechatAuth","abp.services.app.wechatAccount",
-        function ($location, $http, page, wechatAuthService, wechatAccount) {
+    app.controller("wechatApp.views.wechatforjeuci", ["$location", "$http","$modal","$timeout",
+        "Page","Tips", "abp.services.app.wechatAuth","abp.services.app.wechatAccount",
+        function ($location, $http, $modal,$timeout, page, tips, wechatAuthService, wechatAccount) {
             var vm = this;
             page.setTitle("账号信息");
             vm.isNeedCallBack = BoolHelper.parseBool($location.search().isNeedCallBack);
             vm.openId = $location.search().openId;
-            console.log(vm.isNeedCallBack);
+ 
             if (vm.isNeedCallBack) {
                 var oAuthScope = "0",
                      state = "Jeuci-" + new Date().getTime();
@@ -29,6 +29,41 @@
                     }
                 });
             }
+
+            vm.unbindAccount = function () {
+                var modalInstance = $modal.open({
+                    templateUrl: '/App/Wechat/views/account/parts/unbindAccountDialog.cshtml',
+                    controller: 'app.views.account.unbindAccount as vm',
+                    backdrop: 'static',
+                    resolve: {
+                        account: function() {
+                            return {
+                                openId: vm.jeuciAccount.openId,
+                                accountName: getJeuciAccountName(vm.jeuciAccount.userInfo)
+                        };
+                        }
+                    },
+                });
+
+                modalInstance.result.then(function () {
+
+                    tips.isError = !modalInstance.result.success;
+                    tips.msg = modalInstance.result.msg;
+                    TipHepler.ShowMsg();
+                    $timeout(function() {
+                        window.location.href = window.location.origin + modalInstance.result.callbackUrl;
+                    },1000);
+
+                });
+
+            }
         }
     ]);
+
+    function getJeuciAccountName(userInfo) {    
+        if (userInfo.userName) {
+            return userInfo.userName;
+        }
+        return userInfo.mobile;
+    }
 })();
