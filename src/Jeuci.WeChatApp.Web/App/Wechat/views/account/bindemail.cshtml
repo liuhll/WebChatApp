@@ -1,1 +1,68 @@
-﻿<p>bind-email</p>
+﻿<div class="weui-cells__title">电子邮箱绑定 <a class="weui-cell_link weui-extend-back" ng-click="vm.confirm()">返回</a></div>
+
+<form class="weui-cells weui-cells_form" name="userForm" novalidate>
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                账号
+            </div>
+        </div>
+        <div class="weui-cell__bd weui-cell_primary">
+            <input class="weui-input" type="text" name="userAccount" ng-model="user.account"
+                   required
+                   disabled="disabled" />
+        </div>
+        <div class="weui-cell__ft">
+            <i class="weui-icon-warn"></i>
+            <div class="weui-cell__ft">*</div>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                密码
+            </div>
+        </div>
+        <div class="weui-cell__bd weui-cell_primary">
+            <input class="weui-input" type="password" name="userPassword" ng-model="user.password" required placeholder="您要绑定的掌赢专家账号密码"/>
+            <input type="hidden" ng-if="userForm.userPassword.$error.required && !userForm.userAccount.$error.required
+                       &&!userForm.userAccount.$error.pattern" ng-model="Tips.msg" value="{{Tips.msg='密码不能为空'}}"/>
+        </div>
+        <div class="weui-cell__ft">*</div>
+        </div>
+
+    <div class="weui-cell">
+        <div class="weui_cell_hd">
+            <div class="weui-label">
+                邮箱
+            </div>
+        </div>
+        <div class="weui-cell__bd weui-cell_primary">
+            <input class="weui-input" type="password" name="userPassword" ng-model="user.password" required placeholder="您要绑定的电子邮箱"/>
+        </div>
+        <div class="weui-cell__ft">*</div>
+    </div>
+
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">验证码</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="tel" placeholder="邮箱验证码">
+        </div>
+        <div class="weui-cell__ft">
+            <a href="javascript:;" class="weui-vcode-btn">获取验证码</a>
+        </div>
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <div class="weui-cells__tips">如果您需要根据微信修改密码或是找回密码则要求先绑定邮箱</div>
+        </div>
+    </div>
+
+    <div class="weui-btn-area">
+        <a class="weui-btn weui-btn_primary" ng-disabled="!userForm.$valid" id="showTooltips" ng-click="vm.confirm()">绑定</a>      
+    </div>
+
+</form>
