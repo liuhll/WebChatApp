@@ -9,6 +9,6 @@ namespace Jeuci.WeChatApp.Wechat.Accounts
 {
     public interface IBindEmailProcessor : ITransientDependency
     {
-        Task<bool> SendValidByEmial(string openId, string emailAddress);
+        Task<bool> SendValidByEmail(string openId, string emailAddress);
     }
 }

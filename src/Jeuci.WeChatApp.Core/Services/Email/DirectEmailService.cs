@@ -26,11 +26,11 @@ namespace Jeuci.WeChatApp.Services.Email
             m_emailService = ConfigHelper.GetValuesByKey("DirectEmailService");
             m_requestFactory = new RequestFactory(m_emailService);
             m_paramsDict = new Dictionary<string, string>();
-            m_paramsDict.Add("subject","测试是否能发送");
+            m_paramsDict.Add("subject","彩盟网邮箱绑定验证码");
 
         }
 
-        public async Task<bool> SendValidCodeByEmial(string emailAddresss, string body)
+        public async Task<bool> SendValidCodeByEmail(string emailAddresss, string body)
         {
             m_paramsDict.Add("emailBody", body);
             m_paramsDict.Add("toAddress", emailAddresss);

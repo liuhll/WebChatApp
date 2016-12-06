@@ -133,6 +133,7 @@
     <Compile Include="Common\Tools\DateTimeHelper.cs" />
     <Compile Include="Common\Tools\EncryptionHelper.cs" />
     <Compile Include="Common\Tools\JeuciAccessTokenHelper.cs" />
+    <Compile Include="Common\Tools\RandomHelper.cs" />
     <Compile Include="Common\Tools\TencentCryptography.cs" />
     <Compile Include="Configs\ModelMapperConfiguration.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\DirectEmailService.cs" />
@@ -162,9 +163,11 @@
     <Compile Include="Wechat\Models\Account\JeuciAccount.cs" />
     <Compile Include="Wechat\Models\Account\UserInfo.cs" />
     <Compile Include="Wechat\Models\Account\WechatAccount.cs" />
+    <Compile Include="Wechat\Models\BindEmail\EmailValidCode.cs" />
     <Compile Include="Wechat\Models\RequestParam.cs" />
     <Compile Include="Wechat\Models\WechatAccessToken.cs" />
     <Compile Include="Wechat\Models\WechatSign.cs" />
+    <Compile Include="Wechat\Policy\BindEmailPolicy.cs" />
     <Compile Include="Wechat\Policy\JeuciAccountPolicy.cs" />
   </ItemGroup>
   <ItemGroup>
