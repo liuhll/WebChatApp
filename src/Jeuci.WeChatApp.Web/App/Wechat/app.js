@@ -32,16 +32,18 @@
                     })
             .state('bindemail',
                     {
-                        url: '/bindemail?openId',
-                        templateUrl: '/App/Wechat/views/account/bindemail.cshtml',
-                        params: {
-                            openId: ""
-                        }
+                        url: '/bindemail/:openId',
+                        templateUrl: '/App/Wechat/views/account/bindemail.cshtml'
                     })
             .state('modifypwd',
                     {
                         url: '/modifypwd',
                         templateUrl: '/App/Wechat/views/account/modifypwd.cshtml'
+                    })
+            .state('error',
+                    {
+                        url: '/error',
+                        templateUrl: '/App/Wechat/views/error/errorPage.cshtml'
                     })
             ;
            

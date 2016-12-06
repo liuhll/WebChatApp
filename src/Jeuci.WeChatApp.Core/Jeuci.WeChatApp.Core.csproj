@@ -116,6 +116,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DirectEmailMessage.cs" />
     <Compile Include="Common\Enums\ActionType.cs" />
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
@@ -131,17 +132,22 @@
     <Compile Include="Common\Tools\ConvertHelper.cs" />
     <Compile Include="Common\Tools\DateTimeHelper.cs" />
     <Compile Include="Common\Tools\EncryptionHelper.cs" />
+    <Compile Include="Common\Tools\JeuciAccessTokenHelper.cs" />
     <Compile Include="Common\Tools\TencentCryptography.cs" />
     <Compile Include="Configs\ModelMapperConfiguration.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\DirectEmailService.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\IDirectEmailService.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\Models\SingleSendMailModel.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\EmailTempletManager.cs" />
+    <Compile Include="Services\Email\DirectEmailService.cs" />
+    <Compile Include="Services\Email\IDirectEmailService.cs" />
     <Compile Include="WeChatAppConsts.cs" />
     <Compile Include="WeChatAppCoreModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wechat\Accounts\IBindAccountProcessor.cs" />
+    <Compile Include="Wechat\Accounts\IBindEmailProcessor.cs" />
     <Compile Include="Wechat\Accounts\Impl\BindAccountProcessor.cs" />
+    <Compile Include="Wechat\Accounts\Impl\BindEmailProcessor.cs" />
     <Compile Include="Wechat\Authentication\IAuthenticationProvider.cs" />
     <Compile Include="Wechat\Authentication\IWechatOAuth2Processor.cs" />
     <Compile Include="Wechat\Authentication\IWechatAuthentManager.cs" />

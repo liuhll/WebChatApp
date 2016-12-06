@@ -288,6 +288,7 @@
     <Content Include="App\Wechat\services\errorMsg.js" />
     <Content Include="App\Wechat\services\pageTitle.js" />
     <Content Include="App\Wechat\services\tipsMsg.js" />
+    <Content Include="App\Wechat\views\account\bindemail.js" />
     <Content Include="App\Wechat\views\account\bindwechat.js" />
     <Content Include="App\Wechat\views\account\parts\unbindAccount.js" />
     <Content Include="App\Wechat\views\account\wechatForjeuci.js" />

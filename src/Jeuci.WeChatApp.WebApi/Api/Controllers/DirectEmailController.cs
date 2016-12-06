@@ -20,12 +20,12 @@ namespace Jeuci.WeChatApp.Api.Controllers
     [JueciApiAuthorization]   
     public class DirectEmailController : AbpApiController
     {
-        private readonly DirectEmailAppService _directEmailAppService;
+        //private readonly DirectEmailAppService _directEmailAppService;
 
-        public DirectEmailController(DirectEmailAppService directEmailAppService)
-        {
-            _directEmailAppService = directEmailAppService;
-        }
+        //public DirectEmailController(DirectEmailAppService directEmailAppService)
+        //{
+        //    _directEmailAppService = directEmailAppService;
+        //}
 
         //[HttpGet]
         //[Route("singlesendmail")]

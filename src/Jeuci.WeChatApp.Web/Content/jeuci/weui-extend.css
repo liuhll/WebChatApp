@@ -6,3 +6,10 @@
     float: right;
     padding-right: 5px;
 }
+
+
+.weui-not-active {
+   pointer-events: none;
+   cursor: default;
+   color:  gray
+}
