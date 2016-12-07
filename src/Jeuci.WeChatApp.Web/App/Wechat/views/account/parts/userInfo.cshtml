@@ -44,10 +44,10 @@
             </div>
         </div>
         <div class="weui-cell__bd  weui-cell_primary">
-            <div ng-show="vm.jeuciAccount.userInfo.email">
+            <div ng-show="vm.jeuciAccount.isBindEmail">
                 {{vm.jeuciAccount.userInfo.email}}
             </div>
-            <div ng-hide="vm.jeuciAccount.userInfo.email">
+            <div ng-hide="vm.jeuciAccount.isBindEmail">
                 <a href="#/bindemail/{{vm.jeuciAccount.openId}}" class="weui-cell_link">绑定邮箱</a>
             </div>
         </div>
@@ -60,14 +60,14 @@
             </div>
         </div>
         <div class="weui-cell__bd  weui-cell_primary">
-            <div ng-hide="vm.jeuciAccount.userInfo.email">
+            <div ng-show="vm.jeuciAccount.isBindWechat">
                 <a href="javascript:void(0)" class="weui-cell_link" ng-click="vm.unbindAccount()">解绑账号</a>
+                <span ng-show="vm.jeuciAccount.isBindEmail">|</span>
+                <a ng-show="vm.jeuciAccount.isBindEmail" href="#" class="weui-cell_link">修改密码</a>
+                <span ng-show="vm.jeuciAccount.isBindEmail">|</span>
+                <a href="#" class="weui-cell_link" ng-show="vm.jeuciAccount.isBindEmail">忘记密码</a>
             </div>
-            <div ng-show="vm.jeuciAccount.userInfo.email">
-                <a href="#" class="weui-cell_link">修改密码</a>
-                <span>|</span>
-                <a href="#" class="weui-cell_link">找回密码</a>
-            </div>
+
         </div>
     </div>
 
