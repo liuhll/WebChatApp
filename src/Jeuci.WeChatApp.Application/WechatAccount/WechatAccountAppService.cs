@@ -37,7 +37,7 @@ namespace Jeuci.WeChatApp.WechatAccount
             }
             catch (Exception e)
             {
-                return new ResultMessage<JeuciAccountOutput>(ResultCode.Fail,e.Message);
+                return new ResultMessage<JeuciAccountOutput>(ResultCode.ServiceError,e.Message);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Jeuci.WeChatApp.WechatAccount
             catch (Exception e)
             {
                 LogHelper.Logger.Error(e.Message);
-                return new ResultMessage<string>(ResultCode.Fail,e.Message);
+                return new ResultMessage<string>(ResultCode.ServiceError,e.Message);
             }
         }
 

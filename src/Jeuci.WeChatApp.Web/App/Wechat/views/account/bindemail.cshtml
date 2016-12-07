@@ -11,15 +11,16 @@
                 </div>
             </div>
             <div class="weui-cell__bd weui-cell_primary">
-                <input class="weui-input" type="text" name="userAccount" ng-model="vm.user.userInfo.userName"
+                <input class="weui-input" type="text" name="userAccount" ng-model="vm.bindEmialModel.userAccount"
                        required
-                       disabled="disabled" />
+                       disabled="disabled"/>
             </div>
             <div class="weui-cell__ft">
                 <i class="weui-icon-warn"></i>
                 <div class="weui-cell__ft">*</div>
             </div>
         </div>
+
         <div class="weui-cell">
             <div class="weui_cell_hd">
                 <div class="weui-label">
@@ -71,12 +72,12 @@
 
         <div class="weui-cell">
             <div class="weui-cell__bd">
-                <div class="weui-cells__tips">如果您需要根据微信修改密码或是找回密码则要求先绑定邮箱</div>
+                <div class="weui-cells__tips">如果您想通过微信修改密码或是找回密码,则需要先绑定邮箱</div>
             </div>
         </div>
 
         <div class="weui-btn-area">
-            <a class="weui-btn weui-btn_primary" ng-class="{'weui-btn_plain-disabled':!userForm.$valid}" ng-disabled="!userForm.$valid" id="showTooltips" ng-click="vm.confirm()">绑定</a>
+            <a class="weui-btn weui-btn_primary"  id="showTooltips" ng-click="vm.confirm()">绑定</a>
         </div>
 
     </form>

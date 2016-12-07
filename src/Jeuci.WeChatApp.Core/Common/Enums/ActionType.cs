@@ -12,6 +12,10 @@ namespace Jeuci.WeChatApp.Common.Enums
 
         ObtainAccount = 2,
 
+        BindEmail = 3,
+
         UnBindAccount = 0,
+
+
     }
 }

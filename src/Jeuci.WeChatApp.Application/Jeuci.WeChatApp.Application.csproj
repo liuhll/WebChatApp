@@ -113,6 +113,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\Dtos\BindEmailInput.cs" />
     <Compile Include="Email\IBindEmailAppService.cs" />
     <Compile Include="Email\Impl\BindEmailAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />

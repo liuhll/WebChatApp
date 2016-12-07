@@ -63,6 +63,11 @@
             <div ng-hide="vm.jeuciAccount.userInfo.email">
                 <a href="javascript:void(0)" class="weui-cell_link" ng-click="vm.unbindAccount()">解绑账号</a>
             </div>
+            <div ng-show="vm.jeuciAccount.userInfo.email">
+                <a href="#" class="weui-cell_link">修改密码</a>
+                <span>|</span>
+                <a href="#" class="weui-cell_link">找回密码</a>
+            </div>
         </div>
     </div>
 

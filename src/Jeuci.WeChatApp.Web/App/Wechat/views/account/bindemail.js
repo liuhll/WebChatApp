@@ -2,11 +2,13 @@
     angular.module("wechatApp").controller("wechatApp.views.bindemail", ["$scope", "$stateParams", "$timeout", "$interval", "Error", "Tips", "abp.services.app.wechatAccount", "abp.services.app.bindEmail",
         function ($scope, $stateParams, $timeout,$interval, error, tips, wechatAccount, bindEmail) {
             var vm = this;
+            vm.bindEmialModel = {};
            
             wechatAccount.getWechatUserInfo($stateParams.openId).success(function (result) {
 
                 if (result.code === 200) {
                     vm.user = result.data;
+                    vm.bindEmialModel.userAccount = getAccounName(vm.user.userInfo);
                 } else {
                     error.errorInfo = result.msg;
                     window.location.href = window.location.origin + "/wechat/account/#/error";
@@ -18,7 +20,8 @@
             }
 
             vm.obtainValidCode = false;
-           
+            vm.isAlreadyobtainValidCode = false;
+            
             vm.getValidCode = function () {
                 var msg = "";
                 tips.isError = false;
@@ -37,6 +40,7 @@
                 } else {
                     var longTime = 60;
                     vm.obtainValidCode = true;
+                    vm.isAlreadyobtainValidCode = true;
                     var interval = $interval(function () {
                         longTime--;
                         $("#btnObtainValidCode").text(longTime + "s后重新获取");
@@ -68,10 +72,41 @@
                    
     }
 
-            vm.confirm = function () {
-       
-                if ($scope.bindEmailForm.$valid && vm.obtainValidCode) {
+            vm.confirm = function () {      
+                if ($scope.bindEmailForm.$valid && vm.isAlreadyobtainValidCode) {
+                    debugger;
+                   
+                    var password = encryptPassword(vm.bindEmialModel.userAccount, vm.bindEmialModel.password);
+                    bindEmail.bindUserEmail({
+                        openId: vm.user.openId,
+                        accountName: vm.bindEmialModel.userAccount,
+                        password: password,
+                        email: vm.bindEmialModel.email,
+                        validCode: vm.bindEmialModel.validCode
 
+                    }).success(function(result) {
+                        if (result.code === 200) {
+                            tips.isError = false;
+                            tips.msg = result.msg;
+                            $timeout(function () {
+                                TipHepler.ShowMsg();
+                                location.href = location.origin + result.data;
+                            },1000);
+                        } else {
+                            tips.isError = true;
+                            tips.msg = result.msg;
+                            $timeout(function () {
+                                TipHepler.ShowMsg();
+                            }, 500);
+                        }
+                    })
+                    .error(function(errorObj) {
+                        tips.isError = true;
+                        tips.msg = errorObj.message;
+                        $timeout(function () {
+                            TipHepler.ShowMsg();
+                        }, 500);
+                        });
                 } else {
                     var msg = "";
                     tips.isError = true;
@@ -94,5 +129,19 @@
                    
                 }
             }
-}]);
+        }]);
+
+
+    function encryptPassword(nameStr, passwordStr) {
+        var passwordStrSha256 = Encrypt.SHA256Encrypt(passwordStr);
+        var privateSha256 = Encrypt.SHA256Encrypt(nameStr + passwordStrSha256);
+        return privateSha256;
+    }
+
+    function getAccounName(userInfo) {
+        if (userInfo.userName) {
+            return userInfo.userName;
+        }
+        return userInfo.mobile;
+    }
 })();

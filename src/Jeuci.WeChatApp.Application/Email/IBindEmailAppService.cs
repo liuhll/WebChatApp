@@ -3,6 +3,7 @@ using System.Web.Http;
 using Abp.Application.Services;
 using Abp.Dependency;
 using Jeuci.WeChatApp.Common;
+using Jeuci.WeChatApp.Email.Dtos;
 
 namespace Jeuci.WeChatApp.Email
 {
@@ -12,5 +13,8 @@ namespace Jeuci.WeChatApp.Email
 
         [HttpGet]
         Task<ResultMessage<string>> GetValidCodeByEmail(string openId,string emailAddress);
+
+        [HttpPost]
+        ResultMessage<string> BindUserEmail(BindEmailInput input);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Abp.Domain.Repositories;
 using Jeuci.WeChatApp.Common;
+using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.Wechat.Policy;

@@ -163,6 +163,7 @@
     <Compile Include="Wechat\Models\Account\JeuciAccount.cs" />
     <Compile Include="Wechat\Models\Account\UserInfo.cs" />
     <Compile Include="Wechat\Models\Account\WechatAccount.cs" />
+    <Compile Include="Wechat\Models\BindEmail\BindEmailModel.cs" />
     <Compile Include="Wechat\Models\BindEmail\EmailValidCode.cs" />
     <Compile Include="Wechat\Models\RequestParam.cs" />
     <Compile Include="Wechat\Models\WechatAccessToken.cs" />

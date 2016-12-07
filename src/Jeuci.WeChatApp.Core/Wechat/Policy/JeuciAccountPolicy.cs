@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
+using Abp.Logging;
 using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 
@@ -13,38 +14,77 @@ namespace Jeuci.WeChatApp.Wechat.Policy
     public class JeuciAccountPolicy : ITransientDependency 
     {
         private JeuciAccount _account;
+        private AccountOperateType _accountOperateType;
 
         public JeuciAccountPolicy(JeuciAccount account)
         {
             this._account = account;
+            
         }
 
         public bool ValidAccountLegality(out string errorMsg)
         {
-            if (_account.AccountOperateType == AccountOperateType.BindAccount)
+            switch (_account.AccountOperateType)
             {
-                if (!_account.IsExistAccount)
-                {
-                    errorMsg = string.Format("不存在{0}账号,请核对输入的账号是否正确!",_account.Account);
-                    return false;
-                }
-                if (_account.IsBindWechat)
-                {
-                    errorMsg = "您已经绑定了掌盟账号，请不要重复绑定!";
-                    return false;
-                }
-                if (!_account.IsValidPassword)
-                {
-                    errorMsg = "您输入的密码错误，请确认您的密码!";
-                    return false;
-                }
-                errorMsg = "OK";
-                return true;
+                 case AccountOperateType.BindAccount:
+                    return ValidBindAccountLegality(out errorMsg);
+
+                 case AccountOperateType.BindEmail:
+                    return ValidBindEmailLegality(out errorMsg);
+
+                default:
+                    errorMsg = "未知操作，请通过正确的途径进行操作";
+                    LogHelper.Logger.Error("未知操作，用户可能不是通过正确的方式进行操作");
+                    throw new Exception("未知操作，请通过正确的途径进行操作");
 
             }
-            errorMsg = "您已经绑定了掌盟专家账号,请不要通过其他方式浏览器打开该页面进行尝试绑定";
-            return false;
+          
+       
         }
+
+        private bool ValidBindEmailLegality(out string errorMsg)
+        {
+            if (!_account.IsExistAccount)
+            {
+                LogHelper.Logger.Error(string.Format("获取用户{0}个人信息失败，请与我们联系!", _account.Account));
+                throw new Exception(string.Format("获取用户{0}个人信息失败，请与我们联系!", _account.Account));
+            }
+            if (!_account.IsValidPassword)
+            {
+                errorMsg = "您输入的密码错误，请确认您的密码!";
+                return false;
+            }
+            if (_account.IsBindEmail)
+            {
+                errorMsg = "您已经绑定了电子邮箱，请不要重复绑定！";
+                return false;
+            }
+            errorMsg = "OK";
+            return true;
+        }
+
+        private bool ValidBindAccountLegality(out string errorMsg)
+        {
+            if (!_account.IsExistAccount)
+            {
+                errorMsg = string.Format("不存在{0}账号,请核对输入的账号是否正确!", _account.Account);
+                return false;
+            }
+            if (_account.IsBindWechat)
+            {
+                errorMsg = "您已经绑定了掌盟账号，请不要重复绑定!";
+                return false;
+            }
+            if (!_account.IsValidPassword)
+            {
+                errorMsg = "您输入的密码错误，请确认您的密码!";
+                return false;
+            }
+            errorMsg = "OK";
+            return true;
+        }
+
+
 
         public bool ValidCanUnbindAccount(out string errorMsg)
         {
