@@ -38,7 +38,12 @@
             .state('modifypwd',
                     {
                         url: '/modifypwd',
-                        templateUrl: '/App/Wechat/views/account/modifypwd.cshtml'
+                        templateUrl: '/App/Wechat/views/password/modifypwd.cshtml'
+                    })
+            .state('retrievepwd',
+                    {
+                        url: '/retrievepwd',
+                        templateUrl: '/App/Wechat/views/password/retrievepwd.cshtml'
                     })
             .state('error',
                     {
