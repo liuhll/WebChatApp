@@ -22,6 +22,9 @@ namespace Jeuci.WeChatApp.WechatAccount
         [HttpPost]
         ResultMessage<string> UnbindWechatAccount(UnBindAccountInput input);
 
+        [HttpPut]
+        ResultMessage<string> Password(ModifyPasswordInput input);
+
 
 
     }

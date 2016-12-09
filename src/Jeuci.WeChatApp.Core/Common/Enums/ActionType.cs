@@ -14,6 +14,8 @@ namespace Jeuci.WeChatApp.Common.Enums
 
         BindEmail = 3,
 
+        ModifyPassword = 4,
+
         UnBindAccount = 0,
 
 

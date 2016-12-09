@@ -74,6 +74,8 @@
 
             vm.confirm = function () {      
                 if ($scope.bindEmailForm.$valid && vm.isAlreadyobtainValidCode) {
+                    debugger;
+                   
                     var password = encryptPassword(vm.bindEmialModel.userAccount, vm.bindEmialModel.password);
                     bindEmail.bindUserEmail({
                         openId: vm.user.openId,

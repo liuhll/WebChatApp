@@ -89,7 +89,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
             get
             {
                 if (_userInfo == null) return null;
-                if (AccountOperateType !=AccountOperateType.ObtainAccount && !IsValidPassword)
+                if (AccountOperateType !=AccountOperateType.ObtainAccount && AccountOperateType != AccountOperateType.ModifyPassword && !IsValidPassword)
                 {
                     throw new Exception("您输入密码错误，无法获取用户信息");
                 }

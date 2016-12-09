@@ -294,6 +294,7 @@
     <Content Include="App\Wechat\views\account\wechatForjeuci.js" />
     <Content Include="App\Wechat\views\layout\layout.js" />
     <Content Include="App\Wechat\views\layout\main.js" />
+    <Content Include="App\Wechat\views\password\modifypwd.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -428,7 +429,7 @@
     <Content Include="Areas\Wechat\Views\web.config" />
     <Content Include="App\Wechat\views\account\bindwechat.cshtml" />
     <Content Include="App\Wechat\views\layout\layout.cshtml" />
-    <Content Include="App\Wechat\views\account\modifypwd.cshtml" />
+    <Content Include="App\Wechat\views\password\modifypwd.cshtml" />
     <None Include=".bowerrc" />
     <Content Include="Abp\lib\jquery.mobile\jquery.mobile-1.4.5.min.map" />
     <None Include="App\Wechat\views\account\bindemail.cshtml" />
@@ -437,6 +438,7 @@
     <Content Include="App\Wechat\views\error\errorPage.cshtml" />
     <Content Include="App\Wechat\views\account\parts\userInfo.cshtml" />
     <Content Include="App\Wechat\views\account\parts\unbindAccountDialog.cshtml" />
+    <Content Include="App\Wechat\views\password\retrievepwd.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />

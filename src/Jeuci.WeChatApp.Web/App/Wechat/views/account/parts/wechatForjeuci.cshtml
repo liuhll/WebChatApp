@@ -1,0 +1,14 @@
+﻿<div ng-controller="wechatApp.views.wechatforjeuci as vm">
+    <div ng-show="vm.isNeedCallBack">
+        <p>{{vm.tipMessage}}</p>
+    </div>
+
+    <div ng-show="!vm.isNeedCallBack && !vm.showUserInfo">
+        <p> {{vm.tipMessage}}</p>
+    </div>
+
+    <div ng-show="vm.showUserInfo">
+        <div ng-include="'/App/Wechat/views/account/parts/userInfo.cshtml'"></div>
+    </div>
+
+</div>

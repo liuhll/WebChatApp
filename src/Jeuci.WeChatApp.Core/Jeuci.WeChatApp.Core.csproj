@@ -168,6 +168,8 @@
     <Compile Include="Wechat\Models\RequestParam.cs" />
     <Compile Include="Wechat\Models\WechatAccessToken.cs" />
     <Compile Include="Wechat\Models\WechatSign.cs" />
+    <Compile Include="Wechat\Password\impl\PassowrdProcessor.cs" />
+    <Compile Include="Wechat\Password\IPassowrdProcessor.cs" />
     <Compile Include="Wechat\Policy\BindEmailPolicy.cs" />
     <Compile Include="Wechat\Policy\JeuciAccountPolicy.cs" />
   </ItemGroup>

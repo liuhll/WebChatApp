@@ -74,12 +74,16 @@ namespace Jeuci.WeChatApp.WeChatAuth
 
         public ResultMessage<string> GetWechatUserOpenId(string code, string state)
         {
-            var openId = _wechatOAuth2Processor.GetWechatUserOpenId(code, state);
-            if (!string.IsNullOrEmpty(openId))
+            try
             {
-                return new ResultMessage<string>(openId);
+                var openId = _wechatOAuth2Processor.GetWechatUserOpenId(code, state);
+           
+                return !string.IsNullOrEmpty(openId) ? new ResultMessage<string>(openId) : new ResultMessage<string>(ResultCode.Fail,"获取OpenId失败，请确保您已经关注了我们！");
             }
-            return new ResultMessage<string>(ResultCode.Fail,"获取OpenId失败，请确保您已经关注了我们！");
+            catch (Exception e)
+            {
+                return new ResultMessage<string>(ResultCode.ServiceError, e.Message);
+            }
         }
     }
 }

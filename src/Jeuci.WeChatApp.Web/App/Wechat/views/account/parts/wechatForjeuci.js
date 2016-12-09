@@ -15,8 +15,6 @@
                 vm.tipMessage = "请稍等...正在获取用户信息";
                 wechatAuthService.getWechatAuthorizeUrl(redirectUrl, state, oAuthScope).success(function (result) {
                     location.href = result;
-                }).error(function(result) {
-                    console.log(JSON.stringfy(result));
                 });
             } else {
                 wechatAccount.getWechatUserInfo(vm.openId).success(function (result) {
@@ -29,8 +27,6 @@
                         vm.tipMessage = "您还没有绑定掌盟专家账号，请先绑定掌盟专家账号...";
                         location.href = window.location.origin + result["data"]["bindWechatAddress"] + "?openId=" + result["data"]["openId"];
                     }
-                }).error(function (result) {
-                    console.log(JSON.stringfy(result));
                 });
             }
 

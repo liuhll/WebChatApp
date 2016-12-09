@@ -63,7 +63,7 @@
             <div ng-show="vm.jeuciAccount.isBindWechat">
                 <a href="javascript:void(0)" class="weui-cell_link" ng-click="vm.unbindAccount()">解绑账号</a>
                 <span ng-show="vm.jeuciAccount.isBindEmail">|</span>
-                <a ng-show="vm.jeuciAccount.isBindEmail" href="#" class="weui-cell_link">修改密码</a>
+                <a ng-show="vm.jeuciAccount.isBindEmail" href="#/modifypwd?isNeedCallBack=false&openId={{vm.jeuciAccount.openId}}" class="weui-cell_link">修改密码</a>
                 <span ng-show="vm.jeuciAccount.isBindEmail">|</span>
                 <a href="#" class="weui-cell_link" ng-show="vm.jeuciAccount.isBindEmail">忘记密码</a>
             </div>

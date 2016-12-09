@@ -33,13 +33,13 @@ namespace Jeuci.WeChatApp.Wechat.Menu
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "找回密码",
-                url = string.Format("{0}/wechat/account/#/retrievepwd", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/retrievepwd?isNeedCallBack", _webchatServiceAddress)
             });
 
             accountBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "修改密码",
-                url = string.Format("{0}/wechat/account/#/modifypwd", _webchatServiceAddress)
+                url = string.Format("{0}/wechat/account/#/modifypwd?isNeedCallBack", _webchatServiceAddress)
             });
 
             bg.button.Add(accountBtn);

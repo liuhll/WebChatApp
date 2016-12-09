@@ -118,6 +118,7 @@
     <Compile Include="Email\Impl\BindEmailAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />
     <Compile Include="WechatAccount\Dtos\JeuciAccountOutput.cs" />
+    <Compile Include="WechatAccount\Dtos\ModifyPasswordInput.cs" />
     <Compile Include="WechatAccount\Dtos\UnBindAccountInput.cs" />
     <Compile Include="WechatAccount\Dtos\UserInfoOutput.cs" />
     <Compile Include="WechatAccount\Dtos\WechatAccountOutput.cs" />

@@ -10,6 +10,7 @@ using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Wechat.Accounts;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models.Account;
+using Jeuci.WeChatApp.Wechat.Password;
 using Jeuci.WeChatApp.WechatAccount.Dtos;
 using Newtonsoft.Json;
 
@@ -20,11 +21,15 @@ namespace Jeuci.WeChatApp.WechatAccount
         private readonly IWechatOAuth2Processor _wechatOAuth2Processor;
         private readonly IBindAccountProcessor _bindAccountProcessor;
 
+        private readonly IPassowrdProcessor _passowrdProcesssor;
+
         public WechatAccountAppService(IWechatOAuth2Processor wechatOAuth2Processor,
-            IBindAccountProcessor bindAccountProcessor)
+            IBindAccountProcessor bindAccountProcessor, 
+            IPassowrdProcessor passowrdProcesssor)
         {
             _wechatOAuth2Processor = wechatOAuth2Processor;
             _bindAccountProcessor = bindAccountProcessor;
+            _passowrdProcesssor = passowrdProcesssor;
         }
 
         public ResultMessage<JeuciAccountOutput> GetWechatUserInfo(string openId)
@@ -69,6 +74,24 @@ namespace Jeuci.WeChatApp.WechatAccount
                 if (isSuccess)
                 {
                     return new ResultMessage<string>(urlOrMsg,"账号解绑成功，您可以绑定其他掌赢专家账号！");
+                }
+                return new ResultMessage<string>(ResultCode.Fail, urlOrMsg);
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<string>(ResultCode.Fail, e.Message);
+            }
+        }
+
+        public ResultMessage<string> Password(ModifyPasswordInput input)
+        {
+            string urlOrMsg;
+            try
+            {
+                var isSuccess = _passowrdProcesssor.ModifyPassword(new JeuciAccount(input.OpenId, input.AccountName, input.OldPassword, AccountOperateType.ModifyPassword),input.NewPassworld, out urlOrMsg);
+                if (isSuccess)
+                {
+                    return new ResultMessage<string>(urlOrMsg, "密码修改成功，请使用新密码登录您的App！");
                 }
                 return new ResultMessage<string>(ResultCode.Fail, urlOrMsg);
             }
