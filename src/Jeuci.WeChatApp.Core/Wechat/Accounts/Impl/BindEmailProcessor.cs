@@ -29,11 +29,11 @@ namespace Jeuci.WeChatApp.Wechat.Accounts.Impl
 
         public Task<bool> SendValidByEmail(string openId, string emailAddress)
         {
-            var bindEmailPolicy = new BindEmailPolicy();
-            var validCode = bindEmailPolicy.GetBindEmailValidCode();
+            var bindEmailPolicy = new EmailPolicy();
+            var validCode = bindEmailPolicy.GetBindEmailValidCode(EmailValidCodeType.BindEmail);
             CacheHelper.SetCache(openId,validCode);
             var emailBody = bindEmailPolicy.GetEmailBody(validCode);
-            return _directEmailService.SendValidCodeByEmail(emailAddress, emailBody);
+            return _directEmailService.SendValidCodeByEmail(emailAddress, emailBody,"彩盟网邮箱绑定验证码");
         }
 
         public bool BindUserEmail(BindEmailModel model, out string msgOrUrl)
@@ -44,7 +44,7 @@ namespace Jeuci.WeChatApp.Wechat.Accounts.Impl
                 LogHelper.Logger.Info("缓存过期，没有获取到电子邮件验证码");
                 throw new Exception("验证码超时，请重新获取电子邮件验证码");
             }
-            var bindEmailPolicy = new BindEmailPolicy();
+            var bindEmailPolicy = new EmailPolicy();
             if (!bindEmailPolicy.ValidEmailCode(validCode,model.ValidCode,out msgOrUrl))
             {               
                 return false;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Logging;
+using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Common.Tools;
 
 namespace Jeuci.WeChatApp.Wechat.Models.BindEmail
@@ -13,10 +14,12 @@ namespace Jeuci.WeChatApp.Wechat.Models.BindEmail
         private readonly DateTime _generateTime;
         private readonly string _validCode;
         private readonly int _validDuration;
+        private readonly EmailValidCodeType _emailValidCodeType;
 
-        public EmailValidCode(string validCode)
+        public EmailValidCode(string validCode, EmailValidCodeType emailValidCodeType)
         {
             _validCode = validCode;
+            _emailValidCodeType = emailValidCodeType;
             _generateTime = DateTime.Now;
             _validDuration = ConfigHelper.GetIntValues("emailValidDuration");
         }
@@ -24,6 +27,11 @@ namespace Jeuci.WeChatApp.Wechat.Models.BindEmail
         public DateTime GenerateTime
         {
             get { return _generateTime; }
+        }
+
+        public EmailValidCodeType EmailValidCodeType
+        {
+            get { return _emailValidCodeType; }
         }
 
         public string ValidCode

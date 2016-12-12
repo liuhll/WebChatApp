@@ -13,5 +13,7 @@ namespace Jeuci.WeChatApp.Wechat.Accounts
         Task<bool> SendValidByEmail(string openId, string emailAddress);
 
         bool BindUserEmail(BindEmailModel model, out string msgOrUrl);
+
+       
     }
 }

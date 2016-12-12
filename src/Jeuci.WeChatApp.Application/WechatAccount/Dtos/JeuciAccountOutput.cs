@@ -14,6 +14,8 @@ namespace Jeuci.WeChatApp.WechatAccount.Dtos
 
         public string BindWechatAddress { get; set; }
 
+        public string BindEmailAddress { get; set; }
+
         public UserInfoOutput UserInfo { get; set; }
 
         public WechatAccountOutput UserWechatInfo { get;set; }

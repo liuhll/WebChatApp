@@ -7,7 +7,7 @@ namespace Jeuci.WeChatApp.Common.Tools
         private static Random  rand = new Random();
 
         private const string Alphabet =
-        "abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        "0123456789";
 
         public static string GenerateString(int size)
         {

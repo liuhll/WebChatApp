@@ -5,6 +5,6 @@ namespace Jeuci.WeChatApp.Services.Email
 {
     public interface IDirectEmailService : ITransientDependency
     {
-        Task<bool> SendValidCodeByEmail(string emailAddresss,string body);
+        Task<bool> SendValidCodeByEmail(string emailAddresss,string body, string subject);
     }
 }

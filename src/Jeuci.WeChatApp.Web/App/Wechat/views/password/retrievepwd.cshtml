@@ -1,6 +1,102 @@
-﻿
-@{
-    ViewBag.Title = "title";
-}
+﻿<div ng-controller="wechatApp.views.retrievepwd as vm">
+    <div ng-show="vm.isNeedCallBack">
+        <p>{{vm.tipMessage}}</p>
+    </div>
 
-<p>find me in "~/App/Wechat/views/account/retrievepwd.cshtml"</p>
+    <div ng-show="!vm.isNeedCallBack && !vm.obtainUserInfo ">
+        <p> {{vm.tipMessage}}</p>
+    </div>
+
+    <div ng-show="vm.obtainUserInfo">
+        <div class="weui-cells__title">找回密码</div>
+        <form class="weui-cells weui-cells_form" name="userForm" novalidate>
+            <div class="weui-cell">
+                <div class="weui_cell_hd">
+                    <div class="weui-label">
+                        账号
+                    </div>
+                </div>
+                <div class="weui-cell__bd weui-cell_primary">
+                    <input class="weui-input" type="text" name="userAccount" ng-model="vm.user.accountName"
+                           disabled="disabled" />
+                </div>
+                <div class="weui-cell__ft">
+                    <i class="weui-icon-warn"></i>
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui_cell_hd">
+                    <div class="weui-label">
+                        您的邮箱
+                    </div>
+                </div>
+                <div class="weui-cell__bd weui-cell_primary">
+                    <input class="weui-input"
+                           type="email"
+                           name="email"
+                           ng-model="vm.user.email"
+                           required
+                           disabled="disabled" />
+
+                </div>
+            </div>
+
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">验证码</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel"
+                           name="validCode"
+                           required
+                           ng-model="vm.user.validCode"
+                           placeholder="请输入您的验证码">
+                </div>
+                <div class="weui-cell__ft">
+                    <a href="javascript:;"
+                       class="weui-vcode-btn"
+                       id="btnObtainValidCode"
+                       ng-class="{'weui-not-active':vm.obtainValidCode}"
+                       ng-click="vm.getValidCode()">获取验证码</a>
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui_cell_hd">
+                    <div class="weui-label">
+                        密码
+                    </div>
+                </div>
+                <div class="weui-cell__bd weui-cell_primary">
+                    <input class="weui-input"
+                           type="password"
+                           name="newPassword"
+                           ng-model="vm.user.newPassword"
+                           required
+                           placeholder="请输入您的新密码"/>
+                </div>
+            </div>
+
+            <div class="weui-cell">
+                <div class="weui_cell_hd">
+                    <div class="weui-label">
+                        确认密码
+                    </div>
+                </div>
+                <div class="weui-cell__bd weui-cell_primary">
+                    <input class="weui-input"
+                           type="password"
+                           name="confirmNewPassword"
+                           ng-model="vm.user.confirmNewPassword"
+                           required
+                           placeholder="请确认您的新密码" />
+                </div>
+            </div>
+
+            <div class="weui-btn-area">
+                <a class="weui-btn weui-btn_primary" ng-disabled="!userForm.$valid" id="showTooltips" ng-click="vm.confirm()">确认</a>
+            </div>
+        </form>
+    </div>
+</div>

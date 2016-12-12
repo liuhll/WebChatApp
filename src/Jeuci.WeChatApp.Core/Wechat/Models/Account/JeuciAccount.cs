@@ -85,11 +85,19 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
             }
         }
 
+        public string BindEmailAddress
+        {
+            get { return string.Format("/wechat/account/#/bindemail/{0}",this.OpenId); }
+        }
+
         public UserInfo UserInfo {
             get
             {
                 if (_userInfo == null) return null;
-                if (AccountOperateType !=AccountOperateType.ObtainAccount && AccountOperateType != AccountOperateType.ModifyPassword && !IsValidPassword)
+                if (AccountOperateType !=AccountOperateType.ObtainAccount
+                    && AccountOperateType != AccountOperateType.ModifyPassword
+                    && AccountOperateType != AccountOperateType.RetrievePwd
+                    && !IsValidPassword)
                 {
                     throw new Exception("您输入密码错误，无法获取用户信息");
                 }

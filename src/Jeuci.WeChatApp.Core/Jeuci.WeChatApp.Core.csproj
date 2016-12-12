@@ -120,6 +120,7 @@
     <Compile Include="Common\Enums\ActionType.cs" />
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
+    <Compile Include="Common\Enums\EmailValidCodeType.cs" />
     <Compile Include="Common\Enums\ResultCode.cs" />
     <Compile Include="Common\Enums\Sex.cs" />
     <Compile Include="Common\Exceptions\ApiAuthorizeException.cs" />
@@ -170,7 +171,7 @@
     <Compile Include="Wechat\Models\WechatSign.cs" />
     <Compile Include="Wechat\Password\impl\PassowrdProcessor.cs" />
     <Compile Include="Wechat\Password\IPassowrdProcessor.cs" />
-    <Compile Include="Wechat\Policy\BindEmailPolicy.cs" />
+    <Compile Include="Wechat\Policy\EmailPolicy.cs" />
     <Compile Include="Wechat\Policy\JeuciAccountPolicy.cs" />
   </ItemGroup>
   <ItemGroup>

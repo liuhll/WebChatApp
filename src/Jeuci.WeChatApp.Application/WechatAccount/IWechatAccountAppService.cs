@@ -25,6 +25,12 @@ namespace Jeuci.WeChatApp.WechatAccount
         [HttpPut]
         ResultMessage<string> Password(ModifyPasswordInput input);
 
+        [HttpGet]
+        Task<ResultMessage<string>> RetrievePwdValidCode(string openId, string email);
+
+        [HttpPut]
+        ResultMessage<string> RetrievePwd(RetrievePwdInput input);
+
 
 
     }

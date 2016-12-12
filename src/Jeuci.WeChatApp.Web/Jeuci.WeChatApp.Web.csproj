@@ -295,6 +295,7 @@
     <Content Include="App\Wechat\views\layout\layout.js" />
     <Content Include="App\Wechat\views\layout\main.js" />
     <Content Include="App\Wechat\views\password\modifypwd.js" />
+    <Content Include="App\Wechat\views\password\retrievepwd.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

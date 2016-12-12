@@ -20,8 +20,9 @@ namespace Jeuci.WeChatApp.WechatAccount
     {
         private readonly IWechatOAuth2Processor _wechatOAuth2Processor;
         private readonly IBindAccountProcessor _bindAccountProcessor;
-
         private readonly IPassowrdProcessor _passowrdProcesssor;
+
+
 
         public WechatAccountAppService(IWechatOAuth2Processor wechatOAuth2Processor,
             IBindAccountProcessor bindAccountProcessor, 
@@ -30,14 +31,14 @@ namespace Jeuci.WeChatApp.WechatAccount
             _wechatOAuth2Processor = wechatOAuth2Processor;
             _bindAccountProcessor = bindAccountProcessor;
             _passowrdProcesssor = passowrdProcesssor;
+
         }
 
         public ResultMessage<JeuciAccountOutput> GetWechatUserInfo(string openId)
         {
             try
             {
-                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId);
-                LogHelper.Logger.Info(JsonConvert.SerializeObject(jeuciAccount.MapTo<JeuciAccountOutput>()));
+                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId);               
                 return new ResultMessage<JeuciAccountOutput>(jeuciAccount.MapTo<JeuciAccountOutput>());
             }
             catch (Exception e)
@@ -92,6 +93,41 @@ namespace Jeuci.WeChatApp.WechatAccount
                 if (isSuccess)
                 {
                     return new ResultMessage<string>(urlOrMsg, "密码修改成功，请使用新密码登录您的App！");
+                }
+                return new ResultMessage<string>(ResultCode.Fail, urlOrMsg);
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<string>(ResultCode.Fail, e.Message);
+            }
+        }
+
+        public async Task<ResultMessage<string>> RetrievePwdValidCode(string openId, string email)
+        {
+            try
+            {
+                var result = await _passowrdProcesssor.SendRetrievePwdValidCode(openId, email);
+                if (result)
+                {
+                    return new ResultMessage<string>("验证码发送成功,请在有效期内完成重置密码操作");
+                }
+                return new ResultMessage<string>(ResultCode.Fail, "邮件发送失败，请稍后再尝试！");
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<string>(ResultCode.ServiceError, e.Message);
+            }
+        }
+
+        public ResultMessage<string> RetrievePwd(RetrievePwdInput input)
+        {
+            string urlOrMsg;
+            var isSuccess = _passowrdProcesssor.RetrievePwd(new JeuciAccount(input.OpenId, AccountOperateType.RetrievePwd), input.NewPassword,input.ValidCode, out urlOrMsg);
+            try
+            {
+                if (isSuccess)
+                {
+                    return new ResultMessage<string>(urlOrMsg, "密码重置成功，请使用新密码登录您的App！");
                 }
                 return new ResultMessage<string>(ResultCode.Fail, urlOrMsg);
             }
