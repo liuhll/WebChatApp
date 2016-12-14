@@ -13,8 +13,6 @@ using Senparc.Weixin;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
-using Senparc.Weixin.MP.CommonAPIs;
-using Senparc.Weixin.MP.Entities;
 
 namespace Jeuci.WeChatApp.Wechat.Authentication
 {
@@ -58,12 +56,6 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
             jeuciAccount.SynchronUserInfo(_userRepository);
             return jeuciAccount;
  
-            //var userInfoResult = CommonApi.GetUserInfo(_wechatAuthentManager.GetAccessToken(), openId);
-            //if (userInfoResult.errcode != ReturnCode.请求成功)
-            //{
-            //    return new ResultMessage<JeuciAccount>(ResultCode.Fail,userInfoResult.errmsg);
-            //}
-            //return new ResultMessage<JeuciAccount>(new JeuciAccount(userInfoResult.MapTo<WechatAccount>()));
         }
 
         public string GetWechatUserOpenId(string code, string state)

@@ -433,6 +433,7 @@
     <Content Include="App\Wechat\views\password\modifypwd.cshtml" />
     <None Include=".bowerrc" />
     <Content Include="Abp\lib\jquery.mobile\jquery.mobile-1.4.5.min.map" />
+    <Content Include="App\Wechat\app.plan.js" />
     <None Include="App\Wechat\views\account\bindemail.cshtml" />
     <Content Include="bower.json" />
     <Content Include="App\Wechat\views\account\wechatForjeuci.cshtml" />
@@ -440,6 +441,8 @@
     <Content Include="App\Wechat\views\account\parts\userInfo.cshtml" />
     <Content Include="App\Wechat\views\account\parts\unbindAccountDialog.cshtml" />
     <Content Include="App\Wechat\views\password\retrievepwd.cshtml" />
+    <Content Include="App\Wechat\views\plan\freeIndex.cshtml" />
+    <Content Include="App\Wechat\views\layout\planlayout.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1230,6 +1233,7 @@
     <Compile Include="App_Start\WeChatAppWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Wechat\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Wechat\Controllers\PlanController.cs" />
     <Compile Include="Areas\Wechat\WechatAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WeChatAppControllerBase.cs" />
@@ -1262,6 +1266,7 @@
     <Folder Include="Areas\Wechat\Models\" />
     <Folder Include="Areas\Wechat\Views\Account\" />
     <Folder Include="Areas\Wechat\Views\Home\" />
+    <Folder Include="Areas\Wechat\Views\Plan\" />
     <Folder Include="Areas\Wechat\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\AccountBind\" />

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.Application.Services;
-using Abp.Dependency;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Email.Dtos;
 

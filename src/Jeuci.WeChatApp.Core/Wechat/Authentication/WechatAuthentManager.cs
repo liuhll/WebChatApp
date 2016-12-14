@@ -1,14 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Security.Authentication;
-using System.Threading.Tasks;
+﻿using System.Security.Authentication;
 using Abp.Logging;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Models;
-using Jeuci.WeChatApp.Wechat.Models.Account;
-using Jueci.WeChatApp.RestfulRequestTool.Common.Enums;
-using Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions;
-using Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions.Impl;
 using Newtonsoft.Json;
 using Senparc.Weixin.MP.Containers;
 using WeixinSdk=Senparc.Weixin.MP;

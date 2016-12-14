@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Abp.AutoMapper;
-using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Models;
 
 namespace Jeuci.WeChatApp.WeChatAuth.Dtos

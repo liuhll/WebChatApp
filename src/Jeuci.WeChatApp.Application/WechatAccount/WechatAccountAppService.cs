@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Abp.AutoMapper;
 using Abp.Logging;
@@ -12,7 +9,6 @@ using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.Wechat.Password;
 using Jeuci.WeChatApp.WechatAccount.Dtos;
-using Newtonsoft.Json;
 
 namespace Jeuci.WeChatApp.WechatAccount
 {

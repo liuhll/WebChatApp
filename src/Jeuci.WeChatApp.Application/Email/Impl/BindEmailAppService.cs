@@ -5,8 +5,6 @@ using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Email;
 using Jeuci.WeChatApp.Email.Dtos;
-using Jeuci.WeChatApp.InfrastructureServices.DirectEmail;
-using Jeuci.WeChatApp.InfrastructureServices.DirectEmail.Models;
 using Jeuci.WeChatApp.Wechat.Accounts;
 using Jeuci.WeChatApp.Wechat.Models.BindEmail;
 

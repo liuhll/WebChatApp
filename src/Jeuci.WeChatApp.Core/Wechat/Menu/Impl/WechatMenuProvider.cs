@@ -46,10 +46,9 @@ namespace Jeuci.WeChatApp.Wechat.Menu
 
             bg.button.Add(new SingleViewButton()
             {
-                name = "玩法推荐",
-                url = string.Format("{0}/play/recommend", _webchatServiceAddress)
-            });
-            var menuJsonStr = JsonConvert.SerializeObject(bg);
+                name = "免费计划",
+                url = string.Format("{0}/wechat/plan/#/free", _webchatServiceAddress)
+            });   
             return bg;
         }
     }

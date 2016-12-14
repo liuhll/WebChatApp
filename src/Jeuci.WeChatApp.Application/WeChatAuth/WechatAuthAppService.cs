@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Abp;
 using Abp.AutoMapper;
 using Abp.Logging;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
-using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models;
-using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.WechatAccount.Dtos;
 using Jeuci.WeChatApp.WeChatAuth.Dtos;
 using Senparc.Weixin.MP;
-using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
-using Senparc.Weixin.MP.Entities;
 
 namespace Jeuci.WeChatApp.WeChatAuth
 {
