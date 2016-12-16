@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="EntityFramework\WeChatAppDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\WeChatAppRepositoryBase.cs" />
+    <Compile Include="Mappings\LotteryPlanLibMap.cs" />
     <Compile Include="Mappings\UserInfoMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="WeChatAppDataModule.cs" />

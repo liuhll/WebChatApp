@@ -294,8 +294,11 @@
     <Content Include="App\Wechat\views\account\wechatForjeuci.js" />
     <Content Include="App\Wechat\views\layout\layout.js" />
     <Content Include="App\Wechat\views\layout\main.js" />
+    <Content Include="App\Wechat\views\layout\plan.layout.js" />
     <Content Include="App\Wechat\views\password\modifypwd.js" />
     <Content Include="App\Wechat\views\password\retrievepwd.js" />
+    <Content Include="App\Wechat\views\plan\freeDetails.js" />
+    <Content Include="App\Wechat\views\plan\freeIndex.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -443,6 +446,8 @@
     <Content Include="App\Wechat\views\password\retrievepwd.cshtml" />
     <Content Include="App\Wechat\views\plan\freeIndex.cshtml" />
     <Content Include="App\Wechat\views\layout\planlayout.cshtml" />
+    <Content Include="App\Wechat\views\plan\freeDetails.cshtml" />
+    <Content Include="App\Wechat\views\common\loadPage.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />

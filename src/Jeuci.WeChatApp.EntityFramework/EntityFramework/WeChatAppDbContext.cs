@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.EntityFramework;
+using Jeuci.WeChatApp.Lottery.Models;
 using Jeuci.WeChatApp.Mappings;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 
@@ -11,6 +12,8 @@ namespace Jeuci.WeChatApp.EntityFramework
         //TODO: Define an IDbSet for each Entity...
 
         public virtual IDbSet<UserInfo> UserInfos { get; set; }
+
+        public virtual IDbSet<LotteryPlanLib> LotteryPlanLibs { get; set; }
 
         //Example:
         //public virtual IDbSet<User> Users { get; set; }
@@ -42,6 +45,7 @@ namespace Jeuci.WeChatApp.EntityFramework
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new UserInfoMap());
+            modelBuilder.Configurations.Add(new LotteryPlanLibMap());
         }
     }
 }

@@ -5,4 +5,9 @@
             $scope.Tips = tips;
             $scope.Error = error;
         }]);
+
+    angular.module('planApp').controller('planApp.views.main',
+       ['$scope', "Error", function ($scope, error) {
+           $scope.Error = error;
+       }]);
 })();

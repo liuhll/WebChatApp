@@ -1,0 +1,17 @@
+﻿<div ng-controller="planApp.views.free as vm">
+    <div class="weui-cells__title">彩种</div>
+    <div class="weui_cells">
+        <div  class="weui-cell" ng-repeat="cpList in vm.cpTypeList">
+            <div class="weui_cell_bd weui_cell_primary">
+                <a href="javascript:;"
+                   class="weui-btn weui-btn_mini weui-btn_default lottery-type-list"
+                   ng-repeat="cp in cpList.cpNames"
+                   ng-click="vm.getFreePlanList(cp.sId)">
+                    {{cp.cpName}}
+                </a>
+            </div>
+        </div>
+       
+    </div>
+</div>
+

@@ -1,8 +1,5 @@
-using System;
-using System.IO;
 using System.Linq;
 using System.Web.Http;
-using System.Xml.XPath;
 using WebActivatorEx;
 using Jeuci.WeChatApp.Web;
 using Swashbuckle.Application;

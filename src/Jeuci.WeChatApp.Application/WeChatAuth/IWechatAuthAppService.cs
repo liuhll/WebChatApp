@@ -1,11 +1,8 @@
 ﻿using System.Web.Http;
 using Abp.Application.Services;
 using Jeuci.WeChatApp.Common;
-using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.WechatAccount.Dtos;
 using Jeuci.WeChatApp.WeChatAuth.Dtos;
-using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
-using Senparc.Weixin.MP.Entities;
 
 namespace Jeuci.WeChatApp.WeChatAuth
 {

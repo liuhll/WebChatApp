@@ -116,6 +116,8 @@
     <Compile Include="Email\Dtos\BindEmailInput.cs" />
     <Compile Include="Email\IBindEmailAppService.cs" />
     <Compile Include="Email\Impl\BindEmailAppService.cs" />
+    <Compile Include="Lottery\ILotteryAppService.cs" />
+    <Compile Include="Lottery\LotteryAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />
     <Compile Include="WechatAccount\Dtos\JeuciAccountOutput.cs" />
     <Compile Include="WechatAccount\Dtos\ModifyPasswordInput.cs" />

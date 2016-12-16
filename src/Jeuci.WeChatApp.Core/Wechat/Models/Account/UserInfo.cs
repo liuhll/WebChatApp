@@ -23,25 +23,5 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
 
         public decimal Fund { get; set; }
 
-
-
-/*              ,[UserName]
-      ,[Password]
-      ,[PayPassword]
-      ,[Mobile]
-      ,[Email]
-      ,[WeChat]
-      ,[QQ]
-      ,[NickName]
-      ,[Sex]
-      ,[SafeMobile]
-      ,[SafeEmail]
-      ,[RegTime]
-      ,[State]
-      ,[SID]
-      ,[AppType]
-      ,[IP]
-      ,[Fund]
-      ,[FrozenRemarks]*/
     }
 }

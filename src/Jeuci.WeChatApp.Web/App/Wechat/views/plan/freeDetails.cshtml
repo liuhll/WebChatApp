@@ -1,0 +1,12 @@
+﻿<div ng-controller="planApp.views.freeDetails as vm">
+    <div class="weui-cells__title">免费计划列表</div>
+    <div class="weui-cells"> 
+        <a class="weui-cell weui-cell_access" ng-repeat="plan in vm.planList" href="{{plan.planUrl}}">
+            <div class="weui-cell__bd">
+                <p>{{plan.planName}}</p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+    </div>
+</div>
