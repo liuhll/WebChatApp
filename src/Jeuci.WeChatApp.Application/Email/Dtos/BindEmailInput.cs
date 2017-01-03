@@ -18,7 +18,7 @@ namespace Jeuci.WeChatApp.Email.Dtos
 
         [Required]
         [RegularExpression(@"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$", ErrorMessage = "邮箱格式不正确")]
-        public string Email { get; set; }
+        public string SafeEmail { get; set; }
 
         [Required]        
         public string ValidCode { get; set; }

@@ -13,7 +13,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
 
         public string PayPassword { get; set; }
 
-        public string Email { get; set; }
+        public string SafeEmail { get; set; }
 
         public string WeChat { get; set; }
 

@@ -68,7 +68,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
         {
             get
             {
-                return !string.IsNullOrEmpty(_userInfo?.Email);
+                return !string.IsNullOrEmpty(_userInfo?.SafeEmail);
             }
         }
 

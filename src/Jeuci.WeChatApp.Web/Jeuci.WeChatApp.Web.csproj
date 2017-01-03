@@ -447,7 +447,6 @@
     <Content Include="App\Wechat\views\plan\freeIndex.cshtml" />
     <Content Include="App\Wechat\views\layout\planlayout.cshtml" />
     <Content Include="App\Wechat\views\plan\freeDetails.cshtml" />
-    <Content Include="App\Wechat\views\common\loadPage.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />

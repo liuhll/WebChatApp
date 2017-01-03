@@ -12,7 +12,7 @@ namespace Jeuci.WeChatApp.WechatAccount.Dtos
 
         public string Mobile { get; set; }
 
-        public string Email { get; set; }
+        public string SafeEmail { get; set; }
 
         public string WeChat { get; set; }
 

@@ -7,6 +7,11 @@
         vm.isNeedCallBack = BoolHelper.parseBool($location.search().isNeedCallBack);            
         vm.openId = $location.search().openId;
         vm.user = {};
+            debugger;
+        //if (interval!==null && interval !== undefined) {
+        //    $interval.cancel(interval);
+        //    }
+       
         if (vm.isNeedCallBack) {
             var oAuthScope = "0",
                  state = "Jeuci-" + new Date().getTime();
@@ -28,7 +33,7 @@
                         vm.obtainUserInfo = true;
                         vm.user.accountName = getAccounName(result["data"].userInfo);
                         vm.user.openId = result["data"].openId;
-                        vm.user.email = result["data"].userInfo.email;
+                        vm.user.email = result["data"].userInfo.safeEmail;
                     }
                    
 
@@ -56,6 +61,7 @@
             }, 1000);
  
             wechatAccount.retrievePwdValidCode(vm.user.openId, vm.user.email).success(function (result) {
+                
                 if (result.code === 200) {
                     tips.isError = false;
                     tips.msg = result.data;

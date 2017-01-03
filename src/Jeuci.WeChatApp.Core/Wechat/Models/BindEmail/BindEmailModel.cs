@@ -14,7 +14,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.BindEmail
 
         public string Password { get; set; }
 
-        public string Email { get; set; }
+        public string SafeEmail { get; set; }
 
         public string ValidCode { get; set; }
     }

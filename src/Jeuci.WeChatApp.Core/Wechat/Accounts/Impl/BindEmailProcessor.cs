@@ -57,7 +57,7 @@ namespace Jeuci.WeChatApp.Wechat.Accounts.Impl
                 return false;
             }
 
-            jeuciAccount.UserInfo.Email = model.Email;
+            jeuciAccount.UserInfo.SafeEmail = model.SafeEmail;
             try
             {
                 _useRepository.Update(jeuciAccount.UserInfo);
