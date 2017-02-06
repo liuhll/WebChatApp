@@ -10,6 +10,8 @@ using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Lottery.Models;
 using Jeuci.WeChatApp.Lottery.Tools;
+using Jeuci.WeChatApp.Repositories;
+using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions;
 using Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions.Impl;
 
@@ -24,11 +26,19 @@ namespace Jeuci.WeChatApp.Lottery.Server
         private IRepository<LotteryPlanLib,string> _lotteryPlanLibRepository;
         private string m_planNamePrefix = "免费计划";
         private readonly string m_planServiceAddress;
+        private readonly IRepository<UserInfo> _userRepository;
+        private readonly IServicePriceRepository _servicePriceRepository;
+        private readonly IRepository<ServiceInfo> _serviceRepository;
 
-
-        public LotteryServer(IRepository<LotteryPlanLib,string> lotteryPlanLibRepository)
+        public LotteryServer(IRepository<LotteryPlanLib,string> lotteryPlanLibRepository, 
+            IRepository<UserInfo> userRepository,
+            IServicePriceRepository servicePriceRepository,
+            IRepository<ServiceInfo> serviceRepository)
         {
             _lotteryPlanLibRepository = lotteryPlanLibRepository;
+            _userRepository = userRepository;
+            _servicePriceRepository = servicePriceRepository;
+            _serviceRepository = serviceRepository;
             m_lotteryServiceAddress = ConfigHelper.GetValuesByKey("LotteryServiceAddress");
             _freePlanNum = ConfigHelper.GetIntValues("FreePlanNum");
           //  _requestFactory = new RequestFactory(m_lotteryServiceAddress);
@@ -88,6 +98,25 @@ namespace Jeuci.WeChatApp.Lottery.Server
             }
             msg = "OK";
             return freePlanInfos;
+        }
+
+        public ServerPriceInfo GetServerPriceList(int sid, string openId)
+        {
+            var userInfo = _userRepository.FirstOrDefault(p => p.WeChat == openId);
+            if (userInfo == null)
+            {
+                LogHelper.Logger.Error("获取用户账号信息失败，用户可能还未绑定微信公众号");
+                throw new Exception("您还没有绑定微信账号，请绑定后，再尝试购买");
+            }
+            var serviceList = _servicePriceRepository.GetServerPrices(sid, userInfo.Id);
+            var serviceInfo = _serviceRepository.FirstOrDefault(p => p.Id == sid);
+            var serverPriceInfo = new ServerPriceInfo()
+            {
+                ServiceName = serviceInfo.ServiceName,
+                ServerPrices = serviceList
+            };
+            return serverPriceInfo;
+
         }
     }
 }

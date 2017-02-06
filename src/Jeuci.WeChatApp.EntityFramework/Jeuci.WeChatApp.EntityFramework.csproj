@@ -108,10 +108,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Repositories\Impl\ServicePriceRepository.cs" />
     <Compile Include="EntityFramework\WeChatAppDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\WeChatAppRepositoryBase.cs" />
     <Compile Include="Mappings\LotteryPlanLibMap.cs" />
+    <Compile Include="Mappings\ServiceInfoMap.cs" />
     <Compile Include="Mappings\UserInfoMap.cs" />
+    <Compile Include="Mappings\WechatMsgMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="WeChatAppDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +129,7 @@
       <Name>Jeuci.WeChatApp.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -13,5 +13,7 @@ namespace Jeuci.WeChatApp.Lottery.Server
         IList<ServerList> GetServiceList();
 
         IList<PlanInfo> GetPlanList(int sid, out string msg);
+
+        ServerPriceInfo GetServerPriceList(int sid, string openId);
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.EntityFramework;
 using Jeuci.WeChatApp.Lottery.Models;
 using Jeuci.WeChatApp.Mappings;
 using Jeuci.WeChatApp.Wechat.Models.Account;
+using Jeuci.WeChatApp.Wechat.Models.Message;
 
 namespace Jeuci.WeChatApp.EntityFramework
 {
@@ -14,6 +16,10 @@ namespace Jeuci.WeChatApp.EntityFramework
         public virtual IDbSet<UserInfo> UserInfos { get; set; }
 
         public virtual IDbSet<LotteryPlanLib> LotteryPlanLibs { get; set; }
+
+        public virtual IDbSet<WechatMsg> WechatMsgs { get; set; }
+
+        public virtual IDbSet<ServiceInfo> ServiceInfos { get; set; }
 
         //Example:
         //public virtual IDbSet<User> Users { get; set; }
@@ -46,6 +52,8 @@ namespace Jeuci.WeChatApp.EntityFramework
 
             modelBuilder.Configurations.Add(new UserInfoMap());
             modelBuilder.Configurations.Add(new LotteryPlanLibMap());
+            modelBuilder.Configurations.Add(new WechatMsgMap());
+            modelBuilder.Configurations.Add(new ServiceInfoMap());
         }
     }
 }

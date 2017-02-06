@@ -1,0 +1,18 @@
+﻿<div ng-controller="planApp.views.serviceList as vm">
+    <div class="weui-cells__title">购买{{vm.servicePrice.serviceName}}授权</div>
+    <div ng-hide="vm.showServiceList">
+        <div class="weui-panel">
+            <p class="weui-panel__bd">{{vm.msg}}</p>
+        </div>
+    </div>
+    <div ng-show="vm.showServiceList" class="weui-cells">
+        <div class="weui-cell" ng-repeat="item in vm.servicePrice.serverPrices">
+            <div class="weui-cell__bd weui-cell_primary">
+                <label><input type="radio" class="weui-cells_radio" name="servicePriceRd" />{{item.authDesc}}</label>
+            </div>
+            <div class="weui-cell__ft"><span>{{item.beforeDiscountPrice | currency:"￥"}}</span>  <span>{{item.price | currency:"￥" }}</span></div>
+        </div>
+        <a href="javascript:;" class="weui-btn weui-btn_warn" ng-click="vm.purchase">下一步</a>
+    </div>
+
+</div>

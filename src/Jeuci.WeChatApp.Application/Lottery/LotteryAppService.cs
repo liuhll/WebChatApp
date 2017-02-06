@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abp.AutoMapper;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
+using Jeuci.WeChatApp.Lottery.Dtos;
 using Jeuci.WeChatApp.Lottery.Models;
 using Jeuci.WeChatApp.Lottery.Server;
 
@@ -45,6 +47,23 @@ namespace Jeuci.WeChatApp.Lottery
             }
             
 
+        }
+
+        public ResultMessage<ServerInfoDto> ServerPriceList(int sid, string openId)
+        {
+            string msg = "没有获取到可授权的服务"; 
+            try
+            {
+                var result = _lotteryServer.GetServerPriceList(sid, openId);
+                return result == null || result.ServerPrices.Count == 0 ? new ResultMessage<ServerInfoDto>(ResultCode.Fail, msg)
+                    : new ResultMessage<ServerInfoDto>(result.MapTo<ServerInfoDto>());
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<ServerInfoDto>(ResultCode.Fail, e.Message);
+            }
+            
+            
         }
     }
 }

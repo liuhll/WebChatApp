@@ -44,6 +44,14 @@ namespace Jeuci.WeChatApp.Wechat.Menu
 
             bg.button.Add(accountBtn);
 
+            var purchaseServiceBtn = new SubButton("购买授权");
+            purchaseServiceBtn.sub_button.Add(new SingleViewButton()
+            {
+                name = "掌赢专家",
+                url = string.Format("{0}/wechat/purchase/#/caimeng?isNeedCallBack", _webchatServiceAddress)
+            });
+            bg.button.Add(purchaseServiceBtn);
+
             bg.button.Add(new SingleViewButton()
             {
                 name = "免费计划",

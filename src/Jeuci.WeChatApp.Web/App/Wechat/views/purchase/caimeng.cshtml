@@ -1,0 +1,28 @@
+﻿<div ng-controller="wechatApp.views.caimeng as vm">
+
+    <div ng-show="vm.isNeedCallBack">
+        <p>{{vm.tipMessage}}</p>
+    </div>
+
+    <div ng-show="!vm.isNeedCallBack && !vm.showUserInfo">
+        <p> {{vm.tipMessage}}</p>
+    </div>
+
+    <div ng-show="vm.showUserInfo">
+        <div class="weui-cells__title">彩种</div>
+        <div class="weui_cells">
+            <div class="weui-cell" ng-repeat="cpList in vm.cpTypeList">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <a href="javascript:;"
+                       class="weui-btn weui-btn_mini weui-btn_default lottery-type-list"
+                       ng-repeat="cp in cpList.cpNames"
+                       ng-click="vm.getServiceList(cp.sId,vm.jeuciAccount.openId)">
+                        {{cp.cpName}}
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

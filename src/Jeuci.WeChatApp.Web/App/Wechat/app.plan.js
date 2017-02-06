@@ -31,6 +31,21 @@
                     	url: '/error',
                     	templateUrl: '/App/Wechat/views/error/errorPage.cshtml'
                     })
+            .state('caimeng',
+	                {
+	                    url: '/caimeng?isNeedCallBack&openId',
+	                    templateUrl: '/App/Wechat/views/purchase/caimeng.cshtml',
+	                    params: {
+	                        isNeedCallBack: true,
+	                        openId: ""
+	                    }
+	                })
+            .state('serviceList',
+	                {
+	                    url: '/caimeng/:sid?openId',
+	                    templateUrl: '/App/Wechat/views/purchase/serviceList.cshtml'
+
+	                })
         	;
 
         	//$locationProvider.html5Mode({

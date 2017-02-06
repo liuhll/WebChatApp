@@ -3,11 +3,14 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Xml.Linq;
 using Abp.Json;
 using Abp.WebApi.Controllers;
 using Jeuci.WeChatApp.Common.Tools;
+using Jeuci.WeChatApp.WechatMsg;
 using Jeuci.WeChatApp.WeChatAuth;
 using Jeuci.WeChatApp.WeChatAuth.Dtos;
 using Newtonsoft.Json;
@@ -20,10 +23,13 @@ namespace Jeuci.WeChatApp.Api.Controllers
     public class WechatController : AbpApiController
     {
         private readonly IWechatAuthAppService _wechatAuthAppService;
+        private readonly IWechatMsgAppService _wechatMsgAppService;
 
-        public WechatController(IWechatAuthAppService wechatAuthAppService)
+        public WechatController(IWechatAuthAppService wechatAuthAppService,
+            IWechatMsgAppService wechatMsgAppService)
         {
             _wechatAuthAppService = wechatAuthAppService;
+            _wechatMsgAppService = wechatMsgAppService;
         }
 
         [HttpGet]
@@ -38,11 +44,29 @@ namespace Jeuci.WeChatApp.Api.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.NonAuthoritativeInformation, string.Empty);
         }
 
+        [HttpPost]
+        public async Task<HttpResponseMessage> Index()
+        {
+            var stream = await Request.Content.ReadAsStreamAsync();
+            XDocument doc = XDocument.Load(stream);
+            var requestMessage = WechatSdk.RequestMessageFactory.GetRequestEntity(doc);            
+            var res = Request.CreateResponse(HttpStatusCode.OK);
+/*            string msg = "<xml>" +
+                         "<ToUserName><![CDATA[oczsKwpRCVWbClZ3FyWEOgORi2vQ]]></ToUserName>" +
+                         "<FromUserName><![CDATA[camew-com]]></FromUserName>" +
+                         "<CreateTime>12345678</CreateTime>" +
+                         "<MsgType><![CDATA[text]]></MsgType>" +
+                         "<Content><![CDATA[你好]]></Content>" +
+                         "</xml>";*/
+            string msg = _wechatMsgAppService.MsgHandlerByRequestContent(requestMessage);
+            res.Content = new StringContent(msg, Encoding.UTF8, "text/xml");
+            return res;
+        }
 
         //[HttpPost]
         //public bool Index(PostModel postModel)
         //{
-        //    Logger.Info("-------------------Post请求------------------------");
+        //    Logger.InfosuccessPost请求------------------------");
         //    Logger.Info("请求的头：" + JsonConvert.SerializeObject(Request.Headers));
         //    Logger.Info("请求的Content：" + JsonConvert.SerializeObject(Request.Content));
         //    Logger.Info("请求的URL" + JsonConvert.SerializeObject(Request.RequestUri));
@@ -53,7 +77,7 @@ namespace Jeuci.WeChatApp.Api.Controllers
         //        return false;
         //    }
         //    return true;
-         
+
         //}
 
 
