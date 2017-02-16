@@ -7,6 +7,7 @@ using Abp.Logging;
 using Jeuci.WeChatApp.Wechat.Models.Message;
 using Senparc.Weixin.MP.Entities;
 using Jeuci.WeChatApp.Common.Extensions;
+using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Lottery.Server;
 using Senparc.Weixin.MP;
 
@@ -38,10 +39,11 @@ namespace Jeuci.WeChatApp.Wechat.Message
                 case RequestMsgType.Text://文字类型
                     var requestMsgText = requestMessage as RequestMessageText;
                     responseMessage = WechatTextMsgHandler(requestMsgText);
-
                     break;
                 default:
+                    LogHelper.Logger.Error("该消息并非文字类型消息,请求内容为:"+ requestMessage.ToJson());
                     throw new Exception("暂不支持其他类型的消息处理");
+                  
             }
             return responseMessage;
 
@@ -57,7 +59,7 @@ namespace Jeuci.WeChatApp.Wechat.Message
             {
                 strongresponseMessage =
                     ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(requestMessage);
-                strongresponseMessage.Content = "不知道您在说什么";
+                strongresponseMessage.Content = _wechatMsgRepository.FirstOrDefault(p=>p.KeyWord == "default").ResponseMsg;
 
                 return strongresponseMessage;
 

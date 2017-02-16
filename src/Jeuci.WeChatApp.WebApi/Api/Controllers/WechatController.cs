@@ -51,15 +51,26 @@ namespace Jeuci.WeChatApp.Api.Controllers
             XDocument doc = XDocument.Load(stream);
             var requestMessage = WechatSdk.RequestMessageFactory.GetRequestEntity(doc);            
             var res = Request.CreateResponse(HttpStatusCode.OK);
-/*            string msg = "<xml>" +
-                         "<ToUserName><![CDATA[oczsKwpRCVWbClZ3FyWEOgORi2vQ]]></ToUserName>" +
-                         "<FromUserName><![CDATA[camew-com]]></FromUserName>" +
-                         "<CreateTime>12345678</CreateTime>" +
-                         "<MsgType><![CDATA[text]]></MsgType>" +
-                         "<Content><![CDATA[你好]]></Content>" +
-                         "</xml>";*/
-            string msg = _wechatMsgAppService.MsgHandlerByRequestContent(requestMessage);
-            res.Content = new StringContent(msg, Encoding.UTF8, "text/xml");
+            //string msg = "<xml>" +
+            //             "<ToUserName><![CDATA[{0}]]></ToUserName>" +
+            //             "<FromUserName><![CDATA[camew-com]]></FromUserName>" +
+            //             "<CreateTime>{1}</CreateTime>" +
+            //             "<MsgType><![CDATA[text]]></MsgType>" +
+            //             "<Content><![CDATA[{2}]]></Content>" +
+            //             "</xml>";
+            string msg = string.Empty;
+            try
+            {
+                msg = _wechatMsgAppService.MsgHandlerByRequestContent(requestMessage);
+                res.Content = new StringContent(msg, Encoding.UTF8, "text/xml");
+            }
+            catch (Exception e)
+            {
+                Logger.Error("不支持的处理消息类型" + e.Message);
+                msg = "success";
+                res.Content = new StringContent(msg, Encoding.UTF8);
+            }
+           
             return res;
         }
 
