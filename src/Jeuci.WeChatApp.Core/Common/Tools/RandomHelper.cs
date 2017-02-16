@@ -18,5 +18,10 @@ namespace Jeuci.WeChatApp.Common.Tools
             }
             return new string(chars);
         }
+
+        public static string GenerateNonce()
+        {
+            return Guid.NewGuid().ToString().Replace("-", "");
+        }
     }
 }

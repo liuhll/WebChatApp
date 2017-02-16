@@ -7,7 +7,6 @@ namespace Jeuci.WeChatApp.WechatAccount.Dtos
     [AutoMap(typeof(UserInfo))]
     public class UserInfoOutput
     {
-
         public string UserName { get; set; }
 
         public string Mobile { get; set; }

@@ -1,0 +1,35 @@
+﻿<div class="weui-msg" ng-controller="wechatApp.views.purchasemsg as vm">
+    <div ng-if="vm.MsgInfo.code==='Success'">
+        <div class="weui-msg__icon-area">
+            <i class="weui-icon-success weui-icon_msg"></i>
+        </div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">购买成功</h2>
+            <p class="weui-msg__desc">
+                {{vm.MsgInfo.msg}}
+            </p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:;" ng-click="vm.backHome()" class="weui-btn weui-btn_primary">返回</a>
+
+            </p>
+        </div>
+    </div>
+    <div ng-if="vm.MsgInfo.code==='FAIL'">
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">购买失败</h2>
+                <p class="weui-msg__desc">{{vm.MsgInfo.msg}}</p>
+            </div>
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                    <a href="javascript:;" ng-click="vm.backHome()" class="weui-btn weui-btn_primary">返回</a>
+                    
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

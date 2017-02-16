@@ -46,11 +46,30 @@
 	                    templateUrl: '/App/Wechat/views/purchase/serviceList.cshtml'
 
 	                })
-        	;
+            .state('unifiedOrder',
+	                {
+	                    url: '/unifiedorder/?orderId&sid&serviceName&prepayId&orderPrice&description&openId',
+	                    templateUrl: '/App/Wechat/views/purchase/unifiedOrder.cshtml',
+                        params: {
+                            orderId: "",
+                            sid:"",
+                            serviceName: "",
+                            prepayId: "",
+                            orderPrice: "0.00",
+                            description: "",
+                            openId: ""
 
-        	//$locationProvider.html5Mode({
-        	//    enabled: true,
-        	//    requireBase: false
-        	//});
+                        }
+	                }).state('purchaseMsg',
+	                {
+	                    url: '/purchasemsg/?code&msg&openId',
+	                    templateUrl: '/App/Wechat/views/purchase/purchaseMsg.cshtml',
+	                    params: {
+	                        result: '',
+	                        msg: '',
+                            openId:""
+	                    }
+	                })
+        	;
         }]);
 })()

@@ -108,12 +108,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\Repositories\Impl\PurchaseServiceRepository.cs" />
     <Compile Include="EntityFramework\Repositories\Impl\ServicePriceRepository.cs" />
     <Compile Include="EntityFramework\WeChatAppDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\WeChatAppRepositoryBase.cs" />
     <Compile Include="Mappings\LotteryPlanLibMap.cs" />
     <Compile Include="Mappings\ServiceInfoMap.cs" />
     <Compile Include="Mappings\UserInfoMap.cs" />
+    <Compile Include="Mappings\UserPayOrderInfoMap.cs" />
     <Compile Include="Mappings\WechatMsgMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="WeChatAppDataModule.cs" />

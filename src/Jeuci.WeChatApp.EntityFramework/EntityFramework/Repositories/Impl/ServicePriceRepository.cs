@@ -42,6 +42,7 @@ namespace Jeuci.WeChatApp.EntityFramework.Repositories.Impl
                         item.Description = reader["Description"].ToString();
                         item.ServiceId = Convert.ToInt32(reader["ServiceId"]);
                         item.State = Convert.ToInt32(reader["State"]);
+                        item.AuthType = Convert.ToInt32(reader["AuthType"]);
                         item.BeforeDiscountPrice = ((int) (((double) item.Price/0.8)*0.01)*100 + 98);
                         list.Add(item);
                     }

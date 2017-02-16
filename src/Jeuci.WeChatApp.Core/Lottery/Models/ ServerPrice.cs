@@ -4,6 +4,7 @@ namespace Jeuci.WeChatApp.Lottery.Models
 {
     public class  ServerPrice : Entity
     {
+
         public int ServiceId { get; set; }
 
         public decimal Price { get; set; }
@@ -17,6 +18,8 @@ namespace Jeuci.WeChatApp.Lottery.Models
         public int State { get; set; }
 
         public int CanByOnline { get; set; }
+
+        public int AuthType { get; set; }
 
         public string Description { get; set; }
     }

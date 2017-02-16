@@ -1,20 +1,19 @@
 ﻿(function () {
-    angular.module('planApp').controller('planApp.views.serviceList', ['$state', 'abp.services.app.lottery',
-        function ($state, lottery) {
+    angular.module('planApp').controller('planApp.views.serviceList', ['$scope','$state', 'abp.services.app.lottery', 'abp.services.app.purchase',
+        function ($scope,$state, lottery, purchase) {
             var vm = this;
-            var sid = $state.params.sid,
-                openId = $state.params.openId;
-            vm.ServicePriceList = lottery.serverPriceList(sid, openId, {
-                beforeSend: function () {
+            vm.sid = $state.params.sid;
+            vm.openId = $state.params.openId;
+            vm.ServicePriceList = lottery.serverPriceList(vm.sid, vm.openId, {
+                beforeSend: function() {
                     $.showLoading("正在加载...");
                 },
-                complete: function () {
+                complete: function() {
                     $.hideLoading();
                 }
             }).success(function (result) {
                 if (result.code === 200) {
-                    vm.showServiceList = true;
-                  
+                    vm.showServiceList = true;                   
                     vm.servicePrice = result.data;
 
                 } else {
@@ -22,5 +21,39 @@
                     vm.msg = result.msg;
                 }
             });
+            vm.purchase = function () {
+
+                if (vm.purchaseServiceInfo == null ||
+                    vm.purchaseServiceInfo == undefined ||
+                    vm.purchaseServiceInfo.purchaseServiceInfo === {}) {
+                    alert("请选择您要购买的授权服务");
+                }
+
+                //1. 生成商户订单
+                //2. $state
+                purchase.getUnifiedOrder({
+                    total_fee: vm.purchaseServiceInfo.price,
+                    body: vm.purchaseServiceInfo.authDesc,
+                    openid: vm.openId,
+                    description: vm.purchaseServiceInfo.description,
+                    sid: vm.purchaseServiceInfo.id
+                }, {
+                    beforeSend: function() {
+                        $.showLoading("正在生成订单，请稍等...");
+                    },
+                    complete: function() {
+                        $.hideLoading();
+                    }
+                }).success(function (result) {
+                    if (result.code === 200) {
+                        $state.go("unifiedOrder", result.data);
+                    } else {
+                        alert(result.msg);
+                    }
+                }).error(function(result) {
+                    alert("订单生成失败，请稍后重试!");
+                });
+
+            }
         }]);
 })();

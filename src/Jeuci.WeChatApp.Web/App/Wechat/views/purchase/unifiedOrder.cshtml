@@ -1,0 +1,33 @@
+﻿<script type="text/javascript" src="./purchaseService.js"></script>
+
+<div ng-controller="planApp.views.unfiedOrder as vm">
+    
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">付款金额</label>
+                <em class="weui-form-preview__value">{{vm.serviceInfo.orderPrice | currency:"￥"}}</em>
+            </div>
+        </div>
+
+        <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">商品</label>
+                <span class="weui-form-preview__value">{{vm.serviceInfo.serviceName}}</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">订单号</label>
+                <span class="weui-form-preview__value">{{vm.serviceInfo.orderId}}</span>
+            </div>
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">商品描述</label>
+                <span class="weui-form-preview__value">{{vm.serviceInfo.description}}</span>
+            </div>
+
+            <div class="weui-form-preview__ft">
+                <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" ng-click="vm.purchase()">立即购买</a>
+            </div>
+    
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using Abp.EntityFramework;
 using Jeuci.WeChatApp.Lottery.Models;
 using Jeuci.WeChatApp.Mappings;
+using Jeuci.WeChatApp.Pay.Models;
 using Jeuci.WeChatApp.Wechat.Models.Account;
 using Jeuci.WeChatApp.Wechat.Models.Message;
 
@@ -20,6 +21,8 @@ namespace Jeuci.WeChatApp.EntityFramework
         public virtual IDbSet<WechatMsg> WechatMsgs { get; set; }
 
         public virtual IDbSet<ServiceInfo> ServiceInfos { get; set; }
+
+        public virtual IDbSet<UserPayOrderInfo> UserPayOrderInfos { get; set; }
 
         //Example:
         //public virtual IDbSet<User> Users { get; set; }

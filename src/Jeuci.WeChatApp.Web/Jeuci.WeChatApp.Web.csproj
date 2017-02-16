@@ -300,7 +300,10 @@
     <Content Include="App\Wechat\views\plan\freeDetails.js" />
     <Content Include="App\Wechat\views\plan\freeIndex.js" />
     <Content Include="App\Wechat\views\purchase\caimeng.js" />
+    <Content Include="App\Wechat\views\purchase\purchaseMsg.js" />
+    <Content Include="App\Wechat\views\purchase\purchaseService.js" />
     <Content Include="App\Wechat\views\purchase\serviceList.js" />
+    <Content Include="App\Wechat\views\purchase\unifiedOrder.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -451,6 +454,8 @@
     <Content Include="App\Wechat\views\plan\freeDetails.cshtml" />
     <Content Include="App\Wechat\views\purchase\caimeng.cshtml" />
     <Content Include="App\Wechat\views\purchase\serviceList.cshtml" />
+    <Content Include="App\Wechat\views\purchase\unifiedOrder.cshtml" />
+    <Content Include="App\Wechat\views\purchase\purchaseMsg.cshtml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />

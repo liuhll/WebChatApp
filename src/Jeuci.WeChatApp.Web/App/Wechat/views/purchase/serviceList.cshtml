@@ -1,4 +1,5 @@
-﻿<div ng-controller="planApp.views.serviceList as vm">
+﻿
+<div ng-controller="planApp.views.serviceList as vm">
     <div class="weui-cells__title">购买{{vm.servicePrice.serviceName}}授权</div>
     <div ng-hide="vm.showServiceList">
         <div class="weui-panel">
@@ -6,13 +7,21 @@
         </div>
     </div>
     <div ng-show="vm.showServiceList" class="weui-cells">
-        <div class="weui-cell" ng-repeat="item in vm.servicePrice.serverPrices">
+        <div class="weui-cell lottery-service-list" ng-repeat="item in vm.servicePrice.serverPrices">
             <div class="weui-cell__bd weui-cell_primary">
-                <label><input type="radio" class="weui-cells_radio" name="servicePriceRd" />{{item.authDesc}}</label>
+                <label><input type="radio" class="weui-cells_radio" name="servicePriceRd" ng-model="vm.purchaseServiceInfo" ng-value="item"/>{{item.authDesc}}</label>
             </div>
-            <div class="weui-cell__ft"><span>{{item.beforeDiscountPrice | currency:"￥"}}</span>  <span>{{item.price | currency:"￥" }}</span></div>
+            <div class="weui-cell__ft">
+                <span class="weui-label" style="text-decoration: line-through; display: inline">{{item.beforeDiscountPrice | currency:"￥"}}</span> 
+                <span style="color: red; display: inline" class="weui-label">{{item.price | currency:"￥" }}</span>
+            </div>
         </div>
-        <a href="javascript:;" class="weui-btn weui-btn_warn" ng-click="vm.purchase">下一步</a>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p class="tips-list" ng-repeat="desc in vm.servicePrice.descriptionList track by $index">{{desc}}</p>
+            </div>
+        </div>
+        <a href="javascript:;" class="weui-btn weui-btn_primary" ng-click="vm.purchase()">下一步</a>
     </div>
 
 </div>

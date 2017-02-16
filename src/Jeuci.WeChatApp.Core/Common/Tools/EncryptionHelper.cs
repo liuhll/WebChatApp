@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Security;
 
 namespace Jeuci.WeChatApp.Common.Tools
 {
@@ -124,6 +125,53 @@ namespace Jeuci.WeChatApp.Common.Tools
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string StrToMD5(string str)
+        {
+            byte[] data = EncryptMD5ToBytes(str, Encoding.UTF8);
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] OutBytes = md5.ComputeHash(data);
+
+            string OutString = "";
+            for (int i = 0; i < OutBytes.Length; i++)
+            {
+                OutString += OutBytes[i].ToString("x2");
+            }
+            // return OutString.ToUpper();
+            return OutString.ToLower();
+        }
+
+        public static string EncryptToSHA1(string str)
+        {
+            using (SHA1 sha1 = new SHA1CryptoServiceProvider())
+            {
+                byte[] bytes_sha1_in = System.Text.UTF8Encoding.Default.GetBytes(str);
+                byte[] bytes_sha1_out = sha1.ComputeHash(bytes_sha1_in);
+                string signature = BitConverter.ToString(bytes_sha1_out);
+                signature = signature.Replace("-", "").ToLower();
+                return signature;
+            }
+        }
+
+
+        public static string EncryptMD5_1(string instr)
+        {
+            var md5 = MD5.Create();
+            var bs = md5.ComputeHash(Encoding.UTF8.GetBytes(instr));
+            var sb = new StringBuilder();
+            foreach (byte b in bs)
+            {
+                sb.Append(b.ToString("x2"));
+            }
+            //所有字符转为大写
+            return sb.ToString().ToUpper();
+        }
+
+
+        /// <summary>
         /// MD5哈希
         /// </summary>
         /// <param name="instr">要加密的字符串</param>
@@ -171,6 +219,8 @@ namespace Jeuci.WeChatApp.Common.Tools
         }
 
         #endregion
+
+
 
     }
 }

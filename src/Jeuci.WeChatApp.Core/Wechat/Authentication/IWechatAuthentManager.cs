@@ -12,6 +12,10 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
 
         string GetAccessToken();
 
+        string AppId { get; }
+
+        string GetJsapiTicket();
+
 
     }
 }

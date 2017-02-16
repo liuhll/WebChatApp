@@ -11,5 +11,7 @@ namespace Jeuci.WeChatApp.Lottery.Dtos
 
         public IList<ServerPriceListDto> ServerPrices { get; set; }
 
+        public IList<string> DescriptionList { get; set; }
+
     }
 }

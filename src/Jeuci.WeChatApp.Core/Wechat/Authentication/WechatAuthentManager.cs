@@ -55,11 +55,19 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
 
         public string GetAccessToken()
         {
-            var accessToken = AccessTokenContainer.TryGetAccessToken(_appid, _appsecret);
+            var accessToken = AccessTokenContainer.TryGetAccessToken(_appid, _appsecret);         
             return accessToken;
         }
- 
-       
+
+        public string AppId {
+            get { return _appid; } 
+        }
+
+        public string GetJsapiTicket()
+        {
+            var jsapiTicket = JsApiTicketContainer.TryGetJsApiTicket(_appid, _appsecret);
+            return jsapiTicket;
+        }
     }
 
 

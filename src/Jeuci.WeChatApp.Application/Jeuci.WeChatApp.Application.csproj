@@ -120,6 +120,14 @@
     <Compile Include="Lottery\Dtos\ServerPriceListDto.cs" />
     <Compile Include="Lottery\ILotteryAppService.cs" />
     <Compile Include="Lottery\LotteryAppService.cs" />
+    <Compile Include="Purchase\Dtos\PayOptionsOutput.cs" />
+    <Compile Include="Purchase\Dtos\PayOrderInput.cs" />
+    <Compile Include="Purchase\Dtos\PayOrderDto.cs" />
+    <Compile Include="Purchase\Dtos\ServiceInfoInput.cs" />
+    <Compile Include="Purchase\Dtos\ServiceInfoOutput.cs" />
+    <Compile Include="Purchase\Dtos\WxpayOptionsOutput.cs" />
+    <Compile Include="Purchase\IPurchaseAppService.cs" />
+    <Compile Include="Purchase\PurchaseAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />
     <Compile Include="WechatAccount\Dtos\JeuciAccountOutput.cs" />
     <Compile Include="WechatAccount\Dtos\ModifyPasswordInput.cs" />

@@ -17,3 +17,13 @@
 .lottery-type-list {
     margin:0 4px;
 }
+
+.tips-list {
+    color: #999999; 
+    font-size: 12px;
+}
+
+.lottery-service-list {
+    color: #000000; 
+    font-size: 14px;
+}

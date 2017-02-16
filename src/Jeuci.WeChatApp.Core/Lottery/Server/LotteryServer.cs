@@ -113,9 +113,17 @@ namespace Jeuci.WeChatApp.Lottery.Server
             var serverPriceInfo = new ServerPriceInfo()
             {
                 ServiceName = serviceInfo.ServiceName,
-                ServerPrices = serviceList
+                ServerPrices = serviceList,
+                DescriptionList = GetDescByServiceList(serviceList),
             };
             return serverPriceInfo;
+
+        }
+
+        private IList<string> GetDescByServiceList(IList<ServerPrice> serviceList)
+        {
+            var serviceGroup = serviceList.GroupBy(p => p.AuthType).Select(p=>p.FirstOrDefault().Description);
+            return serviceGroup.ToList();
 
         }
     }

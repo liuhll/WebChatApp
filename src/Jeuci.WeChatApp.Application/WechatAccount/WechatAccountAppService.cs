@@ -18,8 +18,6 @@ namespace Jeuci.WeChatApp.WechatAccount
         private readonly IBindAccountProcessor _bindAccountProcessor;
         private readonly IPassowrdProcessor _passowrdProcesssor;
 
-
-
         public WechatAccountAppService(IWechatOAuth2Processor wechatOAuth2Processor,
             IBindAccountProcessor bindAccountProcessor, 
             IPassowrdProcessor passowrdProcesssor)

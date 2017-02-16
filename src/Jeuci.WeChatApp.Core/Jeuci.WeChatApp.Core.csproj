@@ -69,6 +69,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LitJson.0.7.0\lib\LitJson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -125,9 +129,11 @@
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
     <Compile Include="Common\Enums\EmailValidCodeType.cs" />
+    <Compile Include="Common\Enums\OrderType.cs" />
     <Compile Include="Common\Enums\ResultCode.cs" />
     <Compile Include="Common\Enums\Sex.cs" />
     <Compile Include="Common\Exceptions\ApiAuthorizeException.cs" />
+    <Compile Include="Common\Exceptions\OrderException.cs" />
     <Compile Include="Common\Exceptions\ReadEmailTempletException.cs" />
     <Compile Include="Common\Exceptions\SendEmailException.cs" />
     <Compile Include="Common\Extensions\StringExtensions.cs" />
@@ -159,6 +165,25 @@
     <Compile Include="Lottery\Server\ILotteryServer.cs" />
     <Compile Include="Lottery\Server\LotteryServer.cs" />
     <Compile Include="Lottery\Tools\CpTypeSIdMapTool.cs" />
+    <Compile Include="Pay\IOrderPolicy.cs" />
+    <Compile Include="Pay\IPurchaseService.cs" />
+    <Compile Include="Pay\Lib\HttpService.cs" />
+    <Compile Include="Pay\Lib\WxPayData.cs" />
+    <Compile Include="Pay\Lib\WxPayException.cs" />
+    <Compile Include="Pay\Models\CompleteServiceOrder.cs" />
+    <Compile Include="Pay\Models\PayOptions.cs" />
+    <Compile Include="Pay\Models\PayOrder.cs" />
+    <Compile Include="Pay\Models\ServiceOrder.cs" />
+    <Compile Include="Pay\Models\UpdateServiceOrder.cs" />
+    <Compile Include="Pay\Models\UserPayOrderInfo.cs" />
+    <Compile Include="Pay\Models\WxpayOptions.cs" />
+    <Compile Include="Pay\OrderPolicy.cs" />
+    <Compile Include="Pay\PurchaseService.cs" />
+    <Compile Include="Pay\Lib\WxPayConfig.cs" />
+    <Compile Include="Pay\Tool\IpAddressHelper.cs" />
+    <Compile Include="Pay\Tool\NonceHelper.cs" />
+    <Compile Include="Pay\Tool\OrderHelper.cs" />
+    <Compile Include="Repositories\IPurchaseServiceRepository.cs" />
     <Compile Include="Repositories\IServicePriceRepository.cs" />
     <Compile Include="Services\Email\DirectEmailService.cs" />
     <Compile Include="Services\Email\IDirectEmailService.cs" />

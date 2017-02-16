@@ -7,6 +7,8 @@ namespace Jeuci.WeChatApp.Lottery.Dtos
     [AutoMap(typeof(ServerPrice))]
     public class ServerPriceListDto
     {
+        public int Id { get; set; }
+
         public int ServiceId { get; set; }
 
         public decimal Price { get; set; }
