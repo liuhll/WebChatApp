@@ -2,6 +2,7 @@
 using Abp.AutoMapper;
 using Abp.Modules;
 using Jeuci.WeChatApp.Configs;
+using Jeuci.WeChatApp.Pay;
 using Jueci.WeChatApp.RestfulRequestTool;
 
 namespace Jeuci.WeChatApp
@@ -18,6 +19,15 @@ namespace Jeuci.WeChatApp
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+         
         }
+
+        public override void PostInitialize()
+        {
+            var orderManager = IocManager.IocContainer.Resolve<IOrderManager>();
+
+            orderManager.Start();
+        }
+
     }
 }

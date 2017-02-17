@@ -121,7 +121,7 @@ namespace Jeuci.WeChatApp.Api.Controllers
                           "<return_msg><![CDATA[" + result.Msg + "]]></return_msg>" +
                           "</xml>";
 
-                    LogHelper.Logger.Debug(string.Format("交易失败！订单号为{0},交易单号为：{1}",
+                    LogHelper.Logger.Debug(string.Format("{0}！订单号为{1},交易单号为：{2}",result.Msg,
                         payNotifyRepHandler.GetParameter("out_trade_no").Substring(10), payNotifyRepHandler.GetParameter("transaction_id")));
 
                 }

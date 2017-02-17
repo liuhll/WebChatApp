@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using Abp.AutoMapper;
 using Abp.Modules;
+using Jeuci.WeChatApp.Pay;
+using Jeuci.WeChatApp.Purchase;
 
 namespace Jeuci.WeChatApp
 {
@@ -11,5 +13,6 @@ namespace Jeuci.WeChatApp
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
+      
     }
 }

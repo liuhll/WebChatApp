@@ -10,5 +10,7 @@ namespace Jeuci.WeChatApp.Pay.Models
         public int State { get; set; }
 
         public DateTime CreateTime { get; set; }
+
+        public string PayAppID { get; set; }
     }
 }
