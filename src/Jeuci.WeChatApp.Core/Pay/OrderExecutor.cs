@@ -11,13 +11,12 @@ namespace Jeuci.WeChatApp.Pay
 {
     public class OrderExecutor : IOrderExecutor
     {
-        private readonly IRepository<UserPayOrderInfo, string> _userPayOrderRepository;
+       
         private readonly IPurchaseService _purchaseService;
         private readonly IOrderPolicy _orderPolicy;
 
-        public OrderExecutor(IRepository<UserPayOrderInfo, string> userPayOrderRepository, IPurchaseService purchaseService, IOrderPolicy orderPolicy)
+        public OrderExecutor(IPurchaseService purchaseService, IOrderPolicy orderPolicy)
         {
-            _userPayOrderRepository = userPayOrderRepository;
             _purchaseService = purchaseService;
             _orderPolicy = orderPolicy;
         }
@@ -25,9 +24,14 @@ namespace Jeuci.WeChatApp.Pay
         public bool UpdateServiceOrder()
         {
             //查询超过20分钟状态小于等于0的订单
-            var time = DateTime.Now.AddMinutes(-20);
-            var needQueryOrderList = _userPayOrderRepository.GetAllList(p => p.PayAppID == WxPayConfig.APPID && p.State <= 0 && p.CreateTime < time);
-            LogHelper.Logger.Debug("查询到未支付的订单有:"+needQueryOrderList.Count);
+            var needQueryOrderList = _purchaseService.GetNeedQueryOrderList(PayMode.MobileWeb);
+            LogHelper.Logger.Debug("查询到未支付的订单有:"+ needQueryOrderList.Count);
+
+            if (needQueryOrderList.Count <= 0)
+            {
+                LogHelper.Logger.Debug("当前没有未关闭的订单");
+                return true;
+            }
 
             int count1 = 0, count2 =0;
             foreach (var order in needQueryOrderList)

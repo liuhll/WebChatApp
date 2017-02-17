@@ -326,6 +326,11 @@ namespace Jeuci.WeChatApp.Pay
 
         }
 
+        public IList<UserPayOrderInfo> GetNeedQueryOrderList(PayMode mobileWeb)
+        {
+            return _purchaseServiceRepository.GetNeedQueryOrderList(mobileWeb);
+        }
+
         private string GetSignStr(string appId, string nonceStr, string url, string timestamp)
         {
             var dict = new SortedDictionary<string,string>();

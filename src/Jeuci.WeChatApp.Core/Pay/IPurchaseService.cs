@@ -1,4 +1,7 @@
-﻿using Abp.Dependency;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Abp.Dependency;
+using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Pay.Lib;
 using Jeuci.WeChatApp.Pay.Models;
 
@@ -19,5 +22,7 @@ namespace Jeuci.WeChatApp.Pay
         void FailServiceOrder(UpdateServiceOrder order);
 
         int ClientCompleteServiceOrder(CompleteServiceOrder mapTo);
+
+        IList<UserPayOrderInfo> GetNeedQueryOrderList(PayMode mmobileWeb);
     }
 }

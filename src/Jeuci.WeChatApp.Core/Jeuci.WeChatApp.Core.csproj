@@ -130,6 +130,7 @@
     <Compile Include="Common\Enums\EmailTemplet.cs" />
     <Compile Include="Common\Enums\EmailValidCodeType.cs" />
     <Compile Include="Common\Enums\OrderType.cs" />
+    <Compile Include="Common\Enums\PayMode.cs" />
     <Compile Include="Common\Enums\ResultCode.cs" />
     <Compile Include="Common\Enums\Sex.cs" />
     <Compile Include="Common\Exceptions\ApiAuthorizeException.cs" />

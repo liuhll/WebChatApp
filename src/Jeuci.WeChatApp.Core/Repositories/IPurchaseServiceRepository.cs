@@ -1,4 +1,6 @@
-﻿using Abp.Domain.Repositories;
+﻿using System.Collections.Generic;
+using Abp.Domain.Repositories;
+using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Pay.Models;
 
 namespace Jeuci.WeChatApp.Repositories
@@ -10,5 +12,6 @@ namespace Jeuci.WeChatApp.Repositories
         int CompleteServiceOrder(CompleteServiceOrder payOrder);
 
         int FailServiceOrder(UpdateServiceOrder order);
+        IList<UserPayOrderInfo> GetNeedQueryOrderList(PayMode mobileWeb);
     }
 }

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Abp.EntityFramework;
 using Abp.Logging;
+using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Lottery.Models;
 using Jeuci.WeChatApp.Pay.Models;
 using Jeuci.WeChatApp.Repositories;
@@ -134,6 +135,47 @@ namespace Jeuci.WeChatApp.EntityFramework.Repositories.Impl
                 }
             }
 
+        }
+
+        public IList<UserPayOrderInfo> GetNeedQueryOrderList(PayMode mobileWeb)
+        {
+            using (System.Data.Common.DbCommand cmd = Context.Database.Connection.CreateCommand())
+            {
+                try
+                {
+                    var orderList = new List<UserPayOrderInfo>();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "P_PAY_QueryUnclosedPayOrderInfos";
+                    cmd.Parameters.Add(new SqlParameter()
+                    {
+                        ParameterName = "@PayMode",
+                        Value = (int)mobileWeb
+                    });
+                    if (cmd.Connection.State != ConnectionState.Open)
+                        cmd.Connection.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var order = new UserPayOrderInfo();
+                            order.CreateTime = Convert.ToDateTime(reader["CreateTime"]);
+                            order.PayAppID = reader["PayAppID"].ToString();
+                            order.State = Convert.ToInt32(reader["State"]);
+                            order.UId = Convert.ToInt32(reader["UID"]);
+                            order.Id = reader["ID"].ToString();
+                            orderList.Add(order);
+                        }
+                    }
+
+                    return orderList;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Logger.Error(ex.Message);
+                    return null;
+                }
+            }
         }
     }
 }
