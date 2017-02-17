@@ -6,8 +6,7 @@
             vm.MsgInfo = $state.params;
 
             vm.backHome = function () {
-                var host = $window.location.origin;
-                var hosturl = host + "/purchase/#/caimeng?isNeedCallBack=false&openId=" + vm.MsgInfo.openId;
+                var hosturl = "http://www.camew.com/";
                 $window.location.href = hosturl;
             }
         }

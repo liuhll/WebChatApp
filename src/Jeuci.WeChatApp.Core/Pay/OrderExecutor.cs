@@ -1,11 +1,7 @@
-﻿using System;
-using System.Linq;
-using Abp.Domain.Repositories;
-using Abp.Logging;
+﻿using Abp.Logging;
 using Jeuci.WeChatApp.Common.Enums;
-using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Pay.Models;
-using Jeuci.WeChatApp.Wechat.Models.Account;
+
 
 namespace Jeuci.WeChatApp.Pay
 {

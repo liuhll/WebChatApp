@@ -11,9 +11,9 @@
             <div class="weui-cell__bd weui-cell_primary">
                 <label><input type="radio" class="weui-cells_radio" name="servicePriceRd" ng-model="vm.purchaseServiceInfo" ng-value="item"/>{{item.authDesc}}</label>
             </div>
-            <div class="weui-cell__ft">
-                <span class="weui-label" style="text-decoration: line-through; display: inline">{{item.beforeDiscountPrice | currency:"￥"}}</span> 
-                <span style="color: red; display: inline" class="weui-label">{{item.price | currency:"￥" }}</span>
+            <div class="weui-cell__ft service-price">
+                <span class="weui-label" style="text-decoration: line-through;">{{item.beforeDiscountPrice | currency:"￥"}}</span> 
+                <span style="color: red;" class="weui-label">{{item.price | currency:"￥" }}</span>
             </div>
         </div>
         <div class="weui-cell">

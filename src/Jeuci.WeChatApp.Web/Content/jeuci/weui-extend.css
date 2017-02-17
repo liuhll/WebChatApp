@@ -21,9 +21,23 @@
 .tips-list {
     color: #999999; 
     font-size: 12px;
+    line-height: 18px;
+    margin: 0 3px;
 }
 
 .lottery-service-list {
     color: #000000; 
     font-size: 14px;
+
+}
+
+.service-price {
+    margin-left: 16px;
+}
+
+.service-price span {
+    display: inline-block;
+    text-align: left;
+    width: 85px !important;
+    
 }

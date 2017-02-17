@@ -44,7 +44,7 @@ namespace Jeuci.WeChatApp.Wechat.Menu
 
             bg.button.Add(accountBtn);
 
-            var purchaseServiceBtn = new SubButton("购买授权");
+            var purchaseServiceBtn = new SubButton("购买软件");
             purchaseServiceBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "掌赢专家",
