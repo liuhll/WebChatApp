@@ -37,7 +37,7 @@ namespace Jueci.WeChatApp.RestfulRequestTool.RequestAbstractions.Impl
             var request = new Request(resource,method,client);
             if (string.IsNullOrEmpty(accessToken))
             {
-                LogHelper.Logger.Error("accessToken不允许为空");
+               // LogHelper.Logger.Error("accessToken不允许为空");
                 throw new RequestException("accessToken 不允许为空");
             }
             request.AddParameter(accessTokenName,accessToken);
