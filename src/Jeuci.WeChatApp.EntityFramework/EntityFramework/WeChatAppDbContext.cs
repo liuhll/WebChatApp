@@ -24,6 +24,8 @@ namespace Jeuci.WeChatApp.EntityFramework
 
         public virtual IDbSet<UserPayOrderInfo> UserPayOrderInfos { get; set; }
 
+        public virtual IDbSet<UserRecharge> UserRecharges { get; set; }
+
         //Example:
         //public virtual IDbSet<User> Users { get; set; }
 

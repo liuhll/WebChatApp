@@ -87,7 +87,7 @@ namespace Jeuci.WeChatApp.Purchase
                     UId = userInfo.Id,
                     Cost = payOrderInput.Cost,
                   //  GoodsInfo = payOrderInput.GoodsInfo,
-                    GoodsType = 1,
+                    GoodsType = payOrderInput.GoodType,
                     PayAppID = _wechatAuthentManager.AppId,
                     PayMode = 2,
                     PayType = 1,

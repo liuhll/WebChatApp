@@ -41,3 +41,46 @@
     width: 85px !important;
     
 }
+
+.recharge-container {
+    margin-top: 15px;
+}
+
+.recharge-list {
+        
+}
+
+.recharge-list li {
+    list-style-type: none;
+    float: left;
+    height: 30px;
+    width: 90px;
+    margin:3px 5px;
+    padding: 2px 2px 2px 8px;
+    font-family: 'MicrosoftYaHei';
+    font-weight: 600;
+    text-align: center;
+}
+
+.recharge-tips {
+    color: #999999; 
+    font-size: 16px;
+    line-height: 18px;
+    margin: 0 3px;
+}
+
+.recharge-input {
+    width: 40px !important;
+    
+}
+
+.recharge-li {
+    border: 1px #999999 solid;
+    color: #999999;
+ 
+}
+
+.recharge-selected {
+    border: 1px  #3232CD solid;
+    color: #3232CD
+}

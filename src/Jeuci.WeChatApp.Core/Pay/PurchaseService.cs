@@ -184,7 +184,7 @@ namespace Jeuci.WeChatApp.Pay
             else if (trade_state == "USERPAYING")//正在支付
             {
 
-                var result = _purchaseServiceRepository.FailServiceOrder(new UpdateServiceOrder()
+                var result = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
                 {
                     ID = out_trade_no,
                     PayExtendInfo = queryData.ToJson(),
@@ -205,7 +205,7 @@ namespace Jeuci.WeChatApp.Pay
                 //算作超时关闭订单
                 if (orderInfo != null && orderInfo.CreateTime.AddMinutes(20) < DateTime.Now)
                 {
-                    var result1 = _purchaseServiceRepository.FailServiceOrder(new UpdateServiceOrder()
+                    var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
                     {
                         ID = out_trade_no,
                         PayExtendInfo = queryData.ToJson(),
@@ -224,7 +224,7 @@ namespace Jeuci.WeChatApp.Pay
                 else
                 {
                     //继续等待，还不算结束
-                    var result1 = _purchaseServiceRepository.FailServiceOrder(new UpdateServiceOrder()
+                    var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
                     {
                         ID = out_trade_no,
                         PayExtendInfo = queryData.ToJson(),
@@ -241,7 +241,7 @@ namespace Jeuci.WeChatApp.Pay
             }
             else
             {
-                var result1 = _purchaseServiceRepository.FailServiceOrder(new UpdateServiceOrder()
+                var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
                 {
                     ID = out_trade_no,
                     PayExtendInfo = queryData.ToJson(),
@@ -266,7 +266,7 @@ namespace Jeuci.WeChatApp.Pay
         public void FailServiceOrder(UpdateServiceOrder order)
         {
             LogHelper.Logger.Info(JsonHelper.ToJson(order));
-            _purchaseServiceRepository.FailServiceOrder(order);
+            _purchaseServiceRepository.UpdateServiceOrder(order);
         }
 
         public int ClientCompleteServiceOrder(CompleteServiceOrder order)
@@ -292,7 +292,7 @@ namespace Jeuci.WeChatApp.Pay
             if (query == null)
             {
                 LogHelper.Logger.Error("没有查询到相关的订单信息");
-                _purchaseServiceRepository.FailServiceOrder(new UpdateServiceOrder()
+                _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
                 {
                     ID = orderId,
                     State = 3,

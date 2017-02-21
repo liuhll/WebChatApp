@@ -11,7 +11,8 @@ namespace Jeuci.WeChatApp.Repositories
 
         int CompleteServiceOrder(CompleteServiceOrder payOrder);
 
-        int FailServiceOrder(UpdateServiceOrder order);
+        int UpdateServiceOrder(UpdateServiceOrder order);
+
         IList<UserPayOrderInfo> GetNeedQueryOrderList(PayMode mobileWeb);
     }
 }

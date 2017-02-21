@@ -59,7 +59,14 @@ namespace Jeuci.WeChatApp.Pay.Models
 
         public string notify_url
         {
-            get { return WxPayConfig.NOTIFY_URL; }
+            get
+            {
+                if (WxPayConfig.RECHARGE_NAME.Equals(this.body))
+                {
+                    return WxPayConfig.NOTIFY_RECHARGE_URL;
+                }
+                return WxPayConfig.NOTIFY_URL;
+            }
         }
 
         public string trade_type {

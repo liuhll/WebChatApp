@@ -48,7 +48,7 @@
 	                })
             .state('unifiedOrder',
 	                {
-	                    url: '/unifiedorder/?orderId&sid&serviceName&prepayId&orderPrice&description&openId',
+	                    url: '/?orderId&sid&serviceName&prepayId&orderPrice&description&openId',
 	                    templateUrl: '/App/Wechat/views/purchase/unifiedOrder.cshtml',
                         params: {
                             orderId: "",
@@ -68,6 +68,15 @@
 	                        result: '',
 	                        msg: '',
                             openId:""
+	                    }
+	                })
+            .state('recharge',
+	                {
+	                    url: '/freelist?isNeedCallBack&openId',
+	                    templateUrl: '/App/Wechat/views/recharge/freelist.cshtml',
+	                    params: {
+	                        isNeedCallBack: true,
+	                        openId: ""
 	                    }
 	                })
         	;

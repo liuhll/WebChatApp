@@ -13,7 +13,9 @@ namespace Jeuci.WeChatApp.Purchase.Dtos
 
         public string GoodsName { get; set; }
 
-        public int GoodsId { get; set; }
+        public int? GoodsId { get; set; }
+
+        public int GoodType { get; set; }
 
     }
 }

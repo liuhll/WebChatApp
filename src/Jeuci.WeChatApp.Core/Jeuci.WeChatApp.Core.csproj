@@ -170,6 +170,7 @@
     <Compile Include="Pay\IOrderManager.cs" />
     <Compile Include="Pay\IOrderPolicy.cs" />
     <Compile Include="Pay\IPurchaseService.cs" />
+    <Compile Include="Pay\IRechargeService.cs" />
     <Compile Include="Pay\Lib\HttpService.cs" />
     <Compile Include="Pay\Lib\WxPayData.cs" />
     <Compile Include="Pay\Lib\WxPayException.cs" />
@@ -179,12 +180,14 @@
     <Compile Include="Pay\Models\ServiceOrder.cs" />
     <Compile Include="Pay\Models\UpdateServiceOrder.cs" />
     <Compile Include="Pay\Models\UserPayOrderInfo.cs" />
+    <Compile Include="Pay\Models\UserRecharge.cs" />
     <Compile Include="Pay\Models\WxpayOptions.cs" />
     <Compile Include="Pay\OrderExecutor.cs" />
     <Compile Include="Pay\OrderManager.cs" />
     <Compile Include="Pay\OrderPolicy.cs" />
     <Compile Include="Pay\PurchaseService.cs" />
     <Compile Include="Pay\Lib\WxPayConfig.cs" />
+    <Compile Include="Pay\RechargeService.cs" />
     <Compile Include="Pay\Tool\IpAddressHelper.cs" />
     <Compile Include="Pay\Tool\NonceHelper.cs" />
     <Compile Include="Pay\Tool\OrderHelper.cs" />

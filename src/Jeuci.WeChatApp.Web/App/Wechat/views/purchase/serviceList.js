@@ -27,8 +27,9 @@
                     vm.purchaseServiceInfo == undefined ||
                     vm.purchaseServiceInfo.purchaseServiceInfo === {}) {
                     alert("请选择您要购买的授权服务");
+                    return;
                 }
-
+                
                 //1. 生成商户订单
                 //2. $state
                 purchase.getUnifiedOrder({
@@ -38,7 +39,7 @@
                     description: vm.purchaseServiceInfo.description,
                     sid: vm.purchaseServiceInfo.id
                 }, {
-                    beforeSend: function() {
+                    beforesend: function() {
                         $.showLoading("正在生成订单，请稍等...");
                     },
                     complete: function() {

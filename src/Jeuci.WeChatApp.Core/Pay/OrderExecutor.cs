@@ -10,11 +10,14 @@ namespace Jeuci.WeChatApp.Pay
        
         private readonly IPurchaseService _purchaseService;
         private readonly IOrderPolicy _orderPolicy;
+        private readonly IRechargeService _rechargeService;
 
-        public OrderExecutor(IPurchaseService purchaseService, IOrderPolicy orderPolicy)
+        public OrderExecutor(IPurchaseService purchaseService, IOrderPolicy orderPolicy,
+            IRechargeService rechargeService)
         {
             _purchaseService = purchaseService;
             _orderPolicy = orderPolicy;
+            _rechargeService = rechargeService;
         }
 
         public bool UpdateServiceOrder()
@@ -50,12 +53,22 @@ namespace Jeuci.WeChatApp.Pay
                 }
                 else
                 {
-                    _purchaseService.CompleteServiceOrder(payData);
+                    if (order.GoodsType == 1)
+                    {
+                        string msg = string.Empty;
+                        _rechargeService.CompleteRechargeOrder(payData,out msg);
+                        LogHelper.Logger.Info(msg);
+                    }
+                    else
+                    {
+                        _purchaseService.CompleteServiceOrder(payData);
+                    }
+                   
                     count2++;
                 }
 
             }
-            LogHelper.Logger.Debug(string.Format("未查询到的订单有:{0},已查询到的订单有{1}",count1,count2));
+            LogHelper.Logger.Debug(string.Format("未查询到的订单有:{0},查询到并处理的订单有{1}",count1,count2));
             return true;
         }
     }

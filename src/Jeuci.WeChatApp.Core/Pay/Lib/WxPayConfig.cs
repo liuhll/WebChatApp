@@ -33,6 +33,10 @@ namespace Jeuci.WeChatApp.Pay
         */
         public const string NOTIFY_URL = "http://project.camew.com/api/Pay/PurchaseService";
 
+        public const string NOTIFY_RECHARGE_URL = "http://project.camew.com/api/Pay/RechargeService";
+
+        public const string RECHARGE_NAME = "代理商在线充值";
+
         //=======【商户系统后台机器IP】===================================== 
         /* 此参数可手动配置也可在程序中自动获取
         */

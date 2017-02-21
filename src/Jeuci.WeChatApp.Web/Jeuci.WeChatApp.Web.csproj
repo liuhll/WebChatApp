@@ -304,6 +304,7 @@
     <Content Include="App\Wechat\views\purchase\purchaseService.js" />
     <Content Include="App\Wechat\views\purchase\serviceList.js" />
     <Content Include="App\Wechat\views\purchase\unifiedOrder.js" />
+    <Content Include="App\Wechat\views\recharge\freelist.js" />
     <Content Include="Content\bootstrap-cosmo.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -456,6 +457,8 @@
     <Content Include="App\Wechat\views\purchase\serviceList.cshtml" />
     <Content Include="App\Wechat\views\purchase\unifiedOrder.cshtml" />
     <Content Include="App\Wechat\views\purchase\purchaseMsg.cshtml" />
+    <Content Include="App\Wechat\views\recharge\freelist.cshtml" />
+    <None Include="Properties\PublishProfiles\wechat.pubxml" />
     <None Include="Properties\PublishProfiles\WeChatApp-Staging.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1248,6 +1251,7 @@
     <Compile Include="Areas\Wechat\Controllers\AccountController.cs" />
     <Compile Include="Areas\Wechat\Controllers\PlanController.cs" />
     <Compile Include="Areas\Wechat\Controllers\PurchaseController.cs" />
+    <Compile Include="Areas\Wechat\Controllers\RechargeController.cs" />
     <Compile Include="Areas\Wechat\WechatAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WeChatAppControllerBase.cs" />
@@ -1282,6 +1286,7 @@
     <Folder Include="Areas\Wechat\Views\Home\" />
     <Folder Include="Areas\Wechat\Views\Plan\" />
     <Folder Include="Areas\Wechat\Views\Purchase\" />
+    <Folder Include="Areas\Wechat\Views\Recharge\" />
     <Folder Include="Areas\Wechat\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\AccountBind\" />

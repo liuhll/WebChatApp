@@ -1,17 +1,20 @@
 ﻿(function () {
-    angular.module('planApp').controller('planApp.views.unfiedOrder', ['$state','abp.services.app.purchase',
-        function ($state, purchase) {
+    angular.module('planApp').controller('planApp.views.unfiedOrder',
+        ['$state', 'abp.services.app.purchase', 'abp.services.app.recharge',
+        function ($state, purchase, recharge) {
             var vm = this;
             
             vm.serviceInfo = $state.params;
-            vm.purchase = function () {              
+            debugger;
+            vm.purchase = function (goodtype) {              
                 purchase.generatePayOrder({
                     id: vm.serviceInfo.orderId,
                     openId: vm.serviceInfo.openId,
                     cost: vm.serviceInfo.orderPrice,
                     goodsInfo: vm.serviceInfo.description,
                     goodsName: vm.serviceInfo.serviceName,
-                    goodsId: vm.serviceInfo.sid
+                    goodsId: vm.serviceInfo.sid,
+                    goodType:goodtype
                 }).success(function (result1) {
 
                     if (result1.code === 200) {
@@ -25,16 +28,28 @@
                                 signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
                                 paySign: result.paySign, // 支付签名
                                 success: function (res) {
-                                    // 支付成功后的回调函数                                                               
-                                    purchase.clientCompleteServiceOrder(result1.data)
-                                        .success(function (result2) {
-                                            $state.go("purchaseMsg",
-                                                 {
-                                                     code: result2.msg,
-                                                     msg: result2.data,
-                                                     openId: vm.serviceInfo.openId
-                                                 });
-                                        });                                    
+                                    // 支付成功后的回调函数     
+                                    if (goodtype === 1) {
+                                      recharge.clientCompleteServiceOrder(result1.data)
+                                      .success(function (result2) {
+                                          $state.go("purchaseMsg",
+                                               {
+                                                   code: result2.msg,
+                                                   msg: result2.data,
+                                                   openId: vm.serviceInfo.openId
+                                               });
+                                      });
+                                    } else {
+                                      purchase.clientCompleteServiceOrder(result1.data)
+                                      .success(function (result2) {
+                                          $state.go("purchaseMsg",
+                                               {
+                                                   code: result2.msg,
+                                                   msg: result2.data,
+                                                   openId: vm.serviceInfo.openId
+                                               });
+                                      });
+                                    }                                                                                                                                                             
                                 },
                                 fail: function (res) {
                                     $state.go("purchaseMsg",

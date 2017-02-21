@@ -25,7 +25,8 @@
             </div>
 
             <div class="weui-form-preview__ft">
-                <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" ng-click="vm.purchase()">立即购买</a>
+                <a ng-if="vm.serviceInfo.sid != '' " class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" ng-click="vm.purchase(1)">立即购买</a>
+                <a ng-if="vm.serviceInfo.sid == '' " class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" ng-click="vm.purchase(0)">立即充值</a>
             </div>
     
         </div>

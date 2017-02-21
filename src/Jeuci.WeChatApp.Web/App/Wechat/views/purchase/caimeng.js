@@ -3,7 +3,6 @@
         "Page", "Tips", "abp.services.app.wechatAuth", "abp.services.app.wechatAccount", "abp.services.app.lottery", function ($location,$state,$window, page, tips, wechatAuthService, wechatAccount, lottery) {
             var vm = this;
             page.setTitle("购买服务");
-            debugger;
             vm.isNeedCallBack = BoolHelper.parseBool($location.search().isNeedCallBack);
             vm.openId = $location.search().openId;
  

@@ -42,6 +42,13 @@ namespace Jeuci.WeChatApp.Wechat.Menu
                 url = string.Format("{0}/wechat/account/#/modifypwd?isNeedCallBack", _webchatServiceAddress)
             });
 
+            accountBtn.sub_button.Add(new SingleViewButton()
+            {
+                name = "代理充值",
+                url = string.Format("{0}/wechat/recharge/#/freelist?isNeedCallBack",_webchatServiceAddress)
+            });
+
+
             bg.button.Add(accountBtn);
 
             var purchaseServiceBtn = new SubButton("购买软件");

@@ -10,7 +10,7 @@
 
         public int GoodsType { get; set; }
 
-        public int GoodsID { get; set; }
+        public int? GoodsID { get; set; }
 
         public string GoodsName { get; set; }
 

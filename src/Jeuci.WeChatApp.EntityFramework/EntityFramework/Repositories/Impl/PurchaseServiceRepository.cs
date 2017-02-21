@@ -94,7 +94,7 @@ namespace Jeuci.WeChatApp.EntityFramework.Repositories.Impl
 
         }
 
-        public int FailServiceOrder(UpdateServiceOrder order)
+        public int UpdateServiceOrder(UpdateServiceOrder order)
         {
             var sqlParamsList = new List<SqlParameter>();
             var properties = order.GetType().GetProperties();

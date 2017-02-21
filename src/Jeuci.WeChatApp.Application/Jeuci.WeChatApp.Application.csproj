@@ -128,6 +128,8 @@
     <Compile Include="Purchase\Dtos\WxpayOptionsOutput.cs" />
     <Compile Include="Purchase\IPurchaseAppService.cs" />
     <Compile Include="Purchase\PurchaseAppService.cs" />
+    <Compile Include="Recharge\IRechargeAppService.cs" />
+    <Compile Include="Recharge\RechargeAppService.cs" />
     <Compile Include="WechatAccount\Dtos\BindAccountInput.cs" />
     <Compile Include="WechatAccount\Dtos\JeuciAccountOutput.cs" />
     <Compile Include="WechatAccount\Dtos\ModifyPasswordInput.cs" />

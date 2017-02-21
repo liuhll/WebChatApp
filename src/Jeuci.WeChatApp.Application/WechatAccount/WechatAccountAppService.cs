@@ -4,6 +4,7 @@ using Abp.AutoMapper;
 using Abp.Logging;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
+using Jeuci.WeChatApp.Common.Tools;
 using Jeuci.WeChatApp.Wechat.Accounts;
 using Jeuci.WeChatApp.Wechat.Authentication;
 using Jeuci.WeChatApp.Wechat.Models.Account;
@@ -32,7 +33,8 @@ namespace Jeuci.WeChatApp.WechatAccount
         {
             try
             {
-                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId);               
+                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId); 
+                LogHelper.Logger.Debug(jeuciAccount.ToJson());              
                 return new ResultMessage<JeuciAccountOutput>(jeuciAccount.MapTo<JeuciAccountOutput>());
             }
             catch (Exception e)
