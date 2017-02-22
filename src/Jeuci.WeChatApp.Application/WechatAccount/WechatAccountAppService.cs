@@ -33,8 +33,7 @@ namespace Jeuci.WeChatApp.WechatAccount
         {
             try
             {
-                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId); 
-                LogHelper.Logger.Debug(jeuciAccount.ToJson());              
+                var jeuciAccount = _wechatOAuth2Processor.GetWechatUserInfo(openId);             
                 return new ResultMessage<JeuciAccountOutput>(jeuciAccount.MapTo<JeuciAccountOutput>());
             }
             catch (Exception e)

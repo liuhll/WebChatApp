@@ -8,6 +8,7 @@ using Jeuci.WeChatApp.Wechat.Models.Message;
 using Senparc.Weixin.MP.Entities;
 using Jeuci.WeChatApp.Common.Extensions;
 using Jeuci.WeChatApp.Common.Tools;
+using Jeuci.WeChatApp.Configs;
 using Jeuci.WeChatApp.Lottery.Server;
 using Senparc.Weixin.MP;
 
@@ -40,6 +41,11 @@ namespace Jeuci.WeChatApp.Wechat.Message
                     var requestMsgText = requestMessage as RequestMessageText;
                     responseMessage = WechatTextMsgHandler(requestMsgText);
                     break;
+                //响应事件    
+                case RequestMsgType.Event:
+                    var request = requestMessage as RequestMessageEventBase;
+                    responseMessage = WechatEventMsgHandler(request);
+                    break;
                 default:
                     LogHelper.Logger.Error("该消息并非文字类型消息,请求内容为:"+ requestMessage.ToJson());
                     throw new Exception("暂不支持其他类型的消息处理");
@@ -48,6 +54,52 @@ namespace Jeuci.WeChatApp.Wechat.Message
             return responseMessage;
 
 
+        }
+
+        private ResponseMessageText WechatEventMsgHandler(RequestMessageEventBase request)
+        {
+            ResponseMessageText responseMessage = null;
+            switch (request.Event)
+            {
+                case Event.VIEW:
+                  //  var viewRequest = request as RequestMessageEvent_View;
+                    LogHelper.Logger.Debug("点击菜单跳转链接时的事件推送");
+                    responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(request);
+                    responseMessage.Content = "正在获取您的账号信息,请稍等...";
+                    break;
+                case Event.subscribe:
+                    responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(request);
+                    var msgInfo = _wechatMsgRepository.FirstOrDefault(p => p.KeyWord == "subscribe");
+                    if (msgInfo !=null)
+                    {
+                        responseMessage.Content = msgInfo.ResponseMsg;
+                    }
+                    else
+                    {
+                        responseMessage.Content = "欢迎关注彩盟网";
+                    }
+                    break;
+                case Event.CLICK:
+                    var request_click = request as RequestMessageEvent_Click;
+                    responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(request_click);
+                    var respMsg = "欢迎关注彩盟网，我们为您提供了最准确，最齐全的彩票分析计划";
+                    if (request_click.EventKey == WeChatConfig.MENU_SUB_CLICK_HELP)
+                    {
+                        var msgInfo1 = _wechatMsgRepository.FirstOrDefault(p => p.KeyWord == "help");
+                        if (msgInfo1 != null)
+                        {
+                            respMsg = msgInfo1.ResponseMsg;
+                        }
+                    }
+                    responseMessage.Content = respMsg;
+                    break;
+                default:
+                    responseMessage = ResponseMessageBase.CreateFromRequestMessage<ResponseMessageText>(request);
+                    responseMessage.Content = _wechatMsgRepository.FirstOrDefault(p => p.KeyWord == "default").ResponseMsg;
+                    break;
+
+            }
+            return responseMessage;
         }
 
         private ResponseMessageText WechatTextMsgHandler(RequestMessageText requestMessage)

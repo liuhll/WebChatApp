@@ -151,6 +151,7 @@
     <Compile Include="Common\Tools\RandomHelper.cs" />
     <Compile Include="Common\Tools\TencentCryptography.cs" />
     <Compile Include="Configs\ModelMapperConfiguration.cs" />
+    <Compile Include="Configs\WeChatConfig.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\DirectEmailService.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\IDirectEmailService.cs" />
     <Compile Include="InfrastructureServices\DirectEmail\Models\SingleSendMailModel.cs" />

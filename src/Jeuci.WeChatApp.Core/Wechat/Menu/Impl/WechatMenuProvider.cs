@@ -2,6 +2,7 @@
 using System.IO;
 using Abp.Json;
 using Jeuci.WeChatApp.Common.Tools;
+using Jeuci.WeChatApp.Configs;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Senparc.Weixin.MP.Entities.Menu;
@@ -47,7 +48,7 @@ namespace Jeuci.WeChatApp.Wechat.Menu
                 name = "代理充值",
                 url = string.Format("{0}/wechat/recharge/#/freelist?isNeedCallBack",_webchatServiceAddress)
             });
-
+         
 
             bg.button.Add(accountBtn);
 
@@ -59,11 +60,22 @@ namespace Jeuci.WeChatApp.Wechat.Menu
             });
             bg.button.Add(purchaseServiceBtn);
 
-            bg.button.Add(new SingleViewButton()
+            var addedServiceBtn = new SubButton("更多服务");
+
+            addedServiceBtn.sub_button.Add(new SingleViewButton()
             {
                 name = "免费计划",
                 url = string.Format("{0}/wechat/plan/#/free", _webchatServiceAddress)
-            });   
+            });
+
+            addedServiceBtn.sub_button.Add(new SingleClickButton()
+            {
+                name = "帮助",
+                key = WeChatConfig.MENU_SUB_CLICK_HELP,
+                type = "click"
+            });
+            bg.button.Add(addedServiceBtn);
+              
             return bg;
         }
     }

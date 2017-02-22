@@ -74,7 +74,7 @@ namespace Jeuci.WeChatApp.Wechat.Authentication
         {
             CacheHelper.SetCache("State",state);           
             string wxAuthorizeUrl = OAuthApi.GetAuthorizeUrl(_appid, redirectUrl, state, oAuthScope);
-            LogHelper.Logger.Info(string.Format("要回调的地址为：{0}获取到微信授权服务器的地址为：{1}",redirectUrl,wxAuthorizeUrl));
+            LogHelper.Logger.Debug(string.Format("要回调的地址为：{0}获取到微信授权服务器的地址为：{1}",redirectUrl,wxAuthorizeUrl));
             return wxAuthorizeUrl;
         }
 
