@@ -27,7 +27,7 @@
                 </li>
                 <li ng-class="{'recharge-li':!vm.selectOtherItem,'recharge-selected':vm.selectOtherItem}"  ng-click="vm.selectOther()">
                     其他:
-                    <input type="text" class="weui-input recharge-input"  ng-change="vm.inputRecharge()" ng-model="vm.inputRechargeValue"/>
+                    <input type="number" class="weui-input recharge-input"  ng-change="vm.inputRecharge()" ng-model="vm.inputRechargeValue"/>
                 </li>
             </ul>
             <div style="clear: both;"></div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <a href="javascript:;" class="weui-btn weui-btn_primary" ng-click="vm.purchase()">下一步</a>
+            <a href="javascript:;" class="weui-btn weui-btn_primary next-step" ng-click="vm.purchase()">下一步</a>
         </div>
         </div>
     </div>

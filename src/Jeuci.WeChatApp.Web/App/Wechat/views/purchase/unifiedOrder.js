@@ -29,7 +29,7 @@
                                 paySign: result.paySign, // 支付签名
                                 success: function (res) {
                                     // 支付成功后的回调函数     
-                                    if (goodtype === 1) {
+                                    if (goodtype === 0) {
                                       recharge.clientCompleteServiceOrder(result1.data)
                                       .success(function (result2) {
                                           $state.go("purchaseMsg",

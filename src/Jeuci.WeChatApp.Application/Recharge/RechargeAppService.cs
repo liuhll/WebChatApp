@@ -39,24 +39,37 @@ namespace Jeuci.WeChatApp.Recharge
 
         public ResultMessage<ServiceInfoOutput> GetUnifiedOrder(string openId,double fee)
         {
-            var result = _purchaseService.UnifiedOrderResult(new ServiceOrder()
+            try
             {
-                body = WxPayConfig.RECHARGE_NAME,
-                openid = openId,
-                total_fee = Convert.ToInt32(fee * 100),
-            });
+                if (fee % 100 != 0)
+                {
+                    return new ResultMessage<ServiceInfoOutput>(ResultCode.Fail,"您要充值的金额必须是100的整数");
+                }
 
-            var data = new ServiceInfoOutput()
+                var result = _purchaseService.UnifiedOrderResult(new ServiceOrder()
+                {
+                    body = WxPayConfig.RECHARGE_NAME,
+                    openid = openId,
+                    total_fee = Convert.ToInt32(fee * 100),
+                });
+
+                var data = new ServiceInfoOutput()
+                {
+                    OrderId = result.GetValue("orderid").ToString(),
+                    ServiceName = WxPayConfig.RECHARGE_NAME,
+                    OpenId = openId,
+                    OrderPrice = (decimal)fee,
+                    PrepayId = result.GetValue("prepay_id").ToString(),
+                    Description = "代理商在线充值服务",
+                    Sid = null,
+                };
+                return new ResultMessage<ServiceInfoOutput>(data);
+            }
+            catch (Exception e)
             {
-                OrderId = result.GetValue("orderid").ToString(),
-                ServiceName = WxPayConfig.RECHARGE_NAME,
-                OpenId = openId,
-                OrderPrice = (decimal)fee,
-                PrepayId = result.GetValue("prepay_id").ToString(),
-                Description = "代理商在线充值服务",
-                Sid = null,
-            };
-            return new ResultMessage<ServiceInfoOutput>(data);
+                LogHelper.Logger.Error(e.Message);
+                return new ResultMessage<ServiceInfoOutput>(ResultCode.Fail,"生成订单失败，请重试");
+            }
         }
 
         public ResultMessage<string> CompleteRechargeOrder(WxPayData payData)
@@ -67,7 +80,7 @@ namespace Jeuci.WeChatApp.Recharge
 
                 if (_rechargeService.CompleteRechargeOrder(payData, out msg))
                 {
-                    return new ResultMessage<string>(msg,"ok");
+                    return new ResultMessage<string>(msg, "Success");
                 }
                 else
                 {
@@ -92,13 +105,13 @@ namespace Jeuci.WeChatApp.Recharge
             {
                 if (result)
                 {
-                    return new ResultMessage<string>(msg,"OK");
+                    return new ResultMessage<string>(msg, "Success");
                 }
-                return new ResultMessage<string>(ResultCode.Fail,"fail",msg);
+                return new ResultMessage<string>(ResultCode.Fail, "FAIL", msg);
             }
             catch (Exception e)
             {
-                return new ResultMessage<string>(ResultCode.Fail, "fail", e.Message);
+                return new ResultMessage<string>(ResultCode.Fail, "FAIL", e.Message);
             }
         }
     }

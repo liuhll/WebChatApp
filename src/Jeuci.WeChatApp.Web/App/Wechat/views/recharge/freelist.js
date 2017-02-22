@@ -61,6 +61,10 @@
                     alert("请确认你要充值的金额");
                     return;
                 }
+                if (vm.rechargeAcount % 100 !==0) {
+                    alert("您要充值的金额必须是100的整数");
+                    return;
+                }
                 recharge.getUnifiedOrder(vm.openId, vm.rechargeAcount,
                 {
                     beforesend: function() {
@@ -71,12 +75,13 @@
                     }
                 }).success(function (result) {
                     if (result.code === 200) {
-                        debugger;
                         $state.go("unifiedOrder", result.data);
                     } else {
                         alert(result.msg);
                     }
-                });
+                }).error(function (result) {
+                    alert("订单生成失败，请稍后重试!");
+                });;
             }
         }
     ]);

@@ -41,7 +41,10 @@ namespace Jeuci.WeChatApp.Pay
         {
             return ConfigHelper.GetValuesByKey("RechargeFreeList").Split(',').Select(p=>Convert.ToInt32(p)).ToList();
         }
-
+        /**
+         *状态 2 为支付成功， =3 位支付失败
+         * 
+        **/
         [UnitOfWork]
         public bool CompleteRechargeOrder(WxPayData queryData,out string msg)
         {
@@ -56,20 +59,27 @@ namespace Jeuci.WeChatApp.Pay
                 transaction_id = queryData.GetValue("transaction_id").ToString();
 
             var orderInfo = _userPayOrdeRepository.FirstOrDefault(p => p.Id == out_trade_no);
+            orderInfo.UpdateTime = DateTime.Now;
             if (trade_state == "SUCCESS")//交易成功
             {
                 try
                 {
                     var userInfo = _userRepository.Get(orderInfo.UId);
                     var fee = Convert.ToDecimal(queryData.GetValue("total_fee"))/100;
-                    _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
-                    {
-                        ID = out_trade_no,
-                        PayExtendInfo = queryData.ToJson(),
-                        PayState = trade_state,
-                        PayOrderID = transaction_id,
-                        State = 2
-                    });
+                    //_purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
+                    //{
+                    //    ID = out_trade_no,
+                    //    PayExtendInfo = queryData.ToJson(),
+                    //    PayState = trade_state,
+                    //    PayOrderID = transaction_id,
+                    //    State = 2
+                    //});
+
+                    orderInfo.PayExtendInfo = queryData.ToJson();
+                    orderInfo.PayState = trade_state;
+                    orderInfo.PayOrderID = transaction_id;
+                    orderInfo.State = 2;
+                    _userPayOrdeRepository.Update(orderInfo);
 
                     _userRechargeRepository.Insert(new UserRecharge()
                     {
@@ -95,19 +105,21 @@ namespace Jeuci.WeChatApp.Pay
             else if (trade_state == "USERPAYING")//正在支付
             {
 
-                var result = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
-                {
-                    ID = out_trade_no,
-                    PayExtendInfo = queryData.ToJson(),
-                    PayState = trade_state,
-                    PayOrderID = transaction_id,
-                    State = null
-                });
+                //var result = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
+                //{
+                //    ID = out_trade_no,
+                //    PayExtendInfo = queryData.ToJson(),
+                //    PayState = trade_state,
+                //    PayOrderID = transaction_id,
+                //    State = null
+                //});
 
-                if (result != 0)
-                {
-                    LogHelper.Logger.Error("更新订单失败");
-                }
+                orderInfo.PayExtendInfo = queryData.ToJson();
+                orderInfo.PayState = trade_state;
+                orderInfo.PayOrderID = transaction_id;
+                orderInfo.State = null;
+                _userPayOrdeRepository.Update(orderInfo);
+
                 msg = "充值失败, 订单正在支付中";
                 return false;
             }
@@ -116,19 +128,21 @@ namespace Jeuci.WeChatApp.Pay
                 //算作超时关闭订单
                 if (orderInfo != null && orderInfo.CreateTime.AddMinutes(20) < DateTime.Now)
                 {
-                    var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
-                    {
-                        ID = out_trade_no,
-                        PayExtendInfo = queryData.ToJson(),
-                        PayState = trade_state,
-                        PayOrderID = transaction_id,
-                        State = 3
-                    });
+                    //var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
+                    //{
+                    //    ID = out_trade_no,
+                    //    PayExtendInfo = queryData.ToJson(),
+                    //    PayState = trade_state,
+                    //    PayOrderID = transaction_id,
+                    //    State = 3
+                    //});
 
-                    if (result1 != 0)
-                    {
-                        LogHelper.Logger.Error("更新订单失败");
-                    }
+                    orderInfo.PayExtendInfo = queryData.ToJson();
+                    orderInfo.PayState = trade_state;
+                    orderInfo.PayOrderID = transaction_id;
+                    orderInfo.State = 3;
+                    _userPayOrdeRepository.Update(orderInfo);
+
                     LogHelper.Logger.Debug("超时关闭订单");
                     msg = "支付超时，订单被关闭";
                     return false;
@@ -136,14 +150,20 @@ namespace Jeuci.WeChatApp.Pay
                 else
                 {
                     //继续等待，还不算结束
-                    var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
-                    {
-                        ID = out_trade_no,
-                        PayExtendInfo = queryData.ToJson(),
-                        PayState = trade_state,
-                        PayOrderID = transaction_id,
-                        State = null
-                    });
+                    //var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
+                    //{
+                    //    ID = out_trade_no,
+                    //    PayExtendInfo = queryData.ToJson(),
+                    //    PayState = trade_state,
+                    //    PayOrderID = transaction_id,
+                    //    State = null
+                    //});
+
+                    orderInfo.PayExtendInfo = queryData.ToJson();
+                    orderInfo.PayState = trade_state;
+                    orderInfo.PayOrderID = transaction_id;
+                    orderInfo.State = null;
+                    _userPayOrdeRepository.Update(orderInfo);
                     msg = "订单尚未支付";
                     return false;
 
@@ -151,14 +171,21 @@ namespace Jeuci.WeChatApp.Pay
             }
             else
             {
-                var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
-                {
-                    ID = out_trade_no,
-                    PayExtendInfo = queryData.ToJson(),
-                    PayState = trade_state,
-                    PayOrderID = transaction_id,
-                    State = 3
-                });
+                //var result1 = _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
+                //{
+                //    ID = out_trade_no,
+                //    PayExtendInfo = queryData.ToJson(),
+                //    PayState = trade_state,
+                //    PayOrderID = transaction_id,
+                //    State = 3
+                //});
+
+                orderInfo.PayExtendInfo = queryData.ToJson();
+                orderInfo.PayState = trade_state;
+                orderInfo.PayOrderID = transaction_id;
+                orderInfo.State = 3;
+                orderInfo.UpdateTime = DateTime.Now;
+                _userPayOrdeRepository.Update(orderInfo);
                 msg = "支付失败";
                 return false;
             }
@@ -189,12 +216,11 @@ namespace Jeuci.WeChatApp.Pay
             if (query == null)
             {
                 LogHelper.Logger.Error("没有查询到相关的订单信息");
-                _purchaseServiceRepository.UpdateServiceOrder(new UpdateServiceOrder()
-                {
-                    ID = orderId,
-                    State = 3,
-                    PayState = "FAIL",
-                });
+
+                orderInfo.State = 3;
+                orderInfo.PayState = "FAIL";
+                orderInfo.UpdateTime = DateTime.Now;
+                _userPayOrdeRepository.Update(orderInfo);
                 msg = "没有查询到相关的订单信息";
                 return false;
             }
