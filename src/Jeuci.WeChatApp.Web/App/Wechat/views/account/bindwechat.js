@@ -16,7 +16,7 @@
         vm.confirm = function () {
             if ($scope.userForm.$valid) {
                 var userInfo = {};
-                userInfo["account"] = $scope.user.account;
+                userInfo["account"] = $scope.user.account.toLocaleLowerCase();
                 userInfo["password"] = $scope.user.password;
                 userInfo["openId"] = vm.openId;
                 userInfo.password = encryptPassword(userInfo.account,userInfo.password);

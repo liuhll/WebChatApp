@@ -36,7 +36,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
                     ? _userInfo.UserName
                     : _userInfo.Mobile;
 
-                return m_password.Equals(EncryptionHelper.EncryptSHA256(acccountName + _userInfo.Password));
+                return m_password.Equals(EncryptionHelper.EncryptSHA256(acccountName.ToLower() + _userInfo.Password));
             }
         }
 
@@ -93,7 +93,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
         public UserInfo UserInfo {
             get
             {
-                if (_userInfo == null) throw new Exception("获取用户信息失败");
+                if (_userInfo == null) return null;
                 if (AccountOperateType !=AccountOperateType.ObtainAccount
                     && AccountOperateType != AccountOperateType.ModifyPassword
                     && AccountOperateType != AccountOperateType.RetrievePwd
