@@ -124,7 +124,7 @@ namespace Jeuci.WeChatApp.Pay
 
             var encryStr = data.MakeSign();
 
-            LogHelper.Logger.Info("支付API接口加密后的串为:" + encryStr);
+           // LogHelper.Logger.Info("支付API接口加密后的串为:" + encryStr);
 
             return new PayOptions()
             {
@@ -140,7 +140,7 @@ namespace Jeuci.WeChatApp.Pay
             var orderInfo = _userPayOrdeRepository.FirstOrDefault(p => p.Id == payOrder.ID);
             if (orderInfo != null)
             {
-                if (orderInfo.State == 0)
+                if (orderInfo.State <= 1)
                 {
                     msg = "Success";
                     return true;

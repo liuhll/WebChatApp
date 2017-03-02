@@ -7,5 +7,6 @@ namespace Jeuci.WeChatApp.Pay
     public interface IOrderPolicy : ITransientDependency
     {
         WxPayData Orderquery(string orderId, OrderType type);
+        AlipayData AliOrderQuery(string id, OrderType outTradeNo);
     }
 }

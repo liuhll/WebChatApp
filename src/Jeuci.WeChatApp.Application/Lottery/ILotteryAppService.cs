@@ -17,5 +17,7 @@ namespace Jeuci.WeChatApp.Lottery
         ResultMessage<IList<PlanInfo>> PlanList(int sid);
 
         ResultMessage<ServerInfoDto> ServerPriceList(int sid, string openId);
+
+        ResultMessage<ServerInfoDto> ServerPriceListByUid(int sid, int uid);
     }
 }

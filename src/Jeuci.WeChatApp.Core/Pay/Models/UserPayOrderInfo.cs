@@ -22,5 +22,9 @@ namespace Jeuci.WeChatApp.Pay.Models
         public string PayOrderID { get; set; }
 
         public DateTime? UpdateTime { get; set; }
+
+        public decimal Cost { get; set; }
+
+        public int PayType { get; set; }
     }
 }

@@ -112,6 +112,7 @@ namespace Jeuci.WeChatApp.Lottery.Server
             var serviceInfo = _serviceRepository.FirstOrDefault(p => p.Id == sid);
             var serverPriceInfo = new ServerPriceInfo()
             {
+                UserName = !string.IsNullOrEmpty(userInfo.UserName) ? userInfo.UserName : userInfo.Mobile,
                 ServiceName = serviceInfo.ServiceName,
                 ServerPrices = serviceList,
                 DescriptionList = GetDescByServiceList(serviceList),
@@ -125,6 +126,26 @@ namespace Jeuci.WeChatApp.Lottery.Server
             var serviceGroup = serviceList.GroupBy(p => p.AuthType).Select(p=>p.FirstOrDefault().Description);
             return serviceGroup.ToList();
 
+        }
+
+        public ServerPriceInfo GetServerPriceListByUid(int sid, int uid)
+        {
+            var userInfo = _userRepository.FirstOrDefault(p => p.Id == uid);
+            if (userInfo == null)
+            {
+                LogHelper.Logger.Error("获取用户账号信息失败，系统不存在该用户");
+                throw new Exception("不存在的用户");
+            }
+            var serviceList = _servicePriceRepository.GetServerPrices(sid, userInfo.Id);
+            var serviceInfo = _serviceRepository.FirstOrDefault(p => p.Id == sid);
+            var serverPriceInfo = new ServerPriceInfo()
+            {
+                UserName = !string.IsNullOrEmpty(userInfo.UserName) ? userInfo.UserName : userInfo.Mobile,
+                ServiceName = serviceInfo.ServiceName,
+                ServerPrices = serviceList,
+                DescriptionList = GetDescByServiceList(serviceList),
+            };
+            return serverPriceInfo;
         }
     }
 }

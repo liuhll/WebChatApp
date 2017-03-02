@@ -164,6 +164,7 @@ namespace Jeuci.WeChatApp.EntityFramework.Repositories.Impl
                             order.State = Convert.ToInt32(reader["State"]);
                             order.UId = Convert.ToInt32(reader["UID"]);
                             order.Id = reader["ID"].ToString();
+                            order.PayType = Convert.ToInt32(reader["PayType"]);
                             orderList.Add(order);
                         }
                     }

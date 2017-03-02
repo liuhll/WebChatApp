@@ -17,9 +17,10 @@ namespace Jeuci.WeChatApp.Pay.Tool
 
        public static string GenerateNewId()
        {
-            var ran = new Random();
-            return string.Format("{0}{1}",DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(999999));
-        }
+            var nowTime = DateTime.Now;
+            var orderId = nowTime.ToString("yyyyMMdd") + (nowTime.Hour * 3600 + nowTime.Minute * 60 + nowTime.Second).ToString("D5") + GenerateRandomNumber(7);
+           return orderId;
+       }
 
         private static char[] constant = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 

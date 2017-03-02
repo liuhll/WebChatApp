@@ -19,7 +19,7 @@ namespace Jeuci.WeChatApp.Wechat.Models.Account
 
         public string NickName { get; set; }
 
-        public Sex? Sex { get; set; }
+        public bool? Sex { get; set; }
 
         public decimal Fund { get; set; }
 

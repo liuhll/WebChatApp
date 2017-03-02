@@ -49,6 +49,21 @@ namespace Jeuci.WeChatApp.Lottery
 
         }
 
+        public ResultMessage<ServerInfoDto> ServerPriceListByUid(int sid, int uid)
+        {
+            string msg = "没有获取到可授权的服务";
+            try
+            {
+                var result = _lotteryServer.GetServerPriceListByUid(sid, uid);
+                return result == null || result.ServerPrices.Count == 0 ? new ResultMessage<ServerInfoDto>(ResultCode.Fail, msg)
+                    : new ResultMessage<ServerInfoDto>(result.MapTo<ServerInfoDto>());
+            }
+            catch (Exception e)
+            {
+                return new ResultMessage<ServerInfoDto>(ResultCode.Fail, e.Message);
+            }
+        }
+
         public ResultMessage<ServerInfoDto> ServerPriceList(int sid, string openId)
         {
             string msg = "没有获取到可授权的服务"; 
@@ -62,8 +77,7 @@ namespace Jeuci.WeChatApp.Lottery
             {
                 return new ResultMessage<ServerInfoDto>(ResultCode.Fail, e.Message);
             }
-            
-            
+                        
         }
     }
 }

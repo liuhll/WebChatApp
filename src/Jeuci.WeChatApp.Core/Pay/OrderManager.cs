@@ -18,7 +18,7 @@ namespace Jeuci.WeChatApp.Pay
         public OrderManager(IOrderExecutor orderExecutor)
         {
             _orderExecutor = orderExecutor;
-            timer = new Timer(1000 * 100);
+            timer = new Timer(1000 * 50);
            
         }
 

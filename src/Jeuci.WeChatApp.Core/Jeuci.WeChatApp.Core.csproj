@@ -50,6 +50,9 @@
     <Reference Include="aliyun-net-sdk-dm">
       <HintPath>..\ThirdParty.Lib\aliyun-net-sdk-dm.dll</HintPath>
     </Reference>
+    <Reference Include="AopSdk">
+      <HintPath>..\ThirdParty.Lib\AopSdk.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -129,6 +132,7 @@
     <Compile Include="Common\Enums\EmailBodyType.cs" />
     <Compile Include="Common\Enums\EmailTemplet.cs" />
     <Compile Include="Common\Enums\EmailValidCodeType.cs" />
+    <Compile Include="Common\Enums\GoodType.cs" />
     <Compile Include="Common\Enums\OrderType.cs" />
     <Compile Include="Common\Enums\PayMode.cs" />
     <Compile Include="Common\Enums\ResultCode.cs" />
@@ -167,14 +171,22 @@
     <Compile Include="Lottery\Server\ILotteryServer.cs" />
     <Compile Include="Lottery\Server\LotteryServer.cs" />
     <Compile Include="Lottery\Tools\CpTypeSIdMapTool.cs" />
+    <Compile Include="Pay\AliPay\AlipayPurchaseService.cs" />
+    <Compile Include="Pay\AliPay\AlipayRequest.cs" />
+    <Compile Include="Pay\AliPay\IAlipayPurchaseService.cs" />
+    <Compile Include="Pay\AliPay\IAlipayRequest.cs" />
     <Compile Include="Pay\IOrderExecutor.cs" />
     <Compile Include="Pay\IOrderManager.cs" />
     <Compile Include="Pay\IOrderPolicy.cs" />
     <Compile Include="Pay\IPurchaseService.cs" />
     <Compile Include="Pay\IRechargeService.cs" />
+    <Compile Include="Pay\Lib\AliPayConfig.cs" />
     <Compile Include="Pay\Lib\HttpService.cs" />
     <Compile Include="Pay\Lib\WxPayData.cs" />
     <Compile Include="Pay\Lib\WxPayException.cs" />
+    <Compile Include="Pay\Lib\AlipayData.cs" />
+    <Compile Include="Pay\Models\AliPayOrder.cs" />
+    <Compile Include="Pay\Models\AlipayOrderOptions.cs" />
     <Compile Include="Pay\Models\CompleteServiceOrder.cs" />
     <Compile Include="Pay\Models\PayOptions.cs" />
     <Compile Include="Pay\Models\PayOrder.cs" />

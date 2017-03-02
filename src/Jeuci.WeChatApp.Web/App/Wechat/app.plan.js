@@ -79,6 +79,26 @@
 	                        openId: ""
 	                    }
 	                })
+                .state('serviceListByUid',
+	                {
+	                    url: '/serviceList/:sid?uid',
+	                    templateUrl: '/App/Wechat/views/purchase/serviceList.cshtml'
+	                })
+            .state('alipayUnifiedOrder',
+	                {
+	                    url: '/alipay/?orderId&sid&serviceName&orderPrice&description&uid&userName',
+	                    templateUrl: '/App/Wechat/views/purchase/unifiedOrder.cshtml',
+	                    params: {
+	                        orderId: "",
+	                        sid: "",
+	                        serviceName: "",
+	                        orderPrice: "0.00",
+	                        description: "",
+	                        uid: "",
+	                        userName:""
+
+	                    }
+	                })
         	;
         }]);
 })()

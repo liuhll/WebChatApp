@@ -56,6 +56,10 @@
       <HintPath>..\packages\Abp.Web.Common.1.0.0.0\lib\net452\Abp.Web.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AopSdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty.Lib\AopSdk.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -131,6 +135,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Controllers\AlipayController.cs" />
     <Compile Include="Api\Controllers\DirectEmailController.cs" />
     <Compile Include="Api\Controllers\PayController.cs" />
     <Compile Include="Api\Controllers\WechatController.cs" />

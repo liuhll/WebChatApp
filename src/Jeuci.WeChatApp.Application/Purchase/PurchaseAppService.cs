@@ -5,6 +5,7 @@ using Abp.Logging;
 using Jeuci.WeChatApp.Common;
 using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Pay;
+using Jeuci.WeChatApp.Pay.AliPay;
 using Jeuci.WeChatApp.Pay.Lib;
 using Jeuci.WeChatApp.Pay.Models;
 using Jeuci.WeChatApp.Pay.Tool;
@@ -19,13 +20,17 @@ namespace Jeuci.WeChatApp.Purchase
         private readonly  IPurchaseService _purchaseService;
         private readonly IRepository<UserInfo> _userRepository;
         private readonly IWechatAuthentManager _wechatAuthentManager;
+        private readonly IAlipayPurchaseService _alipayPurchaseService;
 
         public PurchaseAppService(IPurchaseService purchaseService, 
-            IRepository<UserInfo> userRepository, IWechatAuthentManager wechatAuthentManager)
+            IRepository<UserInfo> userRepository,
+            IWechatAuthentManager wechatAuthentManager, 
+            IAlipayPurchaseService alipayPurchaseService)
         {
             _purchaseService = purchaseService;
             _userRepository = userRepository;
             _wechatAuthentManager = wechatAuthentManager;
+            _alipayPurchaseService = alipayPurchaseService;
         }
 
         public ResultMessage<ServiceInfoOutput> GetUnifiedOrder(ServiceInfoInput input)
@@ -198,6 +203,41 @@ namespace Jeuci.WeChatApp.Purchase
             return new ResultMessage<string>(ResultCode.Fail, "FAIL", msg);
         }
 
-     
+        public ResultMessage<AlipayServiceInfoOutput> GetAlipayUnifiedOrder(AlipayServiceInfoInput input)
+        {
+            try
+            {
+                var data = new AlipayServiceInfoOutput()
+                {
+                    OrderId = OrderHelper.GenerateNewId(),
+                    ServiceName = input.body,
+                    Uid = input.uid.ToString(),
+                    OrderPrice = input.total_fee,
+                    Description = input.description,
+                    Sid = input.sid,
+                    UserName = input.userName,
+                };
+                return new ResultMessage<AlipayServiceInfoOutput>(data);
+            }
+            catch (Exception e)
+            {
+                LogHelper.Logger.Error("订单生成失败！" + e.Message);
+                return new ResultMessage<AlipayServiceInfoOutput>(ResultCode.Fail, "订单生产失败,原因:" + e.Message + ",请重试！");
+            }
+        }
+
+        public ResultMessage<string> AlipayPayOrder(AliPayOrderInput input)
+        {
+            string msg = String.Empty;
+            var result = _alipayPurchaseService.PayOrder(input.MapTo<AliPayOrder>(),out msg);
+            if (result)
+            {              
+                return new ResultMessage<string>(msg);
+            }
+            else
+            {
+                return new ResultMessage<string>(ResultCode.Fail,msg);
+            }
+        }
     }
 }

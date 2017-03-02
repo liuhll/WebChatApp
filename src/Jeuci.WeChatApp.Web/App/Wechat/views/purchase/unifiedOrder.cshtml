@@ -11,6 +11,12 @@
         </div>
 
         <div class="weui-form-preview__bd">
+
+            <div ng-show="vm.serviceInfo.uid" class="weui-form-preview__item">
+                <label class="weui-form-preview__label">用户账号</label>
+                <span class="weui-form-preview__value">{{vm.serviceInfo.userName}}</span>
+            </div>
+
             <div class="weui-form-preview__item">
                 <label class="weui-form-preview__label">商品</label>
                 <span class="weui-form-preview__value">{{vm.serviceInfo.serviceName}}</span>
@@ -24,11 +30,12 @@
                 <span class="weui-form-preview__value">{{vm.serviceInfo.description}}</span>
             </div>
 
+
             <div class="weui-form-preview__ft">
                 <a ng-if="vm.serviceInfo.sid != '' " class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" ng-click="vm.purchase(1)">立即购买</a>
                 <a ng-if="vm.serviceInfo.sid == '' " class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" ng-click="vm.purchase(0)">立即充值</a>
             </div>
-    
+
         </div>
     </div>
 </div>

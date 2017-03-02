@@ -1,5 +1,7 @@
 ﻿
+
 <div ng-controller="planApp.views.serviceList as vm">
+    <div ng-show="vm.uid"  class="weui-cells__title">用户账号: {{vm.servicePrice.userName}}</div>
     <div class="weui-cells__title">购买{{vm.servicePrice.serviceName}}授权</div>
     <div ng-hide="vm.showServiceList">
         <div class="weui-panel">

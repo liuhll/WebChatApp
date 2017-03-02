@@ -1,12 +1,19 @@
 ﻿using Jeuci.WeChatApp.Common.Enums;
 using Jeuci.WeChatApp.Common.Tools;
+using Jeuci.WeChatApp.Pay.AliPay;
 using Jeuci.WeChatApp.Pay.Lib;
 
 namespace Jeuci.WeChatApp.Pay
 {
     public class OrderPolicy : IOrderPolicy
     {
-         
+        private readonly IAlipayRequest _alipayRequest;
+
+        public OrderPolicy(IAlipayRequest alipayRequest)
+        {
+            _alipayRequest = alipayRequest;
+        }
+
 
         public WxPayData Orderquery(string orderId, OrderType orderType)
         {
@@ -30,6 +37,11 @@ namespace Jeuci.WeChatApp.Pay
             result.FromXml(response);
 
             return result;
+        }
+
+        public AlipayData AliOrderQuery(string id, OrderType outTradeNo)
+        {
+            return _alipayRequest.Query(id, outTradeNo);           
         }
     }
 }

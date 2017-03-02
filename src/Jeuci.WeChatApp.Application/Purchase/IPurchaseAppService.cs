@@ -25,5 +25,10 @@ namespace Jeuci.WeChatApp.Purchase
         void FailServiceOrder(UpdateServiceOrder order);
 
         ResultMessage<string> ClientCompleteServiceOrder(PayOrderDto payOrder);
+
+        ResultMessage<AlipayServiceInfoOutput> GetAlipayUnifiedOrder(AlipayServiceInfoInput input);
+
+        ResultMessage<string> AlipayPayOrder(AliPayOrderInput input);
+
     }
 }

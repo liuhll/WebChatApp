@@ -5,5 +5,6 @@ namespace Jeuci.WeChatApp.Pay
     public interface IOrderExecutor : ISingletonDependency
     {
         bool UpdateServiceOrder();
+
     }
 }
