@@ -48,7 +48,7 @@
 	                })
             .state('unifiedOrder',
 	                {
-	                    url: '/?orderId&sid&serviceName&prepayId&orderPrice&description&openId',
+	                    url: '/?orderId&sid&serviceName&prepayId&orderPrice&description&openId&priceId',
 	                    templateUrl: '/App/Wechat/views/purchase/unifiedOrder.cshtml',
                         params: {
                             orderId: "",
@@ -57,7 +57,8 @@
                             prepayId: "",
                             orderPrice: "0.00",
                             description: "",
-                            openId: ""
+                            openId: "",
+                            priceId:""
 
                         }
 	                }).state('purchaseMsg',
@@ -86,7 +87,7 @@
 	                })
             .state('alipayUnifiedOrder',
 	                {
-	                    url: '/alipay/?orderId&sid&serviceName&orderPrice&description&uid&userName',
+	                    url: '/alipay/?orderId&sid&serviceName&orderPrice&description&uid&userName&priceId',
 	                    templateUrl: '/App/Wechat/views/purchase/unifiedOrder.cshtml',
 	                    params: {
 	                        orderId: "",
@@ -95,7 +96,8 @@
 	                        orderPrice: "0.00",
 	                        description: "",
 	                        uid: "",
-	                        userName:""
+	                        userName: "",
+	                        priceId:""
 
 	                    }
 	                })

@@ -15,5 +15,7 @@
         public string description { get; set; }
 
         public string sid { get; set; }
+
+        public string priceid { get; set; }
     }
 }

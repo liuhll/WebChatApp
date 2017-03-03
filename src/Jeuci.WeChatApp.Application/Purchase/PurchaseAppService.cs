@@ -52,6 +52,7 @@ namespace Jeuci.WeChatApp.Purchase
                     PrepayId = result.GetValue("prepay_id").ToString(),
                     Description = input.description,
                     Sid = input.sid,
+                    PriceId = input.priceid,
                 };
                 return new ResultMessage<ServiceInfoOutput>(data);
             }
@@ -216,6 +217,7 @@ namespace Jeuci.WeChatApp.Purchase
                     Description = input.description,
                     Sid = input.sid,
                     UserName = input.userName,
+                    PriceId = input.priceid,
                 };
                 return new ResultMessage<AlipayServiceInfoOutput>(data);
             }

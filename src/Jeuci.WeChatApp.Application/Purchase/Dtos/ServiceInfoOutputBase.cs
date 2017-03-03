@@ -11,5 +11,7 @@
         public string Description { get; set; }
        
         public string Sid { get; set; }
+
+        public string PriceId { get; set; }
     }
 }

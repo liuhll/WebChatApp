@@ -12,7 +12,7 @@
                         cost: vm.serviceInfo.orderPrice,
                         goodsInfo: vm.serviceInfo.description,
                         goodsName: vm.serviceInfo.serviceName,
-                        goodsId: vm.serviceInfo.sid,
+                        goodsId: vm.serviceInfo.priceId,
                         goodType: goodtype
                     }).success(function (result1) {
 
@@ -76,7 +76,8 @@
                         cost: vm.serviceInfo.orderPrice,
                         goodsInfo: vm.serviceInfo.description,
                         goodsName: vm.serviceInfo.serviceName,
-                        goodsId: vm.serviceInfo.sid,
+                        goodsId: vm.serviceInfo.priceId,
+
                         goodType: goodtype
 
                     }).success(function (result1) {

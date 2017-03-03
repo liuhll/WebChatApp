@@ -44,7 +44,7 @@ namespace Jeuci.WeChatApp.Pay.AliPay
                     PayType = Convert.ToInt32(PayType.AliPay),
                     PayMode = Convert.ToInt32(PayMode.MobileWeb),
                     UId = input.Uid,
-                    Remarks = "支付宝手机支付",
+                    Remarks = "支付宝手机网页支付",
 
                 };
 
@@ -102,7 +102,8 @@ namespace Jeuci.WeChatApp.Pay.AliPay
                     PayExtendInfo = alipayData.ToJson(),
                     PayState = tradeStatus,
                     PayOrderID = transactionId,
-                    Remarks = "支付宝手机支付",
+                    Remarks = "支付宝手机网页支付",
+
                 }) == 0;
             }
             //超时关闭

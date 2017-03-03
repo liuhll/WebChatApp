@@ -39,7 +39,8 @@
                         body: vm.purchaseServiceInfo.authDesc,
                         openid: vm.openId,
                         description: vm.purchaseServiceInfo.description,
-                        sid: vm.purchaseServiceInfo.id
+                        priceId: vm.purchaseServiceInfo.id,
+                        sid:vm.sid
                     }, {
                         beforesend: function () {
                             $.showLoading("正在生成订单，请稍等...");
@@ -94,8 +95,9 @@
                         body: vm.purchaseServiceInfo.authDesc,
                         uid: vm.uid,
                         description: vm.purchaseServiceInfo.description,
-                        sid: vm.purchaseServiceInfo.id,
-                        userName: vm.servicePrice.userName
+                        priceId: vm.purchaseServiceInfo.id,
+                        userName: vm.servicePrice.userName,
+                        sid: vm.sid
                     }, {
                         beforesend: function () {
                             $.showLoading("正在生成订单，请稍等...");
