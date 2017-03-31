@@ -182,6 +182,7 @@ namespace Jeuci.WeChatApp.Pay.AliPay
             if (!AliPayConfig.APPID.Equals(alipayData.GetValue("app_id")))
             {
                 LogHelper.Logger.Error("app_id不一致，交易失败");
+                return false;
             }
             return true;
 
