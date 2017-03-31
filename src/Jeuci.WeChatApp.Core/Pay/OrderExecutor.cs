@@ -67,7 +67,7 @@ namespace Jeuci.WeChatApp.Pay
         private void WechatPayOrderService(ref int count1, ref int count2, UserPayOrderInfo order)
         {
             var orderId = WxPayConfig.MCHID + order.Id.Trim();
-            var payData = _orderPolicy.AliOrderQuery(orderId, OrderType.OutTradeNo);
+            var payData = _orderPolicy.Orderquery(orderId, OrderType.OutTradeNo);
             if (payData.GetValue("return_code").ToString() != "SUCCESS" ||
                 payData.GetValue("result_code").ToString() != "SUCCESS")
             {
@@ -75,7 +75,7 @@ namespace Jeuci.WeChatApp.Pay
                 order.UpdateTime = DateTime.Now;
                 order.PayExtendInfo = "未查询到订单的支付信息,直接关闭该订单";
                 order.State = 3;
-                order.PayState = payData.GetValue("trade_status").ToString();
+                order.PayState = "NOPAY";
                 //_purchaseService.FailServiceOrder(new UpdateServiceOrder()
                 //{
                 //    ID = order.Id,
